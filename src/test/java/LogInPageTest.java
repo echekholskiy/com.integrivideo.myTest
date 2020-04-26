@@ -1,0 +1,14 @@
+import org.junit.Before;
+import org.junit.Test;
+
+public class LogInPageTest extends BasicPageTest {
+    private LogInPage LP;
+    @Before
+    public void newObject(){
+        LP=MP.clickLogIn();
+    }
+    @Test
+    public void LogIn(){
+        LP.typeEmail("integriuser2@mailinator.com").typePassword("integripassword").clickLoginButton();
+    }
+}
