@@ -1,8 +1,12 @@
+package tests;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
+import pages.EditProjectPage;
+import pages.InProjectPage;
+import pages.LogInPage;
+import pages.ProjectPage;
 
 public class EditProjectPageTest extends BasicPageTest{
     public ProjectPage PP;

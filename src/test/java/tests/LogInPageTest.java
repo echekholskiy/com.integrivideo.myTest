@@ -1,5 +1,8 @@
+package tests;
+
 import org.junit.Before;
 import org.junit.Test;
+import pages.LogInPage;
 
 public class LogInPageTest extends BasicPageTest {
     private LogInPage LP;

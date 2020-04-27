@@ -1,4 +1,5 @@
-import org.junit.Before;
+package tests;
+
 import org.junit.Test;
 public class MainPageTest extends BasicPageTest{
 

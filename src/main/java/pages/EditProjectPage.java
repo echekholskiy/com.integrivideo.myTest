@@ -1,3 +1,5 @@
+package pages;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -10,12 +12,19 @@ public class EditProjectPage {
         this.driver = driver;
     }
     By projectNameLoc=By.xpath("//input[@name='name']");
+
+    //TODO xpath хуйня добавляется на страницу новй textarea и тест ложится
     By descriptionLoc=By.xpath("//textarea");
+
+    //TODO использовать [1] нешльяза не рекомендуется, на пидора чисто
     By domenLoc=By.xpath("//div[@class='form-group domains']/div[1]/input");
+
     By updateButtonLoc=By.xpath("//button[@class='btn']");
 
     public EditProjectPage editProjectName(String name){
+        //TODO зачем сохзранил в веб элемент?
         WebElement projectName=driver.findElement(projectNameLoc);
+        //TODO нахуя тут ctrl + a?
         projectName.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         projectName.sendKeys(name);
         return new EditProjectPage(driver);

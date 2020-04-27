@@ -1,3 +1,5 @@
+package pages;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -8,9 +10,13 @@ public class InProjectPage {
         this.driver = driver;
     }
 
+    //TODO это че xpath?
     By h1=By.xpath("//h1");
+
     By locDescription=By.xpath("//div[@class='col-12 description']");
+
     By editButton=By.xpath("//a[text()='Edit']");
+
     By addComponentButton=By.xpath("//div[@class='status']");
 
     public String getProjectName(){

@@ -1,3 +1,5 @@
+package pages;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -19,12 +21,14 @@ public class ProjectPage {
 
     public CreateProjectPage clickAddProject(){
         WebElement addProjectButton=driver.findElement(locAddButton);
+        //TODO нах тут скролл?
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", addProjectButton);
         addProjectButton.click();
         return new CreateProjectPage(driver);
     }
 
+    //TODO зачем метод?  расскажешь мб я туплю
     public WebElement getLastOfProject(){
         List<WebElement> listOfProjects=driver.findElements(locProjectButtons);
         return listOfProjects.get(listOfProjects.size()-1);
