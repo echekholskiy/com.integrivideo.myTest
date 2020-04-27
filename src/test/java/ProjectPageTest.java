@@ -8,7 +8,7 @@ public class ProjectPageTest extends BasicPageTest{
     @Before
     public void settings(){
         LP=MP.clickLogIn();
-        PP=LP.LogIn("integriuser2@mailinator.com", "integripassword");
+        PP=LP.LogIn(regEmail, regPassword);
     }
 
     @Test

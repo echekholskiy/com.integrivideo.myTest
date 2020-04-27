@@ -9,6 +9,8 @@ public class BasicPageTest {
     public WebDriver driver;
     public MainPage MP;
     public String url="https://dev.integrivideo.com/";
+    public String regEmail="integriuser2@mailinator.com";
+    public String regPassword="integripassword";
 
     @Before
     public void setUP(){

@@ -9,6 +9,6 @@ public class LogInPageTest extends BasicPageTest {
     }
     @Test
     public void LogIn(){
-        LP.typeEmail("integriuser2@mailinator.com").typePassword("integripassword").clickLoginButton();
+        LP.typeEmail(regEmail).typePassword(regPassword).clickLoginButton();
     }
 }

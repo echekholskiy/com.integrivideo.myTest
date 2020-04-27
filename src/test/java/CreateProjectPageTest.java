@@ -14,7 +14,7 @@ public class CreateProjectPageTest extends BasicPageTest{
     @Before
     public void settings(){
         LP=MP.clickLogIn();
-        PP=LP.LogIn("integriuser2@mailinator.com", "integripassword");
+        PP=LP.LogIn(regEmail, regPassword);
         CPP=PP.clickAddProject();
         CPP.addProject(project, description, domen);
         IPP=PP.clickLastOfProject();
