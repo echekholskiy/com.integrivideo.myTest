@@ -1,5 +1,10 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
+
 
 public class ProjectPage {
     WebDriver driver;
@@ -8,11 +13,26 @@ public class ProjectPage {
         this.driver = driver;
     }
 
-    By addProjectButton=By.xpath("//div[@class='project new']/a");
+    By locAddButton=By.xpath("//div[@class='project new']");
+    By locProjectButtons=By.xpath("//div[@class='project']/a/div[1]");
+
 
     public CreateProjectPage clickAddProject(){
-        driver.findElement(addProjectButton).click();
+        WebElement addProjectButton=driver.findElement(locAddButton);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", addProjectButton);
+        addProjectButton.click();
         return new CreateProjectPage(driver);
+    }
+
+    public WebElement getLastOfProject(){
+        List<WebElement> listOfProjects=driver.findElements(locProjectButtons);
+        return listOfProjects.get(listOfProjects.size()-1);
+    }
+
+    public InProjectPage clickLastOfProject(){
+        getLastOfProject().click();
+        return new InProjectPage(driver);
     }
 
 }

@@ -1,3 +1,4 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class CreateProjectPage {
@@ -6,6 +7,35 @@ public class CreateProjectPage {
     public CreateProjectPage(WebDriver driver) {
         this.driver = driver;
     }
-    
+
+    By projectNameInput=By.xpath("//input[@placeholder='New project']");
+    By descriptionInput=By.xpath("//textarea[@class='form-control']");
+    By domainInput=By.xpath("//input[@placeholder='example.com']");
+    By createButton=By.xpath("//button[@class='btn']");
+
+    public CreateProjectPage typeProjectName(String ProjectName){
+        driver.findElement(projectNameInput).sendKeys(ProjectName);
+        return new CreateProjectPage(driver);
+    }
+
+    public CreateProjectPage typeDescription(String Description){
+        driver.findElement(descriptionInput).sendKeys(Description);
+        return new CreateProjectPage(driver);
+    }
+
+    public CreateProjectPage typeDomain(String Domain){
+        driver.findElement(domainInput).sendKeys(Domain);
+        return new CreateProjectPage(driver);
+    }
+
+    public CreateProjectPage clickCreate(){
+        driver.findElement(createButton).click();
+        return new CreateProjectPage(driver);
+    }
+
+    public ProjectPage addProject(String projectName, String description, String domain){
+        typeProjectName(projectName).typeDescription(description).typeDomain(domain).clickCreate();
+        return new ProjectPage(driver);
+    }
 
 }

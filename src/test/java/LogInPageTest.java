@@ -4,7 +4,7 @@ import org.junit.Test;
 public class LogInPageTest extends BasicPageTest {
     private LogInPage LP;
     @Before
-    public void newObject(){
+    public void settings(){
         LP=MP.clickLogIn();
     }
     @Test

@@ -6,7 +6,7 @@ public class ProjectPageTest extends BasicPageTest{
     private LogInPage LP;
 
     @Before
-    public void newObject(){
+    public void settings(){
         LP=MP.clickLogIn();
         PP=LP.LogIn("integriuser2@mailinator.com", "integripassword");
     }
@@ -14,6 +14,10 @@ public class ProjectPageTest extends BasicPageTest{
     @Test
     public void clickAddProjectTest(){
         PP.clickAddProject();
+    }
+    @Test
+    public void clickLastOfProjectTest(){
+        PP.clickLastOfProject();
     }
 
 
