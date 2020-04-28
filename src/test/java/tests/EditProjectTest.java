@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class EditProjectPageTest extends BasicPageTest{
+public class EditProjectTest extends BasicTest {
     private String PN="project1 name";
     private String DES="test1 description";//TODO перенести в data
     private String DOM="test1.by";

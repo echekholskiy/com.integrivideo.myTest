@@ -9,7 +9,7 @@ import pages.*;
 import java.util.concurrent.TimeUnit;
 
 //TODO название классов с тестами BaseTest, ProjectTest итд. Попутал с классами Step-ов что я показывал
-public class BasicPageTest {
+public class BasicTest {
     //TODO драйвер модификатор доступа protected достаточно по идее
     protected WebDriver driver;
     //TODO сдесь в BaseTest сразу инициализировать все пейджы, т.к твои тесты наследуются от него

@@ -3,12 +3,8 @@ package tests;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import pages.CreateProjectPage;
-import pages.InProjectPage;
-import pages.LogInPage;
-import pages.ProjectPage;
 
-public class CreateProjectPageTest extends BasicPageTest{
+public class CreateProjectTest extends BasicTest {
     //TODO пейджей уже не будет т.к все будут в бейз тесте обьявлены а с этого лкасса спокойно к ним обращаемся
     //TODO Все входныен тестовые данные в отдельный класс TestData
     private String project="project test";

@@ -3,7 +3,7 @@ package tests;
 import org.junit.Before;
 import org.junit.Test;
 
-public class InProjectPageTest extends BasicPageTest{
+public class InProjectTest extends BasicTest {
     @Before
     public void settings(){
         LP.LogIn(regEmail, regPassword);
