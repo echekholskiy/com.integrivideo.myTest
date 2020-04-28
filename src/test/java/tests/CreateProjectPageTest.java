@@ -11,9 +11,9 @@ import pages.ProjectPage;
 public class CreateProjectPageTest extends BasicPageTest{
     //TODO пейджей уже не будет т.к все будут в бейз тесте обьявлены а с этого лкасса спокойно к ним обращаемся
     //TODO Все входныен тестовые данные в отдельный класс TestData
-    public String project="project test";
-    public String description="description test";
-    public String domen="test.by";  //TODO javafacker библиотека
+    private String project="project test";
+    private String description="description test";
+    private String domen="test.by";  //TODO javafacker библиотека
 
 
     //TODO нахуя тут BEFORE? в бефоре метода в бейз тесте ты уже запустил браузер, настроил его и открыл проект. Все что надо выполнять перелд каждым тестом

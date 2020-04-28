@@ -2,8 +2,6 @@ package tests;
 
 import org.junit.Before;
 import org.junit.Test;
-import pages.LogInPage;
-import pages.ProjectPage;
 
 public class ProjectPageTest extends BasicPageTest{
 

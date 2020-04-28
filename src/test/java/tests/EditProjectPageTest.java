@@ -3,15 +3,11 @@ package tests;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import pages.EditProjectPage;
-import pages.InProjectPage;
-import pages.LogInPage;
-import pages.ProjectPage;
 
 public class EditProjectPageTest extends BasicPageTest{
-    public String PN="project1 name";
-    public String DES="test1 description";
-    public String DOM="test1.by";
+    private String PN="project1 name";
+    private String DES="test1 description";//TODO перенести в data
+    private String DOM="test1.by";
 
 
     @Before

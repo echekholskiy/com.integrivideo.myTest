@@ -9,14 +9,14 @@ import java.util.List;
 
 
 public class ProjectPage {
-    WebDriver driver;
+    private WebDriver driver;
 
     public ProjectPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    By locAddButton=By.xpath("//div[@class='project new']");
-    By locProjectButtons=By.xpath("//div[@class='project']/a/div[1]");
+    private By locAddButton=By.xpath("//div[@class='project new']");
+    private By locProjectButtons=By.xpath("//div[@class='project']/a/div[1]");
 
 
     public CreateProjectPage clickAddProject(){
@@ -27,7 +27,7 @@ public class ProjectPage {
         return new CreateProjectPage(driver);
     }
 
-    //TODO зачем метод?  расскажешь мб я туплю
+    //TODO переписать метод без List
     public WebElement getLastOfProject(){
         List<WebElement> listOfProjects=driver.findElements(locProjectButtons);
         return listOfProjects.get(listOfProjects.size()-1);
