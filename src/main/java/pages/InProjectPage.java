@@ -11,7 +11,7 @@ public class InProjectPage {
     }
 
     //TODO это че xpath?
-    By h1=By.xpath("//h1");
+    By h1=By.xpath("//h1"); //TODO h1-переименовать
 
     By locDescription=By.xpath("//div[@class='col-12 description']");
 

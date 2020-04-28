@@ -9,10 +9,6 @@ import pages.LogInPage;
 import pages.ProjectPage;
 
 public class EditProjectPageTest extends BasicPageTest{
-    public ProjectPage PP;
-    public LogInPage LP;
-    public InProjectPage IPP;
-    public EditProjectPage EPP;
     public String PN="project1 name";
     public String DES="test1 description";
     public String DOM="test1.by";
@@ -20,10 +16,9 @@ public class EditProjectPageTest extends BasicPageTest{
 
     @Before
     public void settings(){
-        LP=MP.clickLogIn();
-        PP=LP.LogIn(regEmail, regPassword);
-        IPP=PP.clickLastOfProject();
-        EPP=IPP.clickEditButton();
+        LP.LogIn(regEmail, regPassword);
+        PP.clickLastOfProject();
+        IPP.clickEditButton();
         EPP.editProject(PN, DES, DOM);
         PP.clickLastOfProject();
 
@@ -33,8 +28,8 @@ public class EditProjectPageTest extends BasicPageTest{
     public void EditProjectTest(){
         Assert.assertEquals(IPP.getProjectName(), PN);
         Assert.assertEquals(IPP.getDescription(), DES);
-
     }
+
 
 
 }

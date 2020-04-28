@@ -21,7 +21,6 @@ public class ProjectPage {
 
     public CreateProjectPage clickAddProject(){
         WebElement addProjectButton=driver.findElement(locAddButton);
-        //TODO нах тут скролл?
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", addProjectButton);
         addProjectButton.click();

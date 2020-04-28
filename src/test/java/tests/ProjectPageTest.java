@@ -6,13 +6,10 @@ import pages.LogInPage;
 import pages.ProjectPage;
 
 public class ProjectPageTest extends BasicPageTest{
-    private ProjectPage PP;
-    private LogInPage LP;
 
     @Before
     public void settings(){
-        LP=MP.clickLogIn();
-        PP=LP.LogIn(regEmail, regPassword);
+        LP.LogIn(regEmail, regPassword);
     }
 
     @Test

@@ -7,15 +7,10 @@ import pages.LogInPage;
 import pages.ProjectPage;
 
 public class InProjectPageTest extends BasicPageTest{
-    public ProjectPage PP;
-    public LogInPage LP;
-    public InProjectPage IPP;
-
     @Before
     public void settings(){
-        LP=MP.clickLogIn();
-        PP=LP.LogIn(regEmail, regPassword);
-        IPP=PP.clickLastOfProject();
+        LP.LogIn(regEmail, regPassword);
+        PP.clickLastOfProject();
     }
     @Test
     public void clickEdit(){

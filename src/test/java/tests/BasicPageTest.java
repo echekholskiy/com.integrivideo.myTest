@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import pages.MainPage;
+import pages.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -20,7 +20,11 @@ public class BasicPageTest {
 
     //TODO название пейджы mainPage с маленькой буквы - переменные именуем с маленькой буквы или _ но не цифры. Большой буквами тольок константы
     // модификатор доступа protected достаточно, чтобы ток наследники могли пользоваться а не все
-    public MainPage MP;
+    protected LogInPage LP;
+    protected ProjectPage PP;
+    protected InProjectPage IPP;
+    protected EditProjectPage EPP;
+    protected CreateProjectPage CPP;
 
     //TODO private тут можно
     public String url="https://dev.integrivideo.com/";
@@ -33,13 +37,18 @@ public class BasicPageTest {
 
         //TODO драйвер разместить в структуре проекта и залить в гит, я выкачал твой проект а стартануть не могу т.к драйвера у меня там нету
         //TODO го в хроме плз, потом с фф
+
         System.setProperty("webdriver.gecko.driver", "C:\\Users\\nazhivka.by\\IdeaProjects\\testselenium\\drivers\\geckodriver.exe");
         driver=new FirefoxDriver();
         // TODO а че имплисити такой жирный 10 сек, у тебя перед каждым действием проходит? 1-2 секи достаточно
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get(url);
-        MP=new MainPage(driver);
+        this.LP=new LogInPage(driver);
+        this.PP=new ProjectPage(driver);
+        this.IPP=new InProjectPage(driver);
+        this.EPP=new EditProjectPage(driver);
+        this.CPP=new CreateProjectPage(driver);
     }
 
 

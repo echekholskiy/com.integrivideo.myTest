@@ -25,7 +25,7 @@ public class EditProjectPage {
         //TODO зачем сохзранил в веб элемент?
         WebElement projectName=driver.findElement(projectNameLoc);
         //TODO нахуя тут ctrl + a?
-        projectName.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        projectName.sendKeys(Keys.chord(Keys.CONTROL, "a"));//TODO метод clear()
         projectName.sendKeys(name);
         return new EditProjectPage(driver);
     }
