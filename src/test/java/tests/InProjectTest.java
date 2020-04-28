@@ -6,15 +6,15 @@ import org.junit.Test;
 public class InProjectTest extends BasicTest {
     @Before
     public void settings(){
-        LP.LogIn(regEmail, regPassword);
-        PP.clickLastOfProject();
+        logInPage.LogIn(regEmail, regPassword);
+        projectPage.clickLastOfProject();
     }
     @Test
     public void clickEdit(){
-        IPP.clickEditButton();
+        inProjectPage.clickEditButton();
     }
     @Test
     public void clickNewComponent(){
-        IPP.clickAddComponentButton();
+        inProjectPage.clickAddComponentButton();
     }
 }

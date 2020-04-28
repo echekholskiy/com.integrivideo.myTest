@@ -13,11 +13,11 @@ public class BasicTest {
     protected WebDriver driver;
     //TODO название пейджы mainPage с маленькой буквы - переменные именуем с маленькой буквы или _ но не цифры. Большой буквами тольок константы
     // модификатор доступа protected достаточно, чтобы ток наследники могли пользоваться а не все
-    protected LogInPage LP;
-    protected ProjectPage PP;
-    protected InProjectPage IPP;
-    protected EditProjectPage EPP;
-    protected CreateProjectPage CPP;
+    protected LogInPage logInPage;
+    protected ProjectPage projectPage;
+    protected InProjectPage inProjectPage;
+    protected EditProjectPage editProjectPage;
+    protected CreateProjectPage createProjectPage;
 
     //TODO когда перенесу авторизацию в бэйсик-поставить private
     protected String url="https://dev.integrivideo.com/";
@@ -27,7 +27,6 @@ public class BasicTest {
 
     @Before
     public void setUP(){
-        //TODO драйвер разместить в структуре проекта и залить в гит, я выкачал твой проект а стартануть не могу т.к драйвера у меня там нету
         //TODO го в хроме плз, потом с фф
         System.setProperty("webdriver.gecko.driver", "src\\drivers\\geckodriver.exe");
         driver=new FirefoxDriver();
@@ -35,11 +34,11 @@ public class BasicTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get(url);
-        this.LP=new LogInPage(driver);
-        this.PP=new ProjectPage(driver);
-        this.IPP=new InProjectPage(driver);
-        this.EPP=new EditProjectPage(driver);
-        this.CPP=new CreateProjectPage(driver);
+        this.logInPage=new LogInPage(driver);
+        this.projectPage=new ProjectPage(driver);
+        this.inProjectPage=new InProjectPage(driver);
+        this.editProjectPage=new EditProjectPage(driver);
+        this.createProjectPage=new CreateProjectPage(driver);
     }
 
     @After

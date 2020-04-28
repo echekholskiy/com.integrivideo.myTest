@@ -16,17 +16,17 @@ public class CreateProjectTest extends BasicTest {
     // это у тебя уже сам тест пошел
     @Before
     public void settings(){
-        LP.LogIn(regEmail, regPassword);
-        PP.clickAddProject();
-        CPP.addProject(project, description, domen);
-        PP.clickLastOfProject();
+        logInPage.LogIn(regEmail, regPassword);//TODO перенести авторизацию в basic
+        projectPage.clickAddProject();
+        createProjectPage.addProject(project, description, domen);
+        projectPage.clickLastOfProject();
     }
 
     //TODO метод выше должен бтыь в жэтом методе, класик структура теста выполнил действия провел асерт тест закончен.
     @Test
     public void ProjectFieldTest(){
-        Assert.assertEquals(IPP.getProjectName(), project);
-        Assert.assertEquals(IPP.getDescription(), description);
+        Assert.assertEquals(inProjectPage.getProjectName(), project);
+        Assert.assertEquals(inProjectPage.getDescription(), description);
     }
 
 

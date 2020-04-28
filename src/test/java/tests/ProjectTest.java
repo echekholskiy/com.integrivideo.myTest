@@ -7,16 +7,16 @@ public class ProjectTest extends BasicTest {
 
     @Before
     public void settings(){
-        LP.LogIn(regEmail, regPassword);
+        logInPage.LogIn(regEmail, regPassword);
     }
 
     @Test
     public void clickAddProjectTest(){
-        PP.clickAddProject();
+        projectPage.clickAddProject();
     }
     @Test
     public void clickLastOfProjectTest(){
-        PP.clickLastOfProject();
+        projectPage.clickLastOfProject();
     }
 
 

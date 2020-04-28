@@ -12,18 +12,18 @@ public class EditProjectTest extends BasicTest {
 
     @Before
     public void settings(){
-        LP.LogIn(regEmail, regPassword);
-        PP.clickLastOfProject();
-        IPP.clickEditButton();
-        EPP.editProject(PN, DES, DOM);
-        PP.clickLastOfProject();
+        logInPage.LogIn(regEmail, regPassword);
+        projectPage.clickLastOfProject();
+        inProjectPage.clickEditButton();
+        editProjectPage.editProject(PN, DES, DOM);
+        projectPage.clickLastOfProject();
 
     }
 
     @Test
     public void EditProjectTest(){
-        Assert.assertEquals(IPP.getProjectName(), PN);
-        Assert.assertEquals(IPP.getDescription(), DES);
+        Assert.assertEquals(inProjectPage.getProjectName(), PN);
+        Assert.assertEquals(inProjectPage.getDescription(), DES);
     }
 
 

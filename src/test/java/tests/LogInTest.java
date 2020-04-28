@@ -6,6 +6,6 @@ public class LogInTest extends BasicTest {
 
     @Test
     public void LogIn(){
-        LP.LogIn(regEmail, regPassword);
+        logInPage.LogIn(regEmail, regPassword);
     }
 }
