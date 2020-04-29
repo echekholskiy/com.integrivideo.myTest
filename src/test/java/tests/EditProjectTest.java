@@ -2,6 +2,7 @@ package tests;
 
 import org.junit.Assert;
 import org.junit.Test;
+import pages.NewComponentPage;
 
 public class EditProjectTest extends BasicTest {
     //TODO Все входныен тестовые данные в отдельный класс TestData
@@ -29,5 +30,14 @@ public class EditProjectTest extends BasicTest {
         projectPage.clickLastOfProject();
         Assert.assertEquals(inProjectPage.getProjectName(), PN);
         Assert.assertEquals(inProjectPage.getDescription(), DES);
+    }
+
+    @Test
+    public void AddComponentsTest(){
+        projectPage.clickLastOfProject();
+        inProjectPage.clickAddComponentButton();
+        newComponentPage.addVideoChat().clickAddComponentButton().addSingleVideo().clickAddComponentButton().addMultiVideoPleer().clickAddComponentButton().addMultiPartyVideo();
+
+
     }
 }
