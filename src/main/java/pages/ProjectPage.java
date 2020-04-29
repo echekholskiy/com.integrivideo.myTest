@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class ProjectPage {
     }
 
     private By addButtonLoc=By.xpath("//div[@class='project new']");
-    private By projectButtonsLoc=By.xpath("//div[@class='project']/a/div[1]");
+    private By lastProjectLoc=By.xpath("//div[@class='project']/a/div[1]");
 
 
     public CreateProjectPage clickAddProject(){
@@ -27,14 +28,10 @@ public class ProjectPage {
         return new CreateProjectPage(driver);
     }
 
-    //TODO переписать метод без List
-    public WebElement getLastOfProject(){
-        List<WebElement> listOfProjects=driver.findElements(projectButtonsLoc);
-        return listOfProjects.get(listOfProjects.size()-1);
-    }
-
     public InProjectPage clickLastOfProject(){
-        getLastOfProject().click();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//div[@class='col-xl-4 col-sm-6'][last()-1]/div//div[1]")));
+        driver.findElement(By.xpath("//div[@class='col-xl-4 col-sm-6'][last()-1]/div//div[1]")).click();
         return new InProjectPage(driver);
     }
 
