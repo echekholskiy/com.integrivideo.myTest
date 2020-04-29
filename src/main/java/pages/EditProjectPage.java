@@ -17,11 +17,8 @@ public class EditProjectPage {
     private By updateButtonLoc=By.xpath("//button[@class='btn']");
 
     public EditProjectPage editProjectName(String name){
-        //TODO зачем сохзранил в веб элемент?
-        WebElement projectName=driver.findElement(projectNameLoc);
-        //TODO нахуя тут ctrl + a?
-        projectName.sendKeys(Keys.chord(Keys.CONTROL, "a"));//TODO метод clear()
-        projectName.sendKeys(name);
+        driver.findElement(projectNameLoc).clear();
+        driver.findElement(projectNameLoc).sendKeys(name);
         return new EditProjectPage(driver);
     }
 

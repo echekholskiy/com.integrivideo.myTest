@@ -19,7 +19,6 @@ public class InProjectPage {
     public String getProjectName(){
         return driver.findElement(h1).getText();
     }
-
     public String getDescription(){
         return driver.findElement(locDescription).getText();
     }
