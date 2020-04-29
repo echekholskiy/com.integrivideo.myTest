@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class CreateProjectTest extends BasicTest {
-    //TODO пейджей уже не будет т.к все будут в бейз тесте обьявлены а с этого лкасса спокойно к ним обращаемся
     //TODO Все входныен тестовые данные в отдельный класс TestData
     private String project="project test";
     private String description="description test";

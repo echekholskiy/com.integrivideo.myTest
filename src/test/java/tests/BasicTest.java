@@ -11,8 +11,6 @@ import java.util.concurrent.TimeUnit;
 public class BasicTest {
 
     protected WebDriver driver;
-    //TODO название пейджы mainPage с маленькой буквы - переменные именуем с маленькой буквы или _ но не цифры. Большой буквами тольок константы
-    // модификатор доступа protected достаточно, чтобы ток наследники могли пользоваться а не все
     protected LogInPage logInPage;
     protected ProjectPage projectPage;
     protected InProjectPage inProjectPage;

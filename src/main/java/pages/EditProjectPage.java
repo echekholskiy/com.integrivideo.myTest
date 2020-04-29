@@ -12,10 +12,8 @@ public class EditProjectPage {
         this.driver = driver;
     }
     private By projectNameLoc=By.xpath("//input[@name='name']");
-    //TODO xpath хуйня добавляется на страницу новй textarea и тест ложится
-    private By descriptionLoc=By.xpath("//textarea");
-    //TODO использовать [1] нешльяза не рекомендуется, на пидора чисто
-    private By domenLoc=By.xpath("//div[@class='form-group domains']/div[1]/input");
+    private By descriptionLoc=By.xpath("//textarea[@class='form-control']");
+    private By domenLoc=By.xpath("//div[@class='form-group domains']//input[@required]");
     private By updateButtonLoc=By.xpath("//button[@class='btn']");
 
     public EditProjectPage editProjectName(String name){
