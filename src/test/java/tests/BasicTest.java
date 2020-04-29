@@ -3,6 +3,7 @@ package tests;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import pages.*;
 
@@ -23,11 +24,9 @@ public class BasicTest {
 
     @Before
     public void setUP(){
-        //TODO го в хроме плз, потом с фф
-        System.setProperty("webdriver.gecko.driver", "src\\drivers\\geckodriver.exe");
-        driver=new FirefoxDriver();
-        // TODO а че имплисити такой жирный 10 сек, у тебя перед каждым действием проходит? 1-2 секи достаточно
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        System.setProperty("webdriver.chrome.driver", "src\\drivers\\chromedriver.exe");
+        driver=new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get(url);
         this.logInPage=new LogInPage(driver);
