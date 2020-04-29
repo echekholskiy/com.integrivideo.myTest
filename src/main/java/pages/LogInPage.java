@@ -10,28 +10,28 @@ public class LogInPage {
         this.driver = driver;
     }
 
-    private By login=By.xpath("//a[@class='btn']");
-    private By emailInput=By.xpath("//input[@type='email']");
-    private By passwordInput=By.xpath("//input[@type='password']");
-    private By loginButton=By.xpath("//button[@class='btn btn-primary']");
+    private By loginLoc=By.xpath("//a[@class='btn']");
+    private By emailInputLoc=By.xpath("//input[@type='email']");
+    private By passwordInputLoc=By.xpath("//input[@type='password']");
+    private By loginButtonLoc=By.xpath("//button[@class='btn btn-primary']");
 
     public LogInPage clickLogIn(){
-        driver.findElement(login).click();
+        driver.findElement(loginLoc).click();
         return this;
     }
 
     public LogInPage typeEmail(String email){
-        driver.findElement(emailInput).sendKeys(email);
+        driver.findElement(emailInputLoc).sendKeys(email);
         return this;
     }
 
     public LogInPage typePassword(String password){
-        driver.findElement(passwordInput).sendKeys(password);
+        driver.findElement(passwordInputLoc).sendKeys(password);
         return this;
     }
 
     public LogInPage clickLoginButton(){
-        driver.findElement(loginButton).click();
+        driver.findElement(loginButtonLoc).click();
         return this;
     }
 

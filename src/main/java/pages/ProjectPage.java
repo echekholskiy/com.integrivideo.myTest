@@ -15,12 +15,12 @@ public class ProjectPage {
         this.driver = driver;
     }
 
-    private By locAddButton=By.xpath("//div[@class='project new']");
-    private By locProjectButtons=By.xpath("//div[@class='project']/a/div[1]");
+    private By locAddButtonLoc=By.xpath("//div[@class='project new']");
+    private By locProjectButtonsLoc=By.xpath("//div[@class='project']/a/div[1]");
 
 
     public CreateProjectPage clickAddProject(){
-        WebElement addProjectButton=driver.findElement(locAddButton);
+        WebElement addProjectButton=driver.findElement(locAddButtonLoc);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", addProjectButton);
         addProjectButton.click();
@@ -29,7 +29,7 @@ public class ProjectPage {
 
     //TODO переписать метод без List
     public WebElement getLastOfProject(){
-        List<WebElement> listOfProjects=driver.findElements(locProjectButtons);
+        List<WebElement> listOfProjects=driver.findElements(locProjectButtonsLoc);
         return listOfProjects.get(listOfProjects.size()-1);
     }
 

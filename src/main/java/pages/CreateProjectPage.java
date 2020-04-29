@@ -10,28 +10,28 @@ public class CreateProjectPage {
         this.driver = driver;
     }
 
-    private By projectNameInput=By.xpath("//input[@placeholder='New project']");
-    private By descriptionInput=By.xpath("//textarea[@class='form-control']");
-    private By domainInput=By.xpath("//input[@placeholder='example.com']");
-    private By createButton=By.xpath("//button[@class='btn']");
+    private By projectNameInputLoc=By.xpath("//input[@placeholder='New project']");
+    private By descriptionInputLoc=By.xpath("//textarea[@class='form-control']");
+    private By domainInputLoc=By.xpath("//input[@placeholder='example.com']");
+    private By createButtonLoc=By.xpath("//button[@class='btn']");
 
     public CreateProjectPage typeProjectName(String ProjectName){
-        driver.findElement(projectNameInput).sendKeys(ProjectName);
+        driver.findElement(projectNameInputLoc).sendKeys(ProjectName);
         return new CreateProjectPage(driver);
     }
 
     public CreateProjectPage typeDescription(String Description){
-        driver.findElement(descriptionInput).sendKeys(Description);
+        driver.findElement(descriptionInputLoc).sendKeys(Description);
         return new CreateProjectPage(driver);
     }
 
     public CreateProjectPage typeDomain(String Domain){
-        driver.findElement(domainInput).sendKeys(Domain);
+        driver.findElement(domainInputLoc).sendKeys(Domain);
         return new CreateProjectPage(driver);
     }
 
     public CreateProjectPage clickCreate(){
-        driver.findElement(createButton).click();
+        driver.findElement(createButtonLoc).click();
         return new CreateProjectPage(driver);
     }
 
