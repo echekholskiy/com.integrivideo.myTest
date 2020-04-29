@@ -15,7 +15,7 @@ public class CreateProjectTest extends BasicTest {
     // это у тебя уже сам тест пошел
     @Before
     public void settings(){
-        logInPage.LogIn(regEmail, regPassword);//TODO перенести авторизацию в basic
+        //TODO перенести авторизацию в basic
         projectPage.clickAddProject();
         createProjectPage.addProject(project, description, domen);
         projectPage.clickLastOfProject();

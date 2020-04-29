@@ -12,7 +12,6 @@ public class EditProjectTest extends BasicTest {
 
     @Before
     public void settings(){
-        logInPage.LogIn(regEmail, regPassword);
         projectPage.clickLastOfProject();
         inProjectPage.clickEditButton();
         editProjectPage.editProject(PN, DES, DOM);

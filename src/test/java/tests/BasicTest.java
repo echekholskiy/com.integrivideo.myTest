@@ -16,11 +16,9 @@ public class BasicTest {
     protected InProjectPage inProjectPage;
     protected EditProjectPage editProjectPage;
     protected CreateProjectPage createProjectPage;
-
-    //TODO когда перенесу авторизацию в бэйсик-поставить private
-    protected String url="https://dev.integrivideo.com/";
-    protected String regEmail="integriuser2@mailinator.com";
-    protected String regPassword="integripassword";
+    private String url="https://dev.integrivideo.com/";
+    private String regEmail="integriuser2@mailinator.com";
+    private String regPassword="integripassword";
 
 
     @Before
@@ -37,6 +35,7 @@ public class BasicTest {
         this.inProjectPage=new InProjectPage(driver);
         this.editProjectPage=new EditProjectPage(driver);
         this.createProjectPage=new CreateProjectPage(driver);
+        logInPage.LogIn(regEmail, regPassword);
     }
 
     @After

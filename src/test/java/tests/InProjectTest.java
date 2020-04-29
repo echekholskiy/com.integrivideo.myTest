@@ -6,7 +6,6 @@ import org.junit.Test;
 public class InProjectTest extends BasicTest {
     @Before
     public void settings(){
-        logInPage.LogIn(regEmail, regPassword);
         projectPage.clickLastOfProject();
     }
     @Test
