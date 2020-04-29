@@ -19,21 +19,19 @@ public class EditProjectPage {
     public EditProjectPage editProjectName(String name){
         driver.findElement(projectNameLoc).clear();
         driver.findElement(projectNameLoc).sendKeys(name);
-        return new EditProjectPage(driver);
+        return this;
     }
 
     public EditProjectPage editDescription(String description){
-        WebElement Description=driver.findElement(descriptionLoc);
-        Description.sendKeys(Keys.chord(Keys.CONTROL, "a"));
-        Description.sendKeys(description);
-        return new EditProjectPage(driver);
+        driver.findElement(descriptionLoc).clear();
+        driver.findElement(descriptionLoc).sendKeys(description);
+        return this;
     }
 
     public EditProjectPage editDomen(String domen){
-        WebElement Domen=driver.findElement(domenLoc);
-        Domen.sendKeys(Keys.chord(Keys.CONTROL, "a"));
-        Domen.sendKeys(domen);
-        return new EditProjectPage(driver);
+        driver.findElement(domenLoc).clear();
+        driver.findElement(domenLoc).sendKeys(domen);
+        return this;
     }
 
     public ProjectPage clickUpdateButton(){
