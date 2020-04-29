@@ -17,7 +17,7 @@ public class ProjectPage {
     }
 
     private By addButtonLoc=By.xpath("//div[@class='project new']");
-    private By lastProjectLoc=By.xpath("//div[@class='project']/a/div[1]");
+    private By lastProjectLoc=By.xpath("//div[@class='col-xl-4 col-sm-6'][last()-1]/div//div[1]");
 
 
     public CreateProjectPage clickAddProject(){
@@ -30,8 +30,8 @@ public class ProjectPage {
 
     public InProjectPage clickLastOfProject(){
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//div[@class='col-xl-4 col-sm-6'][last()-1]/div//div[1]")));
-        driver.findElement(By.xpath("//div[@class='col-xl-4 col-sm-6'][last()-1]/div//div[1]")).click();
+        js.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(lastProjectLoc));
+        driver.findElement(lastProjectLoc).click();
         return new InProjectPage(driver);
     }
 
