@@ -4,7 +4,7 @@ import data.Data;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class EditProjectTest extends BasicTest {
+public class ProjectTest extends BasicTest {
     private String project_Name=new Data().PROJECT_NAME;
     private String description=new Data().DESCRIPTION;
     private String domen=new Data().DOMEN;
