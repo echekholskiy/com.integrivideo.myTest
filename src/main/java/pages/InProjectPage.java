@@ -14,6 +14,7 @@ public class InProjectPage {
     private By descriptionLoc=By.xpath("//div[@class='col-12 description']");
     private By editButtonLoc=By.xpath("//a[text()='Edit']");
     private By addComponentButtonLoc=By.xpath("//div[@class='status']");
+    private By lastComponentButtonLoc=By.xpath("//div[@class='col-xl-4 col-sm-6'][last()-1]//a");
 
     public String getProjectName(){
         return driver.findElement(projectNameLoc).getText();
@@ -29,6 +30,11 @@ public class InProjectPage {
 
     public NewComponentPage clickAddComponentButton(){
         driver.findElement(addComponentButtonLoc).click();
+        return new NewComponentPage(driver);
+    }
+
+    public NewComponentPage clickLastComponent(){
+        driver.findElement(lastComponentButtonLoc).click();
         return new NewComponentPage(driver);
     }
 

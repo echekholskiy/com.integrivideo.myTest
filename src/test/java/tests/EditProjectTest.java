@@ -12,6 +12,11 @@ public class EditProjectTest extends BasicTest {
     private String PN="project1 name";
     private String DES="test1 description";//TODO перенести в data
     private String DOM="test1.by";
+    private String videoChatName="VideoChat";
+    private String multiVideoPleerName="MultiVideoPleer";
+    private String multiPartyVideoName="MultiPartyVideo";
+    private String singleVideoName="SingleVideo";
+
 
     @Test
     public void ProjectFieldTest(){
@@ -37,15 +42,19 @@ public class EditProjectTest extends BasicTest {
         projectPage.clickLastOfProject();
         inProjectPage.clickAddComponentButton();
         newComponentPage
-                .addVideoChat()
+                .addVideoChat(videoChatName)
                 .clickAddComponentButton()
-                .addMultiPartyVideo()
+                .addMultiPartyVideo(multiPartyVideoName)
                 .clickAddComponentButton()
-                .addMultiVideoPleer()
+                .addMultiVideoPleer(multiVideoPleerName)
                 .clickAddComponentButton()
-                .addSingleVideo()
+                .addSingleVideo(singleVideoName)
                 .clickAddComponentButton();
 
-
     }
+    @Test
+    public void test(){
+        projectPage.clickLastOfProject();
+    }
+
 }

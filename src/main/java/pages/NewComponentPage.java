@@ -52,36 +52,44 @@ public class NewComponentPage {
         return new InProjectPage(driver);
     }
 
-    public InProjectPage addVideoChat(){
+    public InProjectPage addVideoChat(String videoChatName){
         selectComponentType(videoChatLoc)
-                .typeComponentName("VideoChat")
+                .typeComponentName(videoChatName)
                 .clickCreateButton()
                 .clickUpdateButton();
         return new InProjectPage(driver);
     }
 
-    public InProjectPage addMultiVideoPleer(){
+    public InProjectPage addMultiVideoPleer(String multiVideoPleerName){
         selectComponentType(multiVideoPleerLoc)
-                .typeComponentName("MultiVideoPleer")
+                .typeComponentName(multiVideoPleerName)
                 .clickCreateButton()
                 .clickUpdateButton();
         return new InProjectPage(driver);
     }
 
-    public InProjectPage addSingleVideo(){
+    public InProjectPage addSingleVideo(String singleVideoName){
         selectComponentType(singleVideoLoc)
-                .typeComponentName("SingleVideo")
+                .typeComponentName(singleVideoName)
                 .clickCreateButton()
                 .clickUpdateButton();
         return new InProjectPage(driver);
     }
 
-    public InProjectPage addMultiPartyVideo(){
+    public InProjectPage addMultiPartyVideo(String multiPartyVideo){
         selectComponentType(multiPartyVideoLoc)
-                .typeComponentName("MultiPartyVideo")
+                .typeComponentName(multiPartyVideo)
                 .clickCreateButton()
                 .clickUpdateButton();
         return new InProjectPage(driver);
+    }
+
+    public String getTypeComponent(){
+        return driver.findElement(componentTypeLoc).getText();
+    }
+
+    public String getComponentName(){
+        return driver.findElement(componentTypeLoc).getText();
     }
 
 }
