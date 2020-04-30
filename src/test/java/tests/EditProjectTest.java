@@ -5,15 +5,18 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class EditProjectTest extends BasicTest {
+    private String project_Name=new Data().PROJECT_NAME;
+    private String description=new Data().DESCRIPTION;
+    private String domen=new Data().DOMEN;
 
     @Test
     public void ProjectFieldTest(){
         projectPage
                 .clickAddProject()
-                .addProject(new Data().PROJECT_NAME, new Data().DESCRIPTION, new Data().DOMEN)
+                .addProject(project_Name, description, domen)
                 .clickLastOfProject();
-        Assert.assertEquals(inProjectPage.getProjectName(), new Data().PROJECT_NAME);
-        Assert.assertEquals(inProjectPage.getDescription(), new Data().DESCRIPTION);
+        Assert.assertEquals(inProjectPage.getProjectName(), project_Name);
+        Assert.assertEquals(inProjectPage.getDescription(), description);
     }
 
     @Test
@@ -21,10 +24,10 @@ public class EditProjectTest extends BasicTest {
         projectPage
                 .clickLastOfProject()
                 .clickEditButton()
-                .editProject(new Data().EDIT_PROJECT_NAME, new Data().EDIT_DESCRIPTION, new Data().EDIT_DOMEN)
+                .editProject(project_Name, description, domen)
                 .clickLastOfProject();
-        Assert.assertEquals(inProjectPage.getProjectName(), new Data().EDIT_PROJECT_NAME);
-        Assert.assertEquals(inProjectPage.getDescription(), new Data().EDIT_DESCRIPTION);
+        Assert.assertEquals(inProjectPage.getProjectName(), project_Name);
+        Assert.assertEquals(inProjectPage.getDescription(), description);
     }
 
     @Test
@@ -57,10 +60,5 @@ public class EditProjectTest extends BasicTest {
                 .clickLastComponent();
         Assert.assertEquals(inComponentPage.getTypeComponent(), new Data().SINGLE_VIDEO_NAME);
         Assert.assertEquals(inComponentPage.getComponentName(), "Test "+new Data().SINGLE_VIDEO_NAME);
-    }
-
-    @Test
-    public void test(){
-        System.out.println();
     }
 }

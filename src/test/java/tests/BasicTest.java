@@ -19,6 +19,7 @@ public class BasicTest {
     protected CreateProjectPage createProjectPage;
     protected NewComponentPage newComponentPage;
     protected InComponentPage inComponentPage;
+    public String URL="https://dev.integrivideo.com/";
 
     @Before
     public void setUP(){
@@ -26,7 +27,7 @@ public class BasicTest {
         driver=new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        driver.get(new Data().URL);
+        driver.get(URL);
         this.logInPage=new LogInPage(driver);
         this.projectPage=new ProjectPage(driver);
         this.inProjectPage=new InProjectPage(driver);
