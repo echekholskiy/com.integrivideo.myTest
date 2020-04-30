@@ -2,8 +2,6 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class NewComponentPage {
@@ -20,9 +18,6 @@ public class NewComponentPage {
     private By multiPartyVideoLoc=By.xpath("//li[contains(text(), 'Multiparty Video')]");
     private By componentNameLoc=By.xpath("//input[@class='form-control']");
     private By createButtonLoc=By.xpath("//button[@class='btn']");
-    private By updateButtonLoc=By.xpath("//button[text()='Update']");
-    WebDriverWait wait1;
-
 
     public NewComponentPage clickSelectComponentType(){
         driver.findElement(componentTypeLoc).click();
@@ -40,16 +35,9 @@ public class NewComponentPage {
         return this;
     }
 
-    public NewComponentPage clickCreateButton(){
+    public InComponentPage clickCreateButton(){
         driver.findElement(createButtonLoc).click();
-        return this;
-    }
-
-    public InProjectPage clickUpdateButton(){
-        wait1=(new WebDriverWait(driver, 10));
-        wait1.until(ExpectedConditions.presenceOfElementLocated(updateButtonLoc));
-        driver.findElement(updateButtonLoc).click();
-        return new InProjectPage(driver);
+        return new InComponentPage(driver);
     }
 
     public InProjectPage addVideoChat(String videoChatName){
@@ -82,14 +70,6 @@ public class NewComponentPage {
                 .clickCreateButton()
                 .clickUpdateButton();
         return new InProjectPage(driver);
-    }
-
-    public String getTypeComponent(){
-        return driver.findElement(componentTypeLoc).getText();
-    }
-
-    public String getComponentName(){
-        return driver.findElement(componentTypeLoc).getText();
     }
 
 }

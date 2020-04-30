@@ -17,7 +17,6 @@ public class EditProjectTest extends BasicTest {
     private String multiPartyVideoName="MultiPartyVideo";
     private String singleVideoName="SingleVideo";
 
-
     @Test
     public void ProjectFieldTest(){
         projectPage.clickAddProject();
@@ -55,6 +54,11 @@ public class EditProjectTest extends BasicTest {
     @Test
     public void test(){
         projectPage.clickLastOfProject();
+        inProjectPage.clickAddComponentButton();
+        newComponentPage.addVideoChat(videoChatName);
+        inProjectPage.clickLastComponent();
+        Assert.assertEquals(inComponentPage.getTypeComponent(), "Video Chat");
+        Assert.assertEquals(inComponentPage.getComponentName(), "Test"+videoChatName);
     }
 
 }

@@ -18,6 +18,7 @@ public class BasicTest {
     protected EditProjectPage editProjectPage;
     protected CreateProjectPage createProjectPage;
     protected NewComponentPage newComponentPage;
+    protected InComponentPage inComponentPage;
     private String url="https://dev.integrivideo.com/";
     private String regEmail="integriuser2@mailinator.com";
     private String regPassword="integripassword";
@@ -36,11 +37,12 @@ public class BasicTest {
         this.editProjectPage=new EditProjectPage(driver);
         this.createProjectPage=new CreateProjectPage(driver);
         this.newComponentPage=new NewComponentPage(driver);
+        this.inComponentPage=new InComponentPage(driver);
         logInPage.LogIn(regEmail, regPassword);
     }
 
-    //@After
-    //public void quit(){
-    //    driver.quit();
-    //}
+    @After
+    public void quit(){
+        driver.quit();
+    }
 }
