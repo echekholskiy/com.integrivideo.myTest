@@ -22,8 +22,6 @@ public class EditProjectTest extends BasicTest {
                 .clickAddProject()
                 .addProject(project, description, domen)
                 .clickLastOfProject();
-        //createProjectPage.addProject(project, description, domen);
-        //projectPage.clickLastOfProject();
         Assert.assertEquals(inProjectPage.getProjectName(), project);
         Assert.assertEquals(inProjectPage.getDescription(), description);
     }
@@ -35,9 +33,6 @@ public class EditProjectTest extends BasicTest {
                 .clickEditButton()
                 .editProject(PN, DES, DOM)
                 .clickLastOfProject();
-        //inProjectPage.clickEditButton();
-        //editProjectPage.editProject(PN, DES, DOM);
-        //projectPage.clickLastOfProject();
         Assert.assertEquals(inProjectPage.getProjectName(), PN);
         Assert.assertEquals(inProjectPage.getDescription(), DES);
     }
