@@ -13,7 +13,7 @@ public class EditProjectTest extends BasicTest {
     private String DES="test1 description";//TODO перенести в data
     private String DOM="test1.by";
     private String videoChatName="Video Chat";
-    private String multiVideoPleerName="Multi-device Video Player";
+    private String multiVideoPlayerName="Multi-device Video Player";
     private String multiPartyVideoName="Multiparty Video";
     private String singleVideoName="Single Video";
 
@@ -44,28 +44,28 @@ public class EditProjectTest extends BasicTest {
                 .clickAddComponentButton()
                 .addVideoChat(videoChatName)
                 .clickLastComponent();
-        Assert.assertEquals(inComponentPage.getTypeComponent(), "Video Chat");
+        Assert.assertEquals(inComponentPage.getTypeComponent(), videoChatName);
         Assert.assertEquals(inComponentPage.getComponentName(), "Test "+videoChatName);
         inComponentPage
                 .clickUpdateButton()
                 .clickAddComponentButton()
-                .addMultiVideoPlayer(multiVideoPleerName)
+                .addMultiVideoPlayer(multiVideoPlayerName)
                 .clickLastComponent();
-        Assert.assertEquals(inComponentPage.getTypeComponent(), "Multi-device Video Player");
-        Assert.assertEquals(inComponentPage.getComponentName(), "Test "+multiVideoPleerName);
+        Assert.assertEquals(inComponentPage.getTypeComponent(), multiVideoPlayerName);
+        Assert.assertEquals(inComponentPage.getComponentName(), "Test "+multiVideoPlayerName);
         inComponentPage
                 .clickUpdateButton()
                 .clickAddComponentButton()
                 .addMultiPartyVideo(multiPartyVideoName)
                 .clickLastComponent();
-        Assert.assertEquals(inComponentPage.getTypeComponent(), "Multiparty Video");
+        Assert.assertEquals(inComponentPage.getTypeComponent(), multiPartyVideoName);
         Assert.assertEquals(inComponentPage.getComponentName(), "Test "+multiPartyVideoName);
         inComponentPage
                 .clickUpdateButton()
                 .clickAddComponentButton()
                 .addSingleVideo(singleVideoName)
                 .clickLastComponent();
-        Assert.assertEquals(inComponentPage.getTypeComponent(), "Single Video");
+        Assert.assertEquals(inComponentPage.getTypeComponent(), singleVideoName);
         Assert.assertEquals(inComponentPage.getComponentName(), "Test "+singleVideoName);
     }
 
