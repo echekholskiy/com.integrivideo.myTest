@@ -2,7 +2,6 @@ package tests;
 
 import org.junit.Assert;
 import org.junit.Test;
-import pages.NewComponentPage;
 
 public class EditProjectTest extends BasicTest {
     //TODO Все входныен тестовые данные в отдельный класс TestData
@@ -19,19 +18,26 @@ public class EditProjectTest extends BasicTest {
 
     @Test
     public void ProjectFieldTest(){
-        projectPage.clickAddProject();
-        createProjectPage.addProject(project, description, domen);
-        projectPage.clickLastOfProject();
+        projectPage
+                .clickAddProject()
+                .addProject(project, description, domen)
+                .clickLastOfProject();
+        //createProjectPage.addProject(project, description, domen);
+        //projectPage.clickLastOfProject();
         Assert.assertEquals(inProjectPage.getProjectName(), project);
         Assert.assertEquals(inProjectPage.getDescription(), description);
     }
 
     @Test
     public void EditProjectTest(){
-        projectPage.clickLastOfProject();
-        inProjectPage.clickEditButton();
-        editProjectPage.editProject(PN, DES, DOM);
-        projectPage.clickLastOfProject();
+        projectPage
+                .clickLastOfProject()
+                .clickEditButton()
+                .editProject(PN, DES, DOM)
+                .clickLastOfProject();
+        //inProjectPage.clickEditButton();
+        //editProjectPage.editProject(PN, DES, DOM);
+        //projectPage.clickLastOfProject();
         Assert.assertEquals(inProjectPage.getProjectName(), PN);
         Assert.assertEquals(inProjectPage.getDescription(), DES);
     }
