@@ -1,5 +1,7 @@
 package Data;
 
+import com.github.javafaker.Faker;
+
 public class Data {
     public static final String URL="https://dev.integrivideo.com/";
     public String USER_EMAIL="integriuser2@mailinator.com";

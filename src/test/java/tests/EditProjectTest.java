@@ -57,4 +57,9 @@ public class EditProjectTest extends BasicTest {
         Assert.assertEquals(inComponentPage.getTypeComponent(), data.SINGLE_VIDEO_NAME);
         Assert.assertEquals(inComponentPage.getComponentName(), "Test "+data.SINGLE_VIDEO_NAME);
     }
+
+    @Test
+    public void test(){
+        System.out.println();
+    }
 }
