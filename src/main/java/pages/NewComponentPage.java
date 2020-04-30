@@ -2,7 +2,6 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class NewComponentPage {
     private WebDriver driver;
@@ -13,7 +12,7 @@ public class NewComponentPage {
 
     private By componentTypeLoc=By.xpath("//span[@class='select2-selection__arrow']");
     private By videoChatLoc=By.xpath("//li[contains(text(), 'Video Chat')]");
-    private By multiVideoPleerLoc=By.xpath("//li[contains(text(), 'Multi-device Video Player')]");
+    private By multiVideoPlayerLoc=By.xpath("//li[contains(text(), 'Multi-device Video Player')]");
     private By singleVideoLoc=By.xpath("//li[contains(text(), 'Single Video')]");
     private By multiPartyVideoLoc=By.xpath("//li[contains(text(), 'Multiparty Video')]");
     private By componentNameLoc=By.xpath("//input[@class='form-control']");
@@ -31,7 +30,7 @@ public class NewComponentPage {
     }
 
     public NewComponentPage typeComponentName(String name){
-        driver.findElement(componentNameLoc).sendKeys(String.format("Test%s", name));
+        driver.findElement(componentNameLoc).sendKeys(String.format("Test %s", name));
         return this;
     }
 
@@ -48,8 +47,8 @@ public class NewComponentPage {
         return new InProjectPage(driver);
     }
 
-    public InProjectPage addMultiVideoPleer(String multiVideoPleerName){
-        selectComponentType(multiVideoPleerLoc)
+    public InProjectPage addMultiVideoPlayer(String multiVideoPleerName){
+        selectComponentType(multiVideoPlayerLoc)
                 .typeComponentName(multiVideoPleerName)
                 .clickCreateButton()
                 .clickUpdateButton();
@@ -71,5 +70,4 @@ public class NewComponentPage {
                 .clickUpdateButton();
         return new InProjectPage(driver);
     }
-
 }

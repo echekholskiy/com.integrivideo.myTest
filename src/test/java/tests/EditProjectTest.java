@@ -12,10 +12,10 @@ public class EditProjectTest extends BasicTest {
     private String PN="project1 name";
     private String DES="test1 description";//TODO перенести в data
     private String DOM="test1.by";
-    private String videoChatName="VideoChat";
-    private String multiVideoPleerName="MultiVideoPleer";
-    private String multiPartyVideoName="MultiPartyVideo";
-    private String singleVideoName="SingleVideo";
+    private String videoChatName="Video Chat";
+    private String multiVideoPleerName="Multi-device Video Player";
+    private String multiPartyVideoName="Multiparty Video";
+    private String singleVideoName="Single Video";
 
     @Test
     public void ProjectFieldTest(){
@@ -36,29 +36,37 @@ public class EditProjectTest extends BasicTest {
         Assert.assertEquals(inProjectPage.getDescription(), DES);
     }
 
+
     @Test
     public void AddComponentsTest(){
-        projectPage.clickLastOfProject();
-        inProjectPage.clickAddComponentButton();
-        newComponentPage
+        projectPage
+                .clickLastOfProject()
+                .clickAddComponentButton()
                 .addVideoChat(videoChatName)
+                .clickLastComponent();
+        Assert.assertEquals(inComponentPage.getTypeComponent(), "Video Chat");
+        Assert.assertEquals(inComponentPage.getComponentName(), "Test "+videoChatName);
+        inComponentPage
+                .clickUpdateButton()
+                .clickAddComponentButton()
+                .addMultiVideoPlayer(multiVideoPleerName)
+                .clickLastComponent();
+        Assert.assertEquals(inComponentPage.getTypeComponent(), "Multi-device Video Player");
+        Assert.assertEquals(inComponentPage.getComponentName(), "Test "+multiVideoPleerName);
+        inComponentPage
+                .clickUpdateButton()
                 .clickAddComponentButton()
                 .addMultiPartyVideo(multiPartyVideoName)
-                .clickAddComponentButton()
-                .addMultiVideoPleer(multiVideoPleerName)
+                .clickLastComponent();
+        Assert.assertEquals(inComponentPage.getTypeComponent(), "Multiparty Video");
+        Assert.assertEquals(inComponentPage.getComponentName(), "Test "+multiPartyVideoName);
+        inComponentPage
+                .clickUpdateButton()
                 .clickAddComponentButton()
                 .addSingleVideo(singleVideoName)
-                .clickAddComponentButton();
-
-    }
-    @Test
-    public void test(){
-        projectPage.clickLastOfProject();
-        inProjectPage.clickAddComponentButton();
-        newComponentPage.addVideoChat(videoChatName);
-        inProjectPage.clickLastComponent();
-        Assert.assertEquals(inComponentPage.getTypeComponent(), "Video Chat");
-        Assert.assertEquals(inComponentPage.getComponentName(), "Test"+videoChatName);
+                .clickLastComponent();
+        Assert.assertEquals(inComponentPage.getTypeComponent(), "Single Video");
+        Assert.assertEquals(inComponentPage.getComponentName(), "Test "+singleVideoName);
     }
 
 }

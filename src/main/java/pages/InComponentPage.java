@@ -2,12 +2,9 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class InComponentPage {
     private WebDriver driver;
-    private WebDriverWait wait1;
 
     public InComponentPage(WebDriver driver) {
         this.driver = driver;
@@ -25,8 +22,6 @@ public class InComponentPage {
     }
 
     public InProjectPage clickUpdateButton(){
-        wait1=(new WebDriverWait(driver, 10));
-        wait1.until(ExpectedConditions.presenceOfElementLocated(updateButtonLoc));
         driver.findElement(updateButtonLoc).click();
         return new InProjectPage(driver);
     }
