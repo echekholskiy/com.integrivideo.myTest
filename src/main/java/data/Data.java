@@ -1,9 +1,7 @@
-package Data;
-
-import com.github.javafaker.Faker;
+package data;
 
 public class Data {
-    public static final String URL="https://dev.integrivideo.com/";
+    public String URL="https://dev.integrivideo.com/";
     public String USER_EMAIL="integriuser2@mailinator.com";
     public String USER_PASSWORD="integripassword";
     public String PROJECT_NAME="project test";

@@ -1,6 +1,6 @@
 package tests;
 
-import Data.Data;
+import data.Data;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
@@ -19,7 +19,6 @@ public class BasicTest {
     protected CreateProjectPage createProjectPage;
     protected NewComponentPage newComponentPage;
     protected InComponentPage inComponentPage;
-    protected Data data;
 
     @Before
     public void setUP(){
@@ -27,7 +26,7 @@ public class BasicTest {
         driver=new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        driver.get(data.URL);
+        driver.get(new Data().URL);
         this.logInPage=new LogInPage(driver);
         this.projectPage=new ProjectPage(driver);
         this.inProjectPage=new InProjectPage(driver);
@@ -35,8 +34,7 @@ public class BasicTest {
         this.createProjectPage=new CreateProjectPage(driver);
         this.newComponentPage=new NewComponentPage(driver);
         this.inComponentPage=new InComponentPage(driver);
-        this.data=new Data();
-        logInPage.LogIn(data.USER_EMAIL, data.USER_PASSWORD);
+        logInPage.LogIn(new Data().USER_EMAIL, new Data().USER_PASSWORD);
     }
 
     @After
