@@ -4,26 +4,15 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class EditProjectTest extends BasicTest {
-    //TODO Все входныен тестовые данные в отдельный класс TestData
-    private String project="project test";
-    private String description="description test";
-    private String domen="test.by";  //TODO javafacker библиотека
-    private String PN="project1 name";
-    private String DES="test1 description";//TODO перенести в data
-    private String DOM="test1.by";
-    private String videoChatName="Video Chat";
-    private String multiVideoPlayerName="Multi-device Video Player";
-    private String multiPartyVideoName="Multiparty Video";
-    private String singleVideoName="Single Video";
 
     @Test
     public void ProjectFieldTest(){
         projectPage
                 .clickAddProject()
-                .addProject(project, description, domen)
+                .addProject(data.PROJECT_NAME, data.DESCRIPTION, data.DOMEN)
                 .clickLastOfProject();
-        Assert.assertEquals(inProjectPage.getProjectName(), project);
-        Assert.assertEquals(inProjectPage.getDescription(), description);
+        Assert.assertEquals(inProjectPage.getProjectName(), data.PROJECT_NAME);
+        Assert.assertEquals(inProjectPage.getDescription(), data.DESCRIPTION);
     }
 
     @Test
@@ -31,43 +20,41 @@ public class EditProjectTest extends BasicTest {
         projectPage
                 .clickLastOfProject()
                 .clickEditButton()
-                .editProject(PN, DES, DOM)
+                .editProject(data.EDIT_PROJECT_NAME, data.EDIT_DESCRIPTION, data.EDIT_DOMEN)
                 .clickLastOfProject();
-        Assert.assertEquals(inProjectPage.getProjectName(), PN);
-        Assert.assertEquals(inProjectPage.getDescription(), DES);
+        Assert.assertEquals(inProjectPage.getProjectName(), data.EDIT_PROJECT_NAME);
+        Assert.assertEquals(inProjectPage.getDescription(), data.EDIT_DESCRIPTION);
     }
-
 
     @Test
     public void AddComponentsTest(){
         projectPage
                 .clickLastOfProject()
                 .clickAddComponentButton()
-                .addVideoChat(videoChatName)
+                .addVideoChat(data.VIDEO_CHAT_NAME)
                 .clickLastComponent();
-        Assert.assertEquals(inComponentPage.getTypeComponent(), videoChatName);
-        Assert.assertEquals(inComponentPage.getComponentName(), "Test "+videoChatName);
+        Assert.assertEquals(inComponentPage.getTypeComponent(), data.VIDEO_CHAT_NAME);
+        Assert.assertEquals(inComponentPage.getComponentName(), "Test "+data.VIDEO_CHAT_NAME);
         inComponentPage
                 .clickUpdateButton()
                 .clickAddComponentButton()
-                .addMultiVideoPlayer(multiVideoPlayerName)
+                .addMultiVideoPlayer(data.MULTI_VIDEO_PLAYER_NAME)
                 .clickLastComponent();
-        Assert.assertEquals(inComponentPage.getTypeComponent(), multiVideoPlayerName);
-        Assert.assertEquals(inComponentPage.getComponentName(), "Test "+multiVideoPlayerName);
+        Assert.assertEquals(inComponentPage.getTypeComponent(), data.MULTI_VIDEO_PLAYER_NAME);
+        Assert.assertEquals(inComponentPage.getComponentName(), "Test "+data.MULTI_VIDEO_PLAYER_NAME);
         inComponentPage
                 .clickUpdateButton()
                 .clickAddComponentButton()
-                .addMultiPartyVideo(multiPartyVideoName)
+                .addMultiPartyVideo(data.MULTIPARTY_VIDEO_NAME)
                 .clickLastComponent();
-        Assert.assertEquals(inComponentPage.getTypeComponent(), multiPartyVideoName);
-        Assert.assertEquals(inComponentPage.getComponentName(), "Test "+multiPartyVideoName);
+        Assert.assertEquals(inComponentPage.getTypeComponent(), data.MULTIPARTY_VIDEO_NAME);
+        Assert.assertEquals(inComponentPage.getComponentName(), "Test "+data.MULTIPARTY_VIDEO_NAME);
         inComponentPage
                 .clickUpdateButton()
                 .clickAddComponentButton()
-                .addSingleVideo(singleVideoName)
+                .addSingleVideo(data.SINGLE_VIDEO_NAME)
                 .clickLastComponent();
-        Assert.assertEquals(inComponentPage.getTypeComponent(), singleVideoName);
-        Assert.assertEquals(inComponentPage.getComponentName(), "Test "+singleVideoName);
+        Assert.assertEquals(inComponentPage.getTypeComponent(), data.SINGLE_VIDEO_NAME);
+        Assert.assertEquals(inComponentPage.getComponentName(), "Test "+data.SINGLE_VIDEO_NAME);
     }
-
 }

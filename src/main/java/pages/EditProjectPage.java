@@ -16,6 +16,7 @@ public class EditProjectPage {
     private By domenLoc=By.xpath("//div[@class='form-group domains']//input[@required]");
     private By updateButtonLoc=By.xpath("//button[@class='btn']");
 
+
     public EditProjectPage editProjectName(String name){
         driver.findElement(projectNameLoc).clear();
         driver.findElement(projectNameLoc).sendKeys(name);

@@ -15,6 +15,7 @@ public class CreateProjectPage {
     private By domainInputLoc=By.xpath("//input[@placeholder='example.com']");
     private By createButtonLoc=By.xpath("//button[@class='btn']");
 
+
     public CreateProjectPage typeProjectName(String ProjectName){
         driver.findElement(projectNameInputLoc).sendKeys(ProjectName);
         return new CreateProjectPage(driver);
