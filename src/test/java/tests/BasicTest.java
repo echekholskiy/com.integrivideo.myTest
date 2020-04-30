@@ -27,7 +27,7 @@ public class BasicTest {
     public void setUP(){
         System.setProperty("webdriver.chrome.driver", "src\\drivers\\chromedriver.exe");
         driver=new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get(url);
         this.logInPage=new LogInPage(driver);
@@ -39,8 +39,8 @@ public class BasicTest {
         logInPage.LogIn(regEmail, regPassword);
     }
 
-    @After
-    public void quit(){
-        driver.quit();
-    }
+    //@After
+    //public void quit(){
+    //    driver.quit();
+    //}
 }

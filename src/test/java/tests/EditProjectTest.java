@@ -36,7 +36,15 @@ public class EditProjectTest extends BasicTest {
     public void AddComponentsTest(){
         projectPage.clickLastOfProject();
         inProjectPage.clickAddComponentButton();
-        newComponentPage.addVideoChat().clickAddComponentButton().addSingleVideo().clickAddComponentButton().addMultiVideoPleer().clickAddComponentButton().addMultiPartyVideo();
+        newComponentPage
+                .addVideoChat()
+                .clickAddComponentButton()
+                .addMultiPartyVideo()
+                .clickAddComponentButton()
+                .addMultiVideoPleer()
+                .clickAddComponentButton()
+                .addSingleVideo()
+                .clickAddComponentButton();
 
 
     }
