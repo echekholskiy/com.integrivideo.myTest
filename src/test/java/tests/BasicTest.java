@@ -15,7 +15,6 @@ public class BasicTest {
     protected LogInPage logInPage;
     protected ProjectPage projectPage;
     protected InProjectPage inProjectPage;
-    protected EditProjectPage editProjectPage;
     protected CreateProjectPage createProjectPage;
     protected NewComponentPage newComponentPage;
     protected InComponentPage inComponentPage;
@@ -31,7 +30,6 @@ public class BasicTest {
         this.logInPage=new LogInPage(driver);
         this.projectPage=new ProjectPage(driver);
         this.inProjectPage=new InProjectPage(driver);
-        this.editProjectPage=new EditProjectPage(driver);
         this.createProjectPage=new CreateProjectPage(driver);
         this.newComponentPage=new NewComponentPage(driver);
         this.inComponentPage=new InComponentPage(driver);

@@ -23,9 +23,9 @@ public class InProjectPage {
         return driver.findElement(descriptionLoc).getText();
     }
 
-    public EditProjectPage clickEditButton(){
+    public CreateProjectPage clickEditButton(){
         driver.findElement(editButtonLoc).click();
-        return new EditProjectPage(driver);
+        return new CreateProjectPage(driver);
     }
 
     public NewComponentPage clickAddComponentButton(){
