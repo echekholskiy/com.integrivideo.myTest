@@ -15,8 +15,8 @@ public class ProjectTest extends BasicTest {
                 .clickAddProject()
                 .addProject(project_Name, description, domen)
                 .clickLastOfProject();
-        Assert.assertEquals(inProjectPage.getProjectName(), project_Name);
-        Assert.assertEquals(inProjectPage.getDescription(), description);
+        Assert.assertEquals(project_Name, inProjectPage.getProjectName());
+        Assert.assertEquals(description, inProjectPage.getDescription());
     }
 
     @Test
@@ -26,8 +26,8 @@ public class ProjectTest extends BasicTest {
                 .clickEditButton()
                 .editProject(project_Name, description, domen)
                 .clickLastOfProject();
-        Assert.assertEquals(inProjectPage.getProjectName(), project_Name);
-        Assert.assertEquals(inProjectPage.getDescription(), description);
+        Assert.assertEquals(project_Name, inProjectPage.getProjectName());
+        Assert.assertEquals(description, inProjectPage.getDescription());
     }
 
     @Test
@@ -37,28 +37,28 @@ public class ProjectTest extends BasicTest {
                 .clickAddComponentButton()
                 .addVideoChat(new Data().VIDEO_CHAT_NAME)
                 .clickLastComponent();
-        Assert.assertEquals(inComponentPage.getTypeComponent(), new Data().VIDEO_CHAT_NAME);
-        Assert.assertEquals(inComponentPage.getComponentName(), "Test "+new Data().VIDEO_CHAT_NAME);
-        inComponentPage
+        Assert.assertEquals(new Data().VIDEO_CHAT_NAME, componentPage.getTypeComponent());
+        Assert.assertEquals("Test "+new Data().VIDEO_CHAT_NAME, componentPage.getComponentName());
+        componentPage
                 .clickUpdateButton()
                 .clickAddComponentButton()
                 .addMultiVideoPlayer(new Data().MULTI_VIDEO_PLAYER_NAME)
                 .clickLastComponent();
-        Assert.assertEquals(inComponentPage.getTypeComponent(), new Data().MULTI_VIDEO_PLAYER_NAME);
-        Assert.assertEquals(inComponentPage.getComponentName(), "Test "+new Data().MULTI_VIDEO_PLAYER_NAME);
-        inComponentPage
+        Assert.assertEquals(new Data().MULTI_VIDEO_PLAYER_NAME, componentPage.getTypeComponent());
+        Assert.assertEquals("Test "+new Data().MULTI_VIDEO_PLAYER_NAME, componentPage.getComponentName());
+        componentPage
                 .clickUpdateButton()
                 .clickAddComponentButton()
                 .addMultiPartyVideo(new Data().MULTIPARTY_VIDEO_NAME)
                 .clickLastComponent();
-        Assert.assertEquals(inComponentPage.getTypeComponent(), new Data().MULTIPARTY_VIDEO_NAME);
-        Assert.assertEquals(inComponentPage.getComponentName(), "Test "+new Data().MULTIPARTY_VIDEO_NAME);
-        inComponentPage
+        Assert.assertEquals(new Data().MULTIPARTY_VIDEO_NAME, componentPage.getTypeComponent());
+        Assert.assertEquals("Test "+new Data().MULTIPARTY_VIDEO_NAME, componentPage.getComponentName());
+        componentPage
                 .clickUpdateButton()
                 .clickAddComponentButton()
                 .addSingleVideo(new Data().SINGLE_VIDEO_NAME)
                 .clickLastComponent();
-        Assert.assertEquals(inComponentPage.getTypeComponent(), new Data().SINGLE_VIDEO_NAME);
-        Assert.assertEquals(inComponentPage.getComponentName(), "Test "+new Data().SINGLE_VIDEO_NAME);
+        Assert.assertEquals(new Data().SINGLE_VIDEO_NAME, componentPage.getTypeComponent());
+        Assert.assertEquals("Test "+new Data().SINGLE_VIDEO_NAME, componentPage.getComponentName());
     }
 }

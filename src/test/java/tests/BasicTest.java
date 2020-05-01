@@ -16,9 +16,8 @@ public class BasicTest {
     protected ProjectPage projectPage;
     protected InProjectPage inProjectPage;
     protected CreateProjectPage createProjectPage;
-    protected NewComponentPage newComponentPage;
-    protected InComponentPage inComponentPage;
-    public String URL="https://dev.integrivideo.com/";
+    protected ComponentPage componentPage;
+    private String URL="https://dev.integrivideo.com/";
 
     @Before
     public void setUP(){
@@ -31,8 +30,7 @@ public class BasicTest {
         this.projectPage=new ProjectPage(driver);
         this.inProjectPage=new InProjectPage(driver);
         this.createProjectPage=new CreateProjectPage(driver);
-        this.newComponentPage=new NewComponentPage(driver);
-        this.inComponentPage=new InComponentPage(driver);
+        this.componentPage =new ComponentPage(driver);
         logInPage.LogIn(new Data().USER_EMAIL, new Data().USER_PASSWORD);
     }
 

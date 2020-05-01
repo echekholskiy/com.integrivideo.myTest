@@ -28,14 +28,14 @@ public class InProjectPage {
         return new CreateProjectPage(driver);
     }
 
-    public NewComponentPage clickAddComponentButton(){
+    public ComponentPage clickAddComponentButton(){
         driver.findElement(addComponentButtonLoc).click();
-        return new NewComponentPage(driver);
+        return new ComponentPage(driver);
     }
 
-    public NewComponentPage clickLastComponent(){
+    public ComponentPage clickLastComponent(){
         driver.findElement(lastComponentButtonLoc).click();
-        return new NewComponentPage(driver);
+        return new ComponentPage(driver);
     }
 
 }
