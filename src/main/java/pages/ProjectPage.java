@@ -17,6 +17,7 @@ public class ProjectPage {
 
     private By addButtonLoc=By.xpath("//div[@class='project new']");
     private By lastProjectLoc=By.xpath("//div[@class='col-xl-4 col-sm-6'][last()-1]/div//div[1]");
+    private By billingButtonLoc=By.xpath("//a[text()='Billing']");
 
 
     public CreateProjectPage clickAddProject(){
@@ -36,4 +37,8 @@ public class ProjectPage {
         return new InProjectPage(driver);
     }
 
+    public BillingPage clickBillingButton(){
+        driver.findElement(billingButtonLoc).click();
+        return new BillingPage(driver);
+    }
 }
