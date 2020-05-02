@@ -12,7 +12,8 @@ public class CardTest extends BasicTest {
                 .clickAddCardButton()
                 .addCard((new Data()).CARD_NUMBER, new Data().EXPIRATION_MONTH, (new Data()).EXPIRATION_YEAR, (new Data()).CARD_HOLDER_NAME);
 
-        Assert.assertEquals(String.format("%.5s", new Data().CARD_NUMBER), billingPage.getNumberOfLastCard());
+        Assert.assertEquals(String.format("%.5s", new Data().CARD_NUMBER), billingPage.getNumberOfLastCard());//TODO обсудить: или лучше чекнуть
+                                                                                                              // количество блоков до и после добавления карты?
     }
 
 }
