@@ -21,7 +21,6 @@ public class BasicTest {
     protected BillingPage billingPage;
     protected AddCardPage addCardPage;
 
-
     private String URL = "https://dev.integrivideo.com/";
 
     @Before
