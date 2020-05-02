@@ -15,14 +15,16 @@ public class ProjectPage {
         this.driver = driver;
     }
 
-    private By addButtonLoc=By.xpath("//div[@class='project new']");
-    private By lastProjectLoc=By.xpath("//div[@class='col-xl-4 col-sm-6'][last()-1]/div//div[1]");
-    private By billingButtonLoc=By.xpath("//a[text()='Billing']");
+    private By addButtonLoc = By.xpath("//div[@class='project new']");
+    private By lastProjectLoc = By.xpath("//div[@class='col-xl-4 col-sm-6'][last()-1]/div//div[1]");
+    private By billingButtonLoc = By.xpath("//a[text()='Billing']");
 
 
     public CreateProjectPage clickAddProject(){
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(addButtonLoc));
-        WebElement addProjectButton=driver.findElement(addButtonLoc);
+        (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(addButtonLoc));
+
+        WebElement addProjectButton = driver.findElement(addButtonLoc);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", addProjectButton);
         addProjectButton.click();
@@ -30,15 +32,21 @@ public class ProjectPage {
     }
 
     public InProjectPage clickLastOfProject(){
-        (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(addButtonLoc));
+        (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(addButtonLoc));
+
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(lastProjectLoc));
-        driver.findElement(lastProjectLoc).click();
+        driver
+                .findElement(lastProjectLoc)
+                .click();
         return new InProjectPage(driver);
     }
 
     public BillingPage clickBillingButton(){
-        driver.findElement(billingButtonLoc).click();
+        driver
+                .findElement(billingButtonLoc)
+                .click();
         return new BillingPage(driver);
     }
 }

@@ -1,5 +1,7 @@
 package tests;
 
+import data.Data;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class CardTest extends BasicTest {
@@ -8,15 +10,9 @@ public class CardTest extends BasicTest {
         projectPage
                 .clickBillingButton()
                 .clickAddCardButton()
-                .addCard("5555555555554444", "12", "2021", "EGOR KOMISARUK");
+                .addCard((new Data()).CARD_NUMBER, new Data().EXPIRATION_MONTH, (new Data()).EXPIRATION_YEAR, (new Data()).CARD_HOLDER_NAME);
 
+        Assert.assertEquals(String.format("%.5s", new Data().CARD_NUMBER), billingPage.getNumberOfLastCard());
     }
 
-    @Test
-    public void test1(){
-        projectPage
-                .clickBillingButton()
-                .clickAddCardButton()
-                .clickAddButton();
-    }
 }

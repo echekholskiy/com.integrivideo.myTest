@@ -21,28 +21,38 @@ public class ComponentPage {
     private By updateButtonLoc=By.xpath("//button[text()='Update']");
 
     public ComponentPage clickSelectComponentType(){
-        driver.findElement(componentTypeSpanLoc).click();
+        driver
+                .findElement(componentTypeSpanLoc)
+                .click();
         return this;
     }
 
     public ComponentPage selectComponentType(By loc){
         clickSelectComponentType();
-        driver.findElement(loc).click();
+        driver
+                .findElement(loc)
+                .click();
         return this;
     }
 
     public ComponentPage typeComponentName(String name){
-        driver.findElement(componentNameLoc).sendKeys(String.format("Test %s", name));
+        driver
+                .findElement(componentNameLoc)
+                .sendKeys(String.format("Test %s", name));
         return this;
     }
 
     public ComponentPage clickCreateButton(){
-        driver.findElement(createButtonLoc).click();
+        driver
+                .findElement(createButtonLoc)
+                .click();
         return this;
     }
 
     public InProjectPage clickUpdateButton(){
-        driver.findElement(updateButtonLoc).click();
+        driver
+                .findElement(updateButtonLoc)
+                .click();
         return new InProjectPage(driver);
     }
 

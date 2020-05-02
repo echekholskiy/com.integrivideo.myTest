@@ -10,11 +10,11 @@ public class InProjectPage {
         this.driver = driver;
     }
 
-    private By projectNameLoc=By.xpath("//h1");
-    private By descriptionLoc=By.xpath("//div[@class='col-12 description']");
-    private By editButtonLoc=By.xpath("//a[text()='Edit']");
-    private By addComponentButtonLoc=By.xpath("//div[@class='status']");
-    private By lastComponentButtonLoc=By.xpath("//div[@class='col-xl-4 col-sm-6'][last()-1]//a");
+    private By projectNameLoc = By.xpath("//h1");
+    private By descriptionLoc = By.xpath("//div[@class='col-12 description']");
+    private By editButtonLoc = By.xpath("//a[text()='Edit']");
+    private By addComponentButtonLoc = By.xpath("//div[@class='status']");
+    private By lastComponentButtonLoc = By.xpath("//div[@class='col-xl-4 col-sm-6'][last()-1]//a");
 
     public String getProjectName(){
         return driver.findElement(projectNameLoc).getText();
@@ -24,17 +24,23 @@ public class InProjectPage {
     }
 
     public CreateProjectPage clickEditButton(){
-        driver.findElement(editButtonLoc).click();
+        driver
+                .findElement(editButtonLoc)
+                .click();
         return new CreateProjectPage(driver);
     }
 
     public ComponentPage clickAddComponentButton(){
-        driver.findElement(addComponentButtonLoc).click();
+        driver
+                .findElement(addComponentButtonLoc)
+                .click();
         return new ComponentPage(driver);
     }
 
     public ComponentPage clickLastComponent(){
-        driver.findElement(lastComponentButtonLoc).click();
+        driver
+                .findElement(lastComponentButtonLoc)
+                .click();
         return new ComponentPage(driver);
     }
 

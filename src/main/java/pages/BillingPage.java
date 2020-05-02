@@ -13,7 +13,9 @@ public class BillingPage {
     private By lastCardNumberLoc=By.xpath("//div[@class='col-md-7']");
 
     public AddCardPage clickAddCardButton(){
-        driver.findElement(addCardButtonLoc).click();
+        driver
+                .findElement(addCardButtonLoc)
+                .click();
         return new AddCardPage(driver);
     }
 

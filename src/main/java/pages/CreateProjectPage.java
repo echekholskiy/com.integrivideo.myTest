@@ -17,50 +17,75 @@ public class CreateProjectPage {
 
 
     public CreateProjectPage typeProjectName(String ProjectName){
-        driver.findElement(projectNameLoc).sendKeys(ProjectName);
+        driver
+                .findElement(projectNameLoc)
+                .sendKeys(ProjectName);
         return new CreateProjectPage(driver);
     }
 
     public CreateProjectPage typeDescription(String Description){
-        driver.findElement(descriptionLoc).sendKeys(Description);
+        driver
+                .findElement(descriptionLoc)
+                .sendKeys(Description);
         return new CreateProjectPage(driver);
     }
 
     public CreateProjectPage typeDomain(String Domen){
-        driver.findElement(domenLoc).sendKeys(Domen);
+        driver
+                .findElement(domenLoc)
+                .sendKeys(Domen);
         return new CreateProjectPage(driver);
     }
 
     public CreateProjectPage clickCreateButton(){
-        driver.findElement(buttonLoc).click();
+        driver
+                .findElement(buttonLoc)
+                .click();
         return new CreateProjectPage(driver);
     }
 
     public ProjectPage clickUpdateButton(){
-        driver.findElement(buttonLoc).click();
+        driver
+                .findElement(buttonLoc)
+                .click();
         return new ProjectPage(driver);
     }
 
     public ProjectPage addProject(String projectName, String description, String domain){
-        typeProjectName(projectName).typeDescription(description).typeDomain(domain).clickCreateButton();
+        typeProjectName(projectName)
+                .typeDescription(description)
+                .typeDomain(domain)
+                .clickCreateButton();
         return new ProjectPage(driver);
     }
 
     public CreateProjectPage editProjectName(String ProjectName){
-        driver.findElement(projectNameLoc).clear();
-        driver.findElement(projectNameLoc).sendKeys(ProjectName);
+        driver
+                .findElement(projectNameLoc)
+                .clear();
+        driver
+                .findElement(projectNameLoc)
+                .sendKeys(ProjectName);
         return this;
     }
 
     public CreateProjectPage editDescription(String Description){
-        driver.findElement(descriptionLoc).clear();
-        driver.findElement(descriptionLoc).sendKeys(Description);
+        driver
+                .findElement(descriptionLoc)
+                .clear();
+        driver
+                .findElement(descriptionLoc)
+                .sendKeys(Description);
         return this;
     }
 
     public CreateProjectPage editDomen(String Domen){
-        driver.findElement(domenLoc).clear();
-        driver.findElement(domenLoc).sendKeys(Domen);
+        driver
+                .findElement(domenLoc)
+                .clear();
+        driver
+                .findElement(domenLoc)
+                .sendKeys(Domen);
         return this;
     }
 
