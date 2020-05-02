@@ -1,6 +1,7 @@
 package tests;
 
 import data.Data;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
@@ -20,13 +21,13 @@ public class BasicTest {
     protected BillingPage billingPage;
     protected AddCardPage addCardPage;
 
+
     private String URL = "https://dev.integrivideo.com/";
 
     @Before
     public void setUP(){
-        System.setProperty("webdriver.chrome.driver", "src\\drivers\\chromedriver.exe");
-
-        driver = new ChromeDriver();
+        WebDriverManager.chromedriver().setup();
+        driver=new ChromeDriver();
         driver
                 .manage()
                 .timeouts()
