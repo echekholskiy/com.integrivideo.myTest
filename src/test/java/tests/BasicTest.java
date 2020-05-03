@@ -1,18 +1,24 @@
 package tests;
 
 import data.Data;
+import driver.DriverManager;
+import driver.DriverManagerFactory;
+import driver.DriverType;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.*;
+import utils.PropertyReader;
 
 import java.util.concurrent.TimeUnit;
 
 public class BasicTest {
 
-    protected WebDriver driver;
+    private WebDriver driver;
+    private DriverManager driverManager;
+
     protected LogInPage logInPage;
     protected ProjectPage projectPage;
     protected InProjectPage inProjectPage;
@@ -21,11 +27,10 @@ public class BasicTest {
     protected BillingPage billingPage;
     protected AddCardPage addCardPage;
 
-    private String URL = "https://dev.integrivideo.com/";
-
     @Before
     public void setUP(){
-        WebDriverManager.chromedriver().setup();
+        driverManager = DriverManagerFactory.getDriverManager(DriverType.CHROME);
+        driver = driverManager.getWebDriver();
         driver=new ChromeDriver();
         driver
                 .manage()
@@ -35,7 +40,7 @@ public class BasicTest {
                 .manage()
                 .window()
                 .maximize();
-        driver.get(URL);
+        driver.get(PropertyReader.getInstance().get("url"));
 
         this.logInPage = new LogInPage(driver);
         this.projectPage = new ProjectPage(driver);
@@ -50,6 +55,6 @@ public class BasicTest {
 
     @After
     public void quit(){
-        driver.quit();
+        driverManager.quitWebDriver();
     }
 }
