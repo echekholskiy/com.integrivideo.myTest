@@ -17,8 +17,7 @@ public class Data {
     public String CARD_NUMBER = "5555555555554444";
     public String EXPIRATION_MONTH = "12";
     public String EXPIRATION_YEAR = "2021";
-    public String CARD_HOLDER_NAME = "EGOR KOMISARUK";//TODO обсудить: данные карты в String-e т.к потом сделаю
-                                                      // List <String> и буду рандомно вызывать данные карт.
-                                                      // Либо лучше сделать 2-умерный List и использовать Map-ы?
-                                                      // Или сделать List<Object> и не ебать голову?
+    public String CARD_HOLDER_NAME = "EGOR KOMISARUK";
+    public String ASSERT_TEXT = "\"Actual value does not match the %s\"";
+
 }

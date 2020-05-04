@@ -4,11 +4,9 @@ import data.Data;
 import driver.DriverManager;
 import driver.DriverManagerFactory;
 import driver.DriverType;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import pages.*;
 import utils.PropertyReader;
 
@@ -31,11 +29,10 @@ public class BasicTest {
     public void setUP(){
         driverManager = DriverManagerFactory.getDriverManager(DriverType.CHROME);
         driver = driverManager.getWebDriver();
-        driver=new ChromeDriver();
         driver
                 .manage()
                 .timeouts()
-                .implicitlyWait(10, TimeUnit.SECONDS);
+                .implicitlyWait(2, TimeUnit.SECONDS);
         driver
                 .manage()
                 .window()
