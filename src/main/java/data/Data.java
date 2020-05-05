@@ -19,5 +19,6 @@ public class Data {
     public String EXPIRATION_YEAR = "2021";
     public String CARD_HOLDER_NAME = "EGOR KOMISARUK";
     public String ASSERT_TEXT = "\"Actual value does not match the %s\"";
+    public String COMPONENT_NAME=faker.beer().name();
 
 }

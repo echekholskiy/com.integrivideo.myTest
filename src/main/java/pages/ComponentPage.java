@@ -1,5 +1,6 @@
 package pages;
 
+import data.Data;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -38,7 +39,7 @@ public class ComponentPage {
     public ComponentPage typeComponentName(String name){
         driver
                 .findElement(componentNameLoc)
-                .sendKeys(String.format("Test %s", name));
+                .sendKeys(name);
         return this;
     }
 

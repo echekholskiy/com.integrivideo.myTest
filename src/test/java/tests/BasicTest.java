@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 public class BasicTest {
 
-    private WebDriver driver;
+    protected WebDriver driver;
     private DriverManager driverManager;
 
     protected LogInPage logInPage;
