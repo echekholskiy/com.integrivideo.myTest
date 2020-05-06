@@ -3,9 +3,6 @@ package tests;
 import data.Data;
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 
 public class ProjectTest extends BasicTest {
 
@@ -15,6 +12,7 @@ public class ProjectTest extends BasicTest {
         String project_Name = new Data().PROJECT_NAME;
         String description = new Data().DESCRIPTION;
         String domen = new Data().DOMEN;
+        String letters;
 
         int beforeNumberOfProjects=projectPage.getSizeOfProjectList();
 
@@ -24,10 +22,19 @@ public class ProjectTest extends BasicTest {
 
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "numberOfProject"), beforeNumberOfProjects+1, projectPage.getSizeOfProjectList());
 
+        if(project_Name.indexOf(" ")!=-1) {//TODO мб перенести в какой-то класс в utils?
+            letters = Character.toString(project_Name.charAt(0)) + Character.toString(project_Name.charAt(project_Name.indexOf(" ") + 1));
+        }
+        else letters = Character.toString(project_Name.charAt(0));
+
+        Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "letters"), projectPage.getLastProjectLetters(), letters);
+
+
+
         projectPage.clickLastOfProject();
 
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "project_Name"), project_Name, inProjectPage.getProjectName());//TODO как сделать читабельнее эта ебана цейво?
-        Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "description"), description, inProjectPage.getDescription());//TODO добавить проверку буква проекта
+        Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "description"), description, inProjectPage.getDescription());
     }
 
     @Test
@@ -58,7 +65,7 @@ public class ProjectTest extends BasicTest {
                 .clickLastComponent();
 
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "VideoChatType"), new Data().VIDEO_CHAT_NAME, componentPage.getTypeComponent());
-        Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "VideoChatName"), component_Name, componentPage.getComponentName());//TODO name сделать проще
+        Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "VideoChatName"), component_Name, componentPage.getComponentName());
     }
 
     @Test
@@ -101,5 +108,10 @@ public class ProjectTest extends BasicTest {
 
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "SingleVideoType"), new Data().SINGLE_VIDEO_NAME, componentPage.getTypeComponent());
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "SingleVideoName"), component_Name, componentPage.getComponentName());
+    }
+
+    @Test
+    public void test(){
+
     }
 }

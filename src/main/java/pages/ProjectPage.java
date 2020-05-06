@@ -19,6 +19,7 @@ public class ProjectPage {
     private By lastProjectLoc = By.xpath("//div[@class='col-xl-4 col-sm-6'][last()-1]/div//div[1]");
     private By billingButtonLoc = By.xpath("//a[text()='Billing']");
     private By projectList = By.xpath("//div[@class='col-xl-4 col-sm-6']");
+    private By lastProjectLetters=By.xpath("//div[@class='col-xl-4 col-sm-6'][last()-1]/div//div[@class='circle']");
 
 
     public CreateProjectPage clickAddProject(){
@@ -56,5 +57,10 @@ public class ProjectPage {
                 .until(ExpectedConditions.presenceOfElementLocated(projectList));
         return driver.findElements(projectList).size();
     }
+
+    public String getLastProjectLetters(){
+        return driver.findElement(lastProjectLetters).getText();
+    }
+
 
 }
