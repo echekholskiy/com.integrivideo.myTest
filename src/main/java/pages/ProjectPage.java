@@ -23,6 +23,12 @@ public class ProjectPage {
 
     private By openElementLoc=By.xpath("//div[@class='status' and text()='Add project']");
 
+    public boolean isPageOpened(){
+        if(driver.findElements(openElementLoc).size()!=0) {
+            return true;
+        }
+        else return false;
+    }
 
     public CreateProjectPage clickAddProject(){
         (new WebDriverWait(driver, 10))
@@ -59,13 +65,4 @@ public class ProjectPage {
     public String getLastProjectLetters(){
         return driver.findElement(lastProjectLetters).getText();
     }
-
-    public boolean isPageOpened(){
-        if(driver.findElements(openElementLoc).size()!=0) {
-            return true;
-        }
-        else return false;
-    }
-
-
 }

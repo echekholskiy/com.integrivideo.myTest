@@ -25,6 +25,13 @@ public class InProjectPage {
         return driver.findElement(descriptionLoc).getText();
     }
 
+    public boolean isPageOpened(){
+        if(driver.findElements(openElementLoc).size()!=0) {
+            return true;
+        }
+        else return false;
+    }
+
     public CreateProjectPage clickEditButton(){
         driver.findElement(editButtonLoc).click();
         return new CreateProjectPage(driver);
@@ -39,12 +46,4 @@ public class InProjectPage {
         driver.findElement(lastComponentButtonLoc).click();
         return new ComponentPage(driver);
     }
-
-    public boolean isPageOpened(){
-        if(driver.findElements(openElementLoc).size()!=0) {
-            return true;
-        }
-        else return false;
-    }
-
 }

@@ -17,6 +17,13 @@ public class CreateProjectPage {
 
     private By openElementLoc=By.xpath("//a[@class='nav-link' and (text()='Create')]");
 
+    public boolean isPageOpened(){
+        if(driver.findElements(openElementLoc).size()!=0) {
+            return true;
+        }
+        else return false;
+    }
+
     public CreateProjectPage typeProjectName(String ProjectName){
         driver.findElement(projectNameLoc).sendKeys(ProjectName);
         return new CreateProjectPage(driver);
@@ -70,12 +77,5 @@ public class CreateProjectPage {
 
     public ProjectPage editProject(String projectName, String description, String domen){
         return editProjectName(projectName).editDescription(description).editDomen(domen).clickUpdateButton();
-    }
-
-    public boolean isPageOpened(){
-        if(driver.findElements(openElementLoc).size()!=0) {
-            return true;
-        }
-        else return false;
     }
 }

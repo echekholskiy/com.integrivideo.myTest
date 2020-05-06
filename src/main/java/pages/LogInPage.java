@@ -17,6 +17,13 @@ public class LogInPage {
 
     private By openElementLoc=By.xpath("//div[text()='Please Log in to continue']");
 
+    public boolean isPageOpened(){
+        if(driver.findElements(openElementLoc).size()!=0) {
+            return true;
+        }
+        else return false;
+    }
+
     public LogInPage clickLogIn(){
         driver.findElement(loginLoc).click();
         return this;
@@ -44,12 +51,4 @@ public class LogInPage {
                 .clickLoginButton();
         return new ProjectPage(driver);
     }
-
-    public boolean isPageOpened(){
-        if(driver.findElements(openElementLoc).size()!=0) {
-            return true;
-        }
-        else return false;
-    }
-
 }

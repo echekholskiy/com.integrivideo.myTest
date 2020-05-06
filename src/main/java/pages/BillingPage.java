@@ -14,19 +14,19 @@ public class BillingPage {
 
     private By openElementLoc=By.xpath("//h3[text()='Payment methods']");
 
+    public boolean isPageOpened(){
+        if(driver.findElements(openElementLoc).size()!=0) {
+            return true;
+        }
+        else return false;
+    }
+
     public AddCardPage clickAddCardButton(){
         driver.findElement(addCardButtonLoc).click();
         return new AddCardPage(driver);
     }
 
     public String getNumberOfLastCard(){
-        return String.format("%.5s", driver.findElement(lastCardNumberLoc).getText());
-    }
-
-    public boolean isPageOpened(){
-        if(driver.findElements(openElementLoc).size()!=0) {
-            return true;
-        }
-        else return false;
+        return String.format("%.5s", driver.findElement(lastCardNumberLoc).getText());//TODO добавить проверку кол-ва карт после добавления
     }
 }

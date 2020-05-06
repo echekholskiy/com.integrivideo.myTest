@@ -20,6 +20,13 @@ public class AddCardPage {
 
     private By openElementLoc=By.xpath("//div[@class='credit-card']");
 
+    public boolean isPageOpened(){
+        if(driver.findElements(openElementLoc).size()!=0) {
+            return true;
+        }
+        else return false;
+    }
+
     public AddCardPage typeCardNumber(String CardNumber){
         driver.findElement(cardNumberLoc).sendKeys(CardNumber);
         return this;
@@ -54,12 +61,5 @@ public class AddCardPage {
                 .typeCardHolderName(CardHolderName)
                 .clickAddButton();
         return new BillingPage(driver);
-    }
-
-    public boolean isPageOpened(){
-        if(driver.findElements(openElementLoc).size()!=0) {
-            return true;
-        }
-        else return false;
     }
 }

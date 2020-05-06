@@ -23,6 +23,13 @@ public class ComponentPage {
 
     private By openElementLoc=By.xpath("//label[text()='Component type']");
 
+    public boolean isPageOpened(){
+        if(driver.findElements(openElementLoc).size()!=0) {
+            return true;
+        }
+        else return false;
+    }
+
     public ComponentPage clickSelectComponentType(){
         driver.findElement(componentTypeSpanLoc).click();
         return this;
@@ -86,12 +93,5 @@ public class ComponentPage {
     }
     public String getComponentName(){
         return driver.findElement(componentNameLoc).getAttribute("value");
-    }
-
-    public boolean isPageOpened(){
-        if(driver.findElements(openElementLoc).size()!=0) {
-            return true;
-        }
-        else return false;
     }
 }
