@@ -12,7 +12,7 @@ public class ProjectTest extends BasicTest {
         String project_Name = new Data().PROJECT_NAME;
         String description = new Data().DESCRIPTION;
         String domen = new Data().DOMEN;
-        String letters;
+        String firstLettersOfProject;
 
         int beforeNumberOfProjects=projectPage.getSizeOfProjectList();
 
@@ -23,11 +23,11 @@ public class ProjectTest extends BasicTest {
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "numberOfProject"), beforeNumberOfProjects+1, projectPage.getSizeOfProjectList());
 
         if(project_Name.indexOf(" ")!=-1) {//TODO мб перенести в какой-то класс в utils?
-            letters = Character.toString(project_Name.charAt(0)) + Character.toString(project_Name.charAt(project_Name.indexOf(" ") + 1));
+            firstLettersOfProject = Character.toString(project_Name.charAt(0)) + Character.toString(project_Name.charAt(project_Name.indexOf(" ") + 1));
         }
-        else letters = Character.toString(project_Name.charAt(0));
+        else firstLettersOfProject = Character.toString(project_Name.charAt(0));
 
-        Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "letters"), projectPage.getLastProjectLetters(), letters);
+        Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "letters"), projectPage.getLastProjectLetters(), firstLettersOfProject);
 
 
 
@@ -110,8 +110,4 @@ public class ProjectTest extends BasicTest {
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "SingleVideoName"), component_Name, componentPage.getComponentName());
     }
 
-    @Test
-    public void test(){
-
-    }
 }

@@ -21,6 +21,8 @@ public class ProjectPage {
     private By projectList = By.xpath("//div[@class='col-xl-4 col-sm-6']");
     private By lastProjectLetters=By.xpath("//div[@class='col-xl-4 col-sm-6'][last()-1]/div//div[@class='circle']");
 
+    private By openElementLoc=By.xpath("//div[@class='status' and text()='Add project']");
+
 
     public CreateProjectPage clickAddProject(){
         (new WebDriverWait(driver, 10))
@@ -39,16 +41,12 @@ public class ProjectPage {
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(lastProjectLoc));
-        driver
-                .findElement(lastProjectLoc)
-                .click();
+        driver.findElement(lastProjectLoc).click();
         return new InProjectPage(driver);
     }
 
     public BillingPage clickBillingButton(){
-        driver
-                .findElement(billingButtonLoc)
-                .click();
+        driver.findElement(billingButtonLoc).click();
         return new BillingPage(driver);
     }
 
@@ -60,6 +58,13 @@ public class ProjectPage {
 
     public String getLastProjectLetters(){
         return driver.findElement(lastProjectLetters).getText();
+    }
+
+    public boolean isPageOpened(){
+        if(driver.findElements(openElementLoc).size()!=0) {
+            return true;
+        }
+        else return false;
     }
 
 

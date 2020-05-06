@@ -18,40 +18,32 @@ public class AddCardPage {
     private By cardHolderNameLoc = By.xpath("//div[@class='credit-card']/input[@name='cardholderName']");
     private By addButtonLoc = By.xpath("//button[text()='Add']");
 
+    private By openElementLoc=By.xpath("//div[@class='credit-card']");
+
     public AddCardPage typeCardNumber(String CardNumber){
-        driver
-                .findElement(cardNumberLoc)
-                .sendKeys(CardNumber);
+        driver.findElement(cardNumberLoc).sendKeys(CardNumber);
         return this;
     }
 
     public AddCardPage typeExpirationMonth(String ExpirationMonth){
-        driver
-                .findElement(expirationMonthLoc)
-                .sendKeys(ExpirationMonth);
+        driver.findElement(expirationMonthLoc).sendKeys(ExpirationMonth);
         return this;
     }
 
     public AddCardPage typeExpirationYear(String ExpirationYear){
-        driver
-                .findElement(expirationYearLoc)
-                .sendKeys(ExpirationYear);
+        driver.findElement(expirationYearLoc).sendKeys(ExpirationYear);
         return this;
     }
 
     public AddCardPage typeCardHolderName(String CardHolderName){
-        driver
-                .findElement(cardHolderNameLoc)
-                .sendKeys(CardHolderName);
+        driver.findElement(cardHolderNameLoc).sendKeys(CardHolderName);
         return this;
     }
 
     public BillingPage clickAddButton(){
         (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.elementToBeClickable(addButtonLoc));
-        driver
-                .findElement(addButtonLoc)
-                .click();
+        driver.findElement(addButtonLoc).click();
         return new BillingPage(driver);
     }
 
@@ -62,5 +54,12 @@ public class AddCardPage {
                 .typeCardHolderName(CardHolderName)
                 .clickAddButton();
         return new BillingPage(driver);
+    }
+
+    public boolean isPageOpened(){
+        if(driver.findElements(openElementLoc).size()!=0) {
+            return true;
+        }
+        else return false;
     }
 }

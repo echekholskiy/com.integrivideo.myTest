@@ -15,39 +15,30 @@ public class CreateProjectPage {
     private By domenLoc=By.xpath("//div[@class='form-group domains']//input[@required]");
     private By buttonLoc=By.xpath("//button[@class='btn']");
 
+    private By openElementLoc=By.xpath("//a[@class='nav-link' and (text()='Create')]");
 
     public CreateProjectPage typeProjectName(String ProjectName){
-        driver
-                .findElement(projectNameLoc)
-                .sendKeys(ProjectName);
+        driver.findElement(projectNameLoc).sendKeys(ProjectName);
         return new CreateProjectPage(driver);
     }
 
     public CreateProjectPage typeDescription(String Description){
-        driver
-                .findElement(descriptionLoc)
-                .sendKeys(Description);
+        driver.findElement(descriptionLoc).sendKeys(Description);
         return new CreateProjectPage(driver);
     }
 
     public CreateProjectPage typeDomain(String Domen){
-        driver
-                .findElement(domenLoc)
-                .sendKeys(Domen);
+        driver.findElement(domenLoc).sendKeys(Domen);
         return new CreateProjectPage(driver);
     }
 
     public CreateProjectPage clickCreateButton(){
-        driver
-                .findElement(buttonLoc)
-                .click();
+        driver.findElement(buttonLoc).click();
         return new CreateProjectPage(driver);
     }
 
     public ProjectPage clickUpdateButton(){
-        driver
-                .findElement(buttonLoc)
-                .click();
+        driver.findElement(buttonLoc).click();
         return new ProjectPage(driver);
     }
 
@@ -60,36 +51,31 @@ public class CreateProjectPage {
     }
 
     public CreateProjectPage editProjectName(String ProjectName){
-        driver
-                .findElement(projectNameLoc)
-                .clear();
-        driver
-                .findElement(projectNameLoc)
-                .sendKeys(ProjectName);
+        driver.findElement(projectNameLoc).clear();
+        driver.findElement(projectNameLoc).sendKeys(ProjectName);
         return this;
     }
 
     public CreateProjectPage editDescription(String Description){
-        driver
-                .findElement(descriptionLoc)
-                .clear();
-        driver
-                .findElement(descriptionLoc)
-                .sendKeys(Description);
+        driver.findElement(descriptionLoc).clear();
+        driver.findElement(descriptionLoc).sendKeys(Description);
         return this;
     }
 
     public CreateProjectPage editDomen(String Domen){
-        driver
-                .findElement(domenLoc)
-                .clear();
-        driver
-                .findElement(domenLoc)
-                .sendKeys(Domen);
+        driver.findElement(domenLoc).clear();
+        driver.findElement(domenLoc).sendKeys(Domen);
         return this;
     }
 
     public ProjectPage editProject(String projectName, String description, String domen){
         return editProjectName(projectName).editDescription(description).editDomen(domen).clickUpdateButton();
+    }
+
+    public boolean isPageOpened(){
+        if(driver.findElements(openElementLoc).size()!=0) {
+            return true;
+        }
+        else return false;
     }
 }

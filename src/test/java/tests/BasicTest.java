@@ -5,6 +5,7 @@ import driver.DriverManager;
 import driver.DriverManagerFactory;
 import driver.DriverType;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import pages.*;
@@ -29,14 +30,8 @@ public class BasicTest {
     public void setUP(){
         driverManager = DriverManagerFactory.getDriverManager(DriverType.CHROME);
         driver = driverManager.getWebDriver();
-        driver
-                .manage()
-                .timeouts()
-                .implicitlyWait(2, TimeUnit.SECONDS);
-        driver
-                .manage()
-                .window()
-                .maximize();
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
         driver.get(PropertyReader.getInstance().get("url"));
 
         this.logInPage = new LogInPage(driver);
@@ -48,6 +43,7 @@ public class BasicTest {
         this.addCardPage = new AddCardPage(driver);
 
         logInPage.LogIn(new Data().USER_EMAIL, new Data().USER_PASSWORD);
+        Assert.assertTrue(String.format("Page %s is not opened", "ProjectPage"), projectPage.isPageOpened());
     }
 
     @After

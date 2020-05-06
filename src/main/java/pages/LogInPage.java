@@ -15,31 +15,25 @@ public class LogInPage {
     private By passwordInputLoc = By.xpath("//input[@type='password']");
     private By loginButtonLoc = By.xpath("//button[@class='btn btn-primary']");
 
+    private By openElementLoc=By.xpath("//div[text()='Please Log in to continue']");
+
     public LogInPage clickLogIn(){
-        driver
-                .findElement(loginLoc)
-                .click();
+        driver.findElement(loginLoc).click();
         return this;
     }
 
     public LogInPage typeEmail(String email){
-        driver
-                .findElement(emailInputLoc)
-                .sendKeys(email);
+        driver.findElement(emailInputLoc).sendKeys(email);
         return this;
     }
 
     public LogInPage typePassword(String password){
-        driver
-                .findElement(passwordInputLoc)
-                .sendKeys(password);
+        driver.findElement(passwordInputLoc).sendKeys(password);
         return this;
     }
 
     public LogInPage clickLoginButton(){
-        driver
-                .findElement(loginButtonLoc)
-                .click();
+        driver.findElement(loginButtonLoc).click();
         return this;
     }
 
@@ -49,6 +43,13 @@ public class LogInPage {
                 .typePassword(password)
                 .clickLoginButton();
         return new ProjectPage(driver);
+    }
+
+    public boolean isPageOpened(){
+        if(driver.findElements(openElementLoc).size()!=0) {
+            return true;
+        }
+        else return false;
     }
 
 }
