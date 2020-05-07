@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BillingPage {
     private WebDriver driver;
@@ -15,6 +17,8 @@ public class BillingPage {
     private By openElementLoc=By.xpath("//h3[text()='Payment methods']");
 
     public boolean isPageOpened(){
+        (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(openElementLoc));
         if(driver.findElements(openElementLoc).size()!=0) {
             return true;
         }
