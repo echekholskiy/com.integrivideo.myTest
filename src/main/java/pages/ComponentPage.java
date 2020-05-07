@@ -1,6 +1,5 @@
 package pages;
 
-import data.Data;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -55,38 +54,6 @@ public class ComponentPage {
         driver.findElement(updateButtonLoc).click();
         return new InProjectPage(driver);
     }
-
-    //public InProjectPage addVideoChat(String videoChatName){
-    //    selectComponentType(videoChatLoc)
-    //            .typeComponentName(videoChatName)
-    //            .clickCreateButton()
-    //            .clickUpdateButton();
-    //    return new InProjectPage(driver);
-    //}
-
-    //public InProjectPage addMultiVideoPlayer(String multiVideoPleerName){
-    //    selectComponentType(multiVideoPlayerLoc)
-    //           .typeComponentName(multiVideoPleerName)
-    //            .clickCreateButton()
-    //            .clickUpdateButton();
-    //    return new InProjectPage(driver);
-    //}
-
-    //public InProjectPage addSingleVideo(String singleVideoName){
-    //    selectComponentType(singleVideoLoc)
-    //            .typeComponentName(singleVideoName)
-    //            .clickCreateButton()
-    //            .clickUpdateButton();
-    //    return new InProjectPage(driver);
-    //}
-
-    //public InProjectPage addMultiPartyVideo(String multiPartyVideo){
-    //    selectComponentType(multiPartyVideoLoc)
-    //            .typeComponentName(multiPartyVideo)
-    //            .clickCreateButton()
-    //            .clickUpdateButton();
-    //    return new InProjectPage(driver);
-    //}
 
     public InProjectPage addComponent(String ComponentType, String ComponentName){
         selectComponentType(ComponentType)
