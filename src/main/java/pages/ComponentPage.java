@@ -10,13 +10,13 @@ public class ComponentPage {
         this.driver = driver;
     }
 
-    private By componentTypeSpanLoc=By.xpath("//span[@class='select2-selection__arrow']");
-    private By componentTypeInputLoc=By.xpath("//input[@name='type']");
-    private By componentNameLoc=By.xpath("//input[@name='name']");
-    private By createButtonLoc=By.xpath("//button[text()='Create']");
-    private By updateButtonLoc=By.xpath("//button[text()='Update']");
+    private By componentTypeSpanLoc = By.xpath("//span[@class='select2-selection__arrow']");
+    private By componentTypeInputLoc = By.xpath("//input[@name='type']");
+    private By componentNameLoc = By.xpath("//input[@name='name']");
+    private By createButtonLoc = By.xpath("//button[text()='Create']");
+    private By updateButtonLoc = By.xpath("//button[text()='Update']");
 
-    private By openElementLoc=By.xpath("//label[text()='Component type']");
+    private By openElementLoc = By.xpath("//label[text()='Component type']");
 
     public boolean isPageOpened(){
         if(driver.findElements(openElementLoc).size()!=0) {

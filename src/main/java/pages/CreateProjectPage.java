@@ -10,12 +10,12 @@ public class CreateProjectPage {
         this.driver = driver;
     }
 
-    private By projectNameLoc=By.xpath("//input[@name='name']");
-    private By descriptionLoc=By.xpath("//textarea[@class='form-control']");
-    private By domenLoc=By.xpath("//div[@class='form-group domains']//input[@required]");
-    private By buttonLoc=By.xpath("//button[@class='btn']");
+    private By projectNameLoc = By.xpath("//input[@name='name']");
+    private By descriptionLoc = By.xpath("//textarea[@class='form-control']");
+    private By domenLoc = By.xpath("//div[@class='form-group domains']//input[@required]");
+    private By buttonLoc = By.xpath("//button[@class='btn']");
 
-    private By openElementLoc=By.xpath("//a[@class='nav-link' and (text()='Create')]");
+    private By openElementLoc = By.xpath("//a[@class='nav-link' and (text()='Create')]");
 
     public boolean isPageOpened(){
         if(driver.findElements(openElementLoc).size()!=0) {

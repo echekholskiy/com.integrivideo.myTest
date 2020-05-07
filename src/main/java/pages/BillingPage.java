@@ -11,10 +11,11 @@ public class BillingPage {
     public BillingPage(WebDriver driver) {
         this.driver = driver;
     }
-    private By addCardButtonLoc=By.xpath("//div[@class='col-md-6']/a[@class='btn']");
-    private By lastCardNumberLoc=By.xpath("//div[@class='col-md-7']");
+    private By addCardButtonLoc = By.xpath("//div[@class='col-md-6']/a[@class='btn']");
+    private By lastCardNumberLoc = By.xpath("//div[@class='cards']/div[last()]/div[@class='col-md-7']");
+    private By cardMassLoc = By.xpath("//div[@class='col-md-7']");
 
-    private By openElementLoc=By.xpath("//h3[text()='Payment methods']");
+    private By openElementLoc = By.xpath("//h3[text()='Payment methods']");
 
     public boolean isPageOpened(){
         (new WebDriverWait(driver, 10))
@@ -31,6 +32,10 @@ public class BillingPage {
     }
 
     public String getNumberOfLastCard(){
-        return String.format("%.5s", driver.findElement(lastCardNumberLoc).getText());//TODO добавить проверку кол-ва карт после добавления
+        return String.format("%.5s", driver.findElement(lastCardNumberLoc).getText());
+    }
+
+    public int getSizeOfCardList(){
+        return driver.findElements(cardMassLoc).size();
     }
 }
