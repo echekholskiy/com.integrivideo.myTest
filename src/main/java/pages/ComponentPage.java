@@ -35,9 +35,15 @@ public class ComponentPage {
         return this;
     }
 
-    public ComponentPage selectComponentType(By loc){
+    //public ComponentPage selectComponentType(By loc){
+    //    clickSelectComponentType();
+    //    driver.findElement(loc).click();
+    //    return this;
+    //}
+
+    public ComponentPage selectComponentType(String typeComponent){
         clickSelectComponentType();
-        driver.findElement(loc).click();
+        driver.findElement(By.xpath(String.format("//li[contains(text(), '%s')]", typeComponent))).click();
         return this;
     }
 
@@ -56,37 +62,47 @@ public class ComponentPage {
         return new InProjectPage(driver);
     }
 
-    public InProjectPage addVideoChat(String videoChatName){
-        selectComponentType(videoChatLoc)
-                .typeComponentName(videoChatName)
+    //public InProjectPage addVideoChat(String videoChatName){
+    //    selectComponentType(videoChatLoc)
+    //            .typeComponentName(videoChatName)
+    //            .clickCreateButton()
+    //            .clickUpdateButton();
+    //    return new InProjectPage(driver);
+    //}
+
+    //public InProjectPage addMultiVideoPlayer(String multiVideoPleerName){
+    //    selectComponentType(multiVideoPlayerLoc)
+    //           .typeComponentName(multiVideoPleerName)
+    //            .clickCreateButton()
+    //            .clickUpdateButton();
+    //    return new InProjectPage(driver);
+    //}
+
+    //public InProjectPage addSingleVideo(String singleVideoName){
+    //    selectComponentType(singleVideoLoc)
+    //            .typeComponentName(singleVideoName)
+    //            .clickCreateButton()
+    //            .clickUpdateButton();
+    //    return new InProjectPage(driver);
+    //}
+
+    //public InProjectPage addMultiPartyVideo(String multiPartyVideo){
+    //    selectComponentType(multiPartyVideoLoc)
+    //            .typeComponentName(multiPartyVideo)
+    //            .clickCreateButton()
+    //            .clickUpdateButton();
+    //    return new InProjectPage(driver);
+    //}
+
+    public InProjectPage addComponent(String ComponentType, String ComponentName){
+        selectComponentType(ComponentType)
+                .typeComponentName(ComponentName)
                 .clickCreateButton()
                 .clickUpdateButton();
         return new InProjectPage(driver);
     }
 
-    public InProjectPage addMultiVideoPlayer(String multiVideoPleerName){
-        selectComponentType(multiVideoPlayerLoc)
-                .typeComponentName(multiVideoPleerName)
-                .clickCreateButton()
-                .clickUpdateButton();
-        return new InProjectPage(driver);
-    }
 
-    public InProjectPage addSingleVideo(String singleVideoName){
-        selectComponentType(singleVideoLoc)
-                .typeComponentName(singleVideoName)
-                .clickCreateButton()
-                .clickUpdateButton();
-        return new InProjectPage(driver);
-    }
-
-    public InProjectPage addMultiPartyVideo(String multiPartyVideo){
-        selectComponentType(multiPartyVideoLoc)
-                .typeComponentName(multiPartyVideo)
-                .clickCreateButton()
-                .clickUpdateButton();
-        return new InProjectPage(driver);
-    }
 
     public String getTypeComponent(){
         return driver.findElement(componentTypeInputLoc).getAttribute("value");

@@ -1,6 +1,7 @@
 package data;
 
 import com.github.javafaker.Faker;
+import org.testng.annotations.DataProvider;
 
 public class Data {
     Faker faker = new Faker();

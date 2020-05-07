@@ -8,6 +8,8 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import pages.*;
 import utils.PropertyReader;
 
@@ -26,7 +28,7 @@ public class BasicTest {
     protected BillingPage billingPage;
     protected AddCardPage addCardPage;
 
-    @Before
+    @BeforeMethod
     public void setUP(){
         driverManager = DriverManagerFactory.getDriverManager(DriverType.CHROME);
         driver = driverManager.getWebDriver();
@@ -46,7 +48,7 @@ public class BasicTest {
         Assert.assertTrue(String.format("Page %s is not opened", "ProjectPage"), projectPage.isPageOpened());
     }
 
-    @After
+    @AfterMethod
     public void quit(){
         driverManager.quitWebDriver();
     }
