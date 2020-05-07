@@ -54,62 +54,6 @@ public class ProjectTest extends BasicTest {
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "description"), description, inProjectPage.getDescription());
     }
 
-    //@Test
-    //public void AddVideoChatTest() {
-    //    String component_Name=new Data().COMPONENT_NAME;
-
-    //    projectPage
-    //            .clickLastOfProject()
-    //            .clickAddComponentButton()
-    //            .addVideoChat(component_Name)
-    //            .clickLastComponent();
-
-    //    Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "VideoChatType"), new Data().VIDEO_CHAT_NAME, componentPage.getTypeComponent());
-    //    Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "VideoChatName"), component_Name, componentPage.getComponentName());
-    //}
-
-    //@Test
-    //public void AddMultiVideoPlayerTest() {
-    //    String component_Name=new Data().COMPONENT_NAME;
-
-    //    projectPage
-    //            .clickLastOfProject()
-    //            .clickAddComponentButton()
-    //            .addMultiVideoPlayer(component_Name)//TODO сделать дата провайдер
-    //            .clickLastComponent();
-
-    //    Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "MultiVideoPlayerType"), new Data().MULTI_VIDEO_PLAYER_NAME, componentPage.getTypeComponent());
-    //    Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "MultiVideoPlayerName"), component_Name, componentPage.getComponentName());
-    //}
-
-    //@Test
-    //public void AddMultiPartyVideoTest() {
-    //   String component_Name=new Data().COMPONENT_NAME;
-
-    //    projectPage
-    //            .clickLastOfProject()
-    //            .clickAddComponentButton()
-    //            .addMultiPartyVideo(component_Name)
-    //            .clickLastComponent();
-
-    //    Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "MultiPartyVideoType"), new Data().MULTIPARTY_VIDEO_NAME, componentPage.getTypeComponent());
-    //    Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "MultiPartyVideoName"), component_Name, componentPage.getComponentName());
-    //}
-
-    //@Test
-    //public void AddSingleVideoTest(){
-    //    String component_Name=new Data().COMPONENT_NAME;
-
-    //    projectPage
-    //            .clickLastOfProject()
-    //            .clickAddComponentButton()
-    //            .addSingleVideo(component_Name)
-    //            .clickLastComponent();
-
-    //    Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "SingleVideoType"), new Data().SINGLE_VIDEO_NAME, componentPage.getTypeComponent());
-    //    Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "SingleVideoName"), component_Name, componentPage.getComponentName());
-    //}
-
     @Test
     public void AddComponentTest(){
         String component_Name=new Data().COMPONENT_NAME;
