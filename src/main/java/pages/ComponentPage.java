@@ -35,12 +35,6 @@ public class ComponentPage {
         return this;
     }
 
-    //public ComponentPage selectComponentType(By loc){
-    //    clickSelectComponentType();
-    //    driver.findElement(loc).click();
-    //    return this;
-    //}
-
     public ComponentPage selectComponentType(String typeComponent){
         clickSelectComponentType();
         driver.findElement(By.xpath(String.format("//li[contains(text(), '%s')]", typeComponent))).click();
