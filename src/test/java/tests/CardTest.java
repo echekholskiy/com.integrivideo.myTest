@@ -2,7 +2,7 @@ package tests;
 
 import data.Data;
 import org.junit.Assert;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 public class CardTest extends BasicTest {
     @Test
