@@ -44,4 +44,11 @@ public class BillingPage {
         driver.findElement(MakeDefaultButtonLoc).click();
         return this;
     }
+
+    public boolean checkDefaultCard(){
+        if(driver.findElement(MakeDefaultButtonLoc).getText() == "Default"){
+            return true;
+        }
+        else return false;
+    }
 }
