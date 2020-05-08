@@ -29,7 +29,7 @@ public class CardTest extends BasicTest {
         projectPage.clickBillingButton();
         Assert.assertTrue(String.format("Page %s is not opened", "BillingPage"), billingPage.isPageOpened());
 
-        billingPage.clickMakeDefaultButton();
+        Assert.assertTrue("Last card is already defaulted", billingPage.clickMakeDefaultButton());//TODO ну это пздц
         Assert.assertTrue(String.format("Card is not default"), billingPage.checkDefaultCard());
 
     }

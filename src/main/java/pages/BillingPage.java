@@ -41,9 +41,15 @@ public class BillingPage {
         return driver.findElements(cardMassLoc).size();
     }
 
-    public BillingPage clickMakeDefaultButton(){
-        driver.findElement(MakeDefaultButtonLoc).click();
-        return this;
+    public boolean clickMakeDefaultButton(){
+
+        try {
+            driver.findElement(MakeDefaultButtonLoc).click();//TODO ну это продолжения того пиздеца
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public boolean checkDefaultCard() {
