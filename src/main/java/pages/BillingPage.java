@@ -14,6 +14,7 @@ public class BillingPage {
     private By addCardButtonLoc = By.xpath("//div[@class='col-md-6']/a[@class='btn']");
     private By lastCardNumberLoc = By.xpath("//div[@class='cards']/div[last()]/div[@class='col-md-7']");
     private By cardMassLoc = By.xpath("//div[@class='col-md-7']");
+    private By MakeDefaultButtonLoc=By.xpath("//div[@class='cards']/div[last()]//a[text()='Make default']");
 
     private By openElementLoc = By.xpath("//h3[text()='Payment methods']");
 
@@ -37,5 +38,10 @@ public class BillingPage {
 
     public int getSizeOfCardList(){
         return driver.findElements(cardMassLoc).size();
+    }
+
+    public BillingPage clickMakeDefaultButton(){
+        driver.findElement(MakeDefaultButtonLoc).click();
+        return this;
     }
 }
