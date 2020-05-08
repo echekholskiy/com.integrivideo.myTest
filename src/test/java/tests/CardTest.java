@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class CardTest extends BasicTest {
     @Test
-    public void test(){
+    public void addCardTest(){
 
         projectPage.clickBillingButton();
         Assert.assertTrue(String.format("Page %s is not opened", "BillingPage"), billingPage.isPageOpened());
@@ -21,6 +21,17 @@ public class CardTest extends BasicTest {
 
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "NUMBER_OF_CARDS"), sizeOfCardMass+1, billingPage.getSizeOfCardList());
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "CARD_NUMBER"), String.format("%.5s", new Data().CARD_NUMBER), billingPage.getNumberOfLastCard());
+    }
+
+    @Test
+    public void makeDefaultCardTest(){
+
+        projectPage.clickBillingButton();
+        Assert.assertTrue(String.format("Page %s is not opened", "BillingPage"), billingPage.isPageOpened());
+
+        billingPage.clickMakeDefaultButton();
+        Assert.assertTrue(String.format("Card is not default"), billingPage.checkDefaultCard());
+
     }
 
 }

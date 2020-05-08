@@ -15,6 +15,7 @@ public class BillingPage {
     private By lastCardNumberLoc = By.xpath("//div[@class='cards']/div[last()]/div[@class='col-md-7']");
     private By cardMassLoc = By.xpath("//div[@class='col-md-7']");
     private By MakeDefaultButtonLoc=By.xpath("//div[@class='cards']/div[last()]//a[text()='Make default']");
+    private By DefaultCardLoc=By.xpath("//div[@class='cards']/div[last()]//div[contains(text(),'Default')]");
 
     private By openElementLoc = By.xpath("//h3[text()='Payment methods']");
 
@@ -45,10 +46,16 @@ public class BillingPage {
         return this;
     }
 
-    public boolean checkDefaultCard(){
-        if(driver.findElement(MakeDefaultButtonLoc).getText() == "Default"){
+    public boolean checkDefaultCard() {
+
+        try {
+            driver.findElement(DefaultCardLoc);
             return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
-        else return false;
     }
+
+
 }
