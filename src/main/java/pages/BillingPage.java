@@ -19,13 +19,16 @@ public class BillingPage {
 
     private By openElementLoc = By.xpath("//h3[text()='Payment methods']");
 
-    public boolean isPageOpened(){
-        (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(openElementLoc));
-        if(driver.findElements(openElementLoc).size()!=0) {
-            return true;
+    public BillingPage isBillingPageOpened(){
+        try {
+            (new WebDriverWait(driver, 10))
+                    .until(ExpectedConditions.presenceOfElementLocated(openElementLoc));
+            return this;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("BillingPage is not opened!");
+            return null;
         }
-        else return false;
     }
 
     public AddCardPage clickAddCardButton(){
@@ -44,7 +47,7 @@ public class BillingPage {
     public boolean clickMakeDefaultButton(){
 
         try {
-            driver.findElement(MakeDefaultButtonLoc).click();//TODO ну это продолжения того пиздеца
+            driver.findElement(MakeDefaultButtonLoc).click();//TODO ну это продолжения того пиздец
             return true;
         } catch (Exception e) {
             e.printStackTrace();

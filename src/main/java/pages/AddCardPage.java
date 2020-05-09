@@ -20,11 +20,16 @@ public class AddCardPage {
 
     private By openElementLoc=By.xpath("//div[@class='credit-card']");
 
-    public boolean isPageOpened(){
-        if(driver.findElements(openElementLoc).size()!=0) {
-            return true;
+    public AddCardPage isAddCardPageOpened(){
+        try {
+            (new WebDriverWait(driver, 10))
+                    .until(ExpectedConditions.presenceOfElementLocated(openElementLoc));
+            return this;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("AddCardPage is not opened!");
+            return null;
         }
-        else return false;
     }
 
     public AddCardPage typeCardNumber(String CardNumber){
