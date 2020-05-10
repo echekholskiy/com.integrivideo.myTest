@@ -31,11 +31,11 @@ public class CardTest extends BasicTest {
                 .isBillingPageOpened()
                 .clickAddCardButton()
                 .isAddCardPageOpened()
-                .addCard((new Data()).CARD_NUMBER, new Data().EXPIRATION_MONTH, (new Data()).EXPIRATION_YEAR, (new Data()).CARD_HOLDER_NAME);
+                .addCard((new Data()).CARD_NUMBER, new Data().EXPIRATION_MONTH, (new Data()).EXPIRATION_YEAR, (new Data()).CARD_HOLDER_NAME)
+                .isBillingPageOpened()
+                .clickMakeDefaultButton();
 
-        Assert.assertTrue("Last card is already defaulted", billingPage.clickMakeDefaultButton());//TODO ну это пздц
+        Assert.assertEquals("No message that the card is defaulted", new Data().DEFAULT_MESSAGE, billingPage.getDefaultAlertText());
         Assert.assertTrue(String.format("Card is not default"), billingPage.checkDefaultCard());
-
     }
-
 }

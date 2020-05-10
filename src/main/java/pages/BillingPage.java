@@ -16,6 +16,7 @@ public class BillingPage {
     private By cardMassLoc = By.xpath("//div[@class='col-md-7']");
     private By MakeDefaultButtonLoc=By.xpath("//div[@class='cards']/div[last()]//a[text()='Make default']");
     private By DefaultCardLoc=By.xpath("//div[@class='cards']/div[last()]//div[contains(text(),'Default')]");
+    private By DefaultAlertLoc=By.xpath("//span[@data-notify='message']");
 
     private By openElementLoc = By.xpath("//h3[text()='Payment methods']");
 
@@ -27,12 +28,14 @@ public class BillingPage {
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("BillingPage is not opened!");
+
             return null;
         }
     }
 
     public AddCardPage clickAddCardButton(){
         driver.findElement(addCardButtonLoc).click();
+
         return new AddCardPage(driver);
     }
 
@@ -44,15 +47,10 @@ public class BillingPage {
         return driver.findElements(cardMassLoc).size();
     }
 
-    public boolean clickMakeDefaultButton(){
+    public BillingPage clickMakeDefaultButton(){
+        driver.findElement(MakeDefaultButtonLoc).click();
 
-        try {
-            driver.findElement(MakeDefaultButtonLoc).click();//TODO ну это продолжения того пиздец
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+        return this;
     }
 
     public boolean checkDefaultCard() {
@@ -66,5 +64,10 @@ public class BillingPage {
         }
     }
 
+    public String getDefaultAlertText(){
+        (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(DefaultAlertLoc));
 
+        return driver.findElement(DefaultAlertLoc).getText();
+    }
 }
