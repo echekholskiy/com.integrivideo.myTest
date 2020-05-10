@@ -35,7 +35,26 @@ public class CardTest extends BasicTest {
                 .isBillingPageOpened()
                 .clickMakeDefaultButton();
 
-        Assert.assertEquals("No message that the card is defaulted", new Data().DEFAULT_MESSAGE, billingPage.getDefaultAlertText());
+        Assert.assertEquals("No message that the card is defaulted", new Data().DEFAULT_MESSAGE, billingPage.getMessageAlertText());
         Assert.assertTrue(String.format("Card is not default"), billingPage.checkDefaultCard());
+    }
+
+    @Test
+    public void removeCardTest(){
+
+        projectPage
+                .clickBillingButton()
+                .isBillingPageOpened()
+                .clickAddCardButton()
+                .isAddCardPageOpened()
+                .addCard((new Data()).CARD_NUMBER, new Data().EXPIRATION_MONTH, (new Data()).EXPIRATION_YEAR, (new Data()).CARD_HOLDER_NAME)
+                .isBillingPageOpened();
+
+        int numberOfCards=billingPage.getSizeOfCardList();
+
+        billingPage.clickRemoveCard();
+
+        Assert.assertEquals("No message that the card is defaulted", new Data().REMOVE_MESSAGE, billingPage.getMessageAlertText());
+        Assert.assertEquals("Card is not remove", numberOfCards-1, billingPage.getSizeOfCardList());
     }
 }

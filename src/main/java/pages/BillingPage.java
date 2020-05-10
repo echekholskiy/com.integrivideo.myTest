@@ -15,8 +15,10 @@ public class BillingPage {
     private By lastCardNumberLoc = By.xpath("//div[@class='cards']/div[last()]/div[@class='col-md-7']");
     private By cardMassLoc = By.xpath("//div[@class='col-md-7']");
     private By MakeDefaultButtonLoc=By.xpath("//div[@class='cards']/div[last()]//a[text()='Make default']");
+    private By removeButtonLoc=By.xpath("//div[@class='cards']/div[last()]//a[text()='Remove']");
     private By DefaultCardLoc=By.xpath("//div[@class='cards']/div[last()]//div[contains(text(),'Default')]");
-    private By DefaultAlertLoc=By.xpath("//span[@data-notify='message']");
+    private By messageAlertLoc=By.xpath("//span[@data-notify='message']");
+    private By listOfCards=By.xpath("//div[@class='cards']/div");
 
     private By openElementLoc = By.xpath("//h3[text()='Payment methods']");
 
@@ -64,10 +66,20 @@ public class BillingPage {
         }
     }
 
-    public String getDefaultAlertText(){
+    public String getMessageAlertText(){
         (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(DefaultAlertLoc));
+                .until(ExpectedConditions.presenceOfElementLocated(messageAlertLoc));
 
-        return driver.findElement(DefaultAlertLoc).getText();
+        return driver.findElement(messageAlertLoc).getText();
+    }
+
+    public BillingPage clickRemoveCard(){
+        driver.findElement(removeButtonLoc).click();
+
+        return this;
+    }
+
+    public int getNumberOfCard(){
+        return driver.findElements(listOfCards).size();
     }
 }
