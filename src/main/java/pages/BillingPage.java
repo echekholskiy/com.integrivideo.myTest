@@ -1,11 +1,16 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.LoadableComponent;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class BillingPage {
+import static org.testng.FileAssert.fail;
+
+public class BillingPage extends LoadableComponent<BillingPage> {
+
     private WebDriver driver;
 
     public BillingPage(WebDriver driver) {
@@ -16,22 +21,23 @@ public class BillingPage {
     private By cardMassLoc = By.xpath("//div[@class='col-md-7']");
     private By MakeDefaultButtonLoc=By.xpath("//div[@class='cards']/div[last()]//a[text()='Make default']");
     private By removeButtonLoc=By.xpath("//div[@class='cards']/div[last()]//a[text()='Remove']");
-    private By DefaultCardLoc=By.xpath("//div[@class='cards']/div[last()]//div[contains(text(),'Default')]");
+    private By DefaultCardLoc=By.xpath("//div[@class='cards']/div[last()]//div[contains(text(),'Default')]");//TODO переименовать переменные и методы дефолтласт
     private By messageAlertLoc=By.xpath("//span[@data-notify='message']");
     private By listOfCards=By.xpath("//div[@class='cards']/div");
 
     private By openElementLoc = By.xpath("//h3[text()='Payment methods']");
 
-    public BillingPage isBillingPageOpened(){
-        try {
-            (new WebDriverWait(driver, 10))
-                    .until(ExpectedConditions.presenceOfElementLocated(openElementLoc));
-            return this;
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("BillingPage is not opened!");
+    @Override
+    public void load(){
+        driver.get("https://dev.integrivideo.com/app/billing");
+    }
 
-            return null;
+    @Override
+    public void isLoaded() throws Error{
+        try {
+            driver.findElement(openElementLoc);
+        } catch (NoSuchElementException e) {
+            fail("Cannot locate openElementLoc of BillingPage");
         }
     }
 

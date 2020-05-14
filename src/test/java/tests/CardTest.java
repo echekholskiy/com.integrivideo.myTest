@@ -10,17 +10,18 @@ public class CardTest extends BasicTest {
 
         projectPage
                 .clickBillingButton()
-                .isBillingPageOpened();
+                .isLoaded();
 
         int sizeOfCardMass=billingPage.getSizeOfCardList();
 
         billingPage
                 .clickAddCardButton()
-                .isAddCardPageOpened()
-                .addCard((new Data()).CARD_NUMBER, new Data().EXPIRATION_MONTH, (new Data()).EXPIRATION_YEAR, (new Data()).CARD_HOLDER_NAME);
+                .isLoaded();
+
+        addCardPage.addCard((new Data()).CARD_NUMBER, new Data().EXPIRATION_MONTH, (new Data()).EXPIRATION_YEAR, (new Data()).CARD_HOLDER_NAME);
 
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "NUMBER_OF_CARDS"), sizeOfCardMass+1, billingPage.getSizeOfCardList());
-        Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "CARD_NUMBER"), String.format("%.5s", new Data().CARD_NUMBER), billingPage.getNumberOfLastCard());
+        Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "CARD_NUMBER"), String.format("%.5s", new Data().CARD_NUMBER), billingPage.getNumberOfLastCard());//TODO переделать проверку (проверка первых и последних цифр возвращаем строку, НОМЕР КАРТЫ приводим в нужный вид)
     }
 
     @Test
@@ -28,12 +29,17 @@ public class CardTest extends BasicTest {
 
         projectPage
                 .clickBillingButton()
-                .isBillingPageOpened()
+                .isLoaded();
+
+        billingPage
                 .clickAddCardButton()
-                .isAddCardPageOpened()
+                .isLoaded();
+
+        addCardPage
                 .addCard((new Data()).CARD_NUMBER, new Data().EXPIRATION_MONTH, (new Data()).EXPIRATION_YEAR, (new Data()).CARD_HOLDER_NAME)
-                .isBillingPageOpened()
-                .clickMakeDefaultButton();
+                .isLoaded();
+
+        billingPage.clickMakeDefaultButton();
 
         Assert.assertEquals("No message that the card is defaulted", new Data().DEFAULT_MESSAGE, billingPage.getMessageAlertText());
         Assert.assertTrue(String.format("Card is not default"), billingPage.checkDefaultCard());
@@ -44,11 +50,15 @@ public class CardTest extends BasicTest {
 
         projectPage
                 .clickBillingButton()
-                .isBillingPageOpened()
+                .isLoaded();
+
+        billingPage
                 .clickAddCardButton()
-                .isAddCardPageOpened()
+                .isLoaded();
+
+        addCardPage
                 .addCard((new Data()).CARD_NUMBER, new Data().EXPIRATION_MONTH, (new Data()).EXPIRATION_YEAR, (new Data()).CARD_HOLDER_NAME)
-                .isBillingPageOpened();
+                .isLoaded();
 
         int numberOfCards=billingPage.getSizeOfCardList();
 

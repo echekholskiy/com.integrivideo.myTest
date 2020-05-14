@@ -22,8 +22,8 @@ public class ProjectTest extends BasicTest {
 
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "numberOfProject"), beforeNumberOfProjects+1, projectPage.getSizeOfProjectList());
 
-        if(project_Name.indexOf(" ")!=-1) {//TODO мб перенести в какой-то класс в utils?
-            firstLettersOfProject = Character.toString(project_Name.charAt(0)) + Character.toString(project_Name.charAt(project_Name.indexOf(" ") + 1));
+        if(project_Name.indexOf(" ")!=-1) {
+            firstLettersOfProject = Character.toString(project_Name.charAt(0)) + Character.toString(project_Name.charAt(project_Name.indexOf(" ") + 1));//TODO перенести в page(при проверке пробела использовать contains)
         }
         else firstLettersOfProject = Character.toString(project_Name.charAt(0));
 
@@ -31,7 +31,7 @@ public class ProjectTest extends BasicTest {
 
         projectPage.clickLastOfProject();
 
-        Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "project_Name"), project_Name, inProjectPage.getProjectName());//TODO как сделать читабельнее эта ебана цейво?
+        Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "project_Name"), project_Name, inProjectPage.getProjectName());
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "description"), description, inProjectPage.getDescription());
     }
 
