@@ -4,38 +4,40 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <properties>
+        <com.integrivideo.myTest>1.0-SNAPSHOT</com.integrivideo.myTest>
+        <selenium-java>3.141.59</selenium-java>
+        <common-base-test>1.2.0</common-base-test>
+        <javafaker>1.0.2</javafaker>
+        <testng>6.14.3</testng>
+    </properties>
+
     <groupId>org.example</groupId>
     <artifactId>com.integrivideo.myTest</artifactId>
-    <version>${org.example}</version>
+    <version>${com.integrivideo.myTest}</version>
 
     <dependencies>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>${org.seleniumhq.selenium}</version>
+            <version>${selenium-java}</version>
         </dependency>
         <dependency>
             <groupId>org.bremersee</groupId>
             <artifactId>common-base-test</artifactId>
-            <version>${org.bremersee}</version>
+            <version>${common-base-test}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
-            <version>${com.github.javafaker}</version>
+            <version>${javafaker}</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>${org.testng}</version>
+            <version>${testng}</version>
         </dependency>
     </dependencies>
-    <properties>
-        <org.example>1.0-SNAPSHOT</org.example>
-        <org.seleniumhq.selenium>3.141.59</org.seleniumhq.selenium>
-        <org.bremersee>1.2.0</org.bremersee>
-        <com.github.javafaker>1.0.2</com.github.javafaker>
-        <org.testng>6.14.3</org.testng>
-    </properties>
+
 </project>
