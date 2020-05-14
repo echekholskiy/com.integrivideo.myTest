@@ -1,11 +1,15 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.LoadableComponent;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class AddCardPage {
+import static org.testng.FileAssert.fail;
+
+public class AddCardPage extends LoadableComponent<AddCardPage> {
     private WebDriver driver;
 
     public AddCardPage(WebDriver driver) {
@@ -20,15 +24,17 @@ public class AddCardPage {
 
     private By openElementLoc=By.xpath("//div[@class='credit-card']");
 
-    public AddCardPage isAddCardPageOpened(){
+    @Override
+    public void load(){
+        driver.get("https://dev.integrivideo.com/app/billing/payment-methods/new");
+    }
+
+    @Override
+    public void isLoaded() throws Error{
         try {
-            (new WebDriverWait(driver, 10))
-                    .until(ExpectedConditions.presenceOfElementLocated(openElementLoc));
-            return this;
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("AddCardPage is not opened!");
-            return null;
+            driver.findElement(openElementLoc);
+        } catch (NoSuchElementException e) {
+            fail("Cannot locate openElementLoc of AddCardPage");//TODO заменить все opened
         }
     }
 
