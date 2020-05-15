@@ -1,9 +1,13 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.LoadableComponent;
 
-public class LogInPage {
+import static org.testng.FileAssert.fail;
+
+public class LogInPage extends LoadableComponent<LogInPage> {
     private WebDriver driver;
 
     public LogInPage(WebDriver driver) {
@@ -17,11 +21,18 @@ public class LogInPage {
 
     private By openElementLoc=By.xpath("//div[text()='Please Log in to continue']");
 
-    public boolean isPageOpened(){
-        if(driver.findElements(openElementLoc).size()!=0) {
-            return true;
+    @Override
+    public void load(){
+        driver.get("https://dev.integrivideo.com/login");
+    }
+
+    @Override
+    public void isLoaded() throws Error{
+        try {
+            driver.findElement(openElementLoc);
+        } catch (NoSuchElementException e) {
+            fail("Cannot locate openElementLoc of LogInPage");
         }
-        else return false;
     }
 
     public LogInPage clickLogIn(){
@@ -45,8 +56,7 @@ public class LogInPage {
     }
 
     public ProjectPage LogIn(String email, String password){
-        clickLogIn()
-                .typeEmail(email)
+        typeEmail(email)
                 .typePassword(password)
                 .clickLoginButton();
         return new ProjectPage(driver);

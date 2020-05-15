@@ -4,7 +4,6 @@ import data.Data;
 import driver.DriverManager;
 import driver.DriverManagerFactory;
 import driver.DriverType;
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -42,8 +41,11 @@ public class BasicTest {
         this.billingPage = new BillingPage(driver);
         this.addCardPage = new AddCardPage(driver);
 
+        logInPage
+                .clickLogIn()
+                .isLoaded();
+
         logInPage.LogIn(new Data().USER_EMAIL, new Data().USER_PASSWORD);
-        Assert.assertTrue(String.format("Page %s is not opened", "ProjectPage"), projectPage.isPageOpened());
     }
 
     @AfterMethod
