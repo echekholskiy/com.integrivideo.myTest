@@ -1,9 +1,13 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.LoadableComponent;
 
-public class ComponentPage {
+import static org.testng.FileAssert.fail;
+
+public class ComponentPage extends LoadableComponent<ComponentPage> {
     private WebDriver driver;
 
     public ComponentPage(WebDriver driver) {
@@ -18,11 +22,18 @@ public class ComponentPage {
 
     private By openElementLoc = By.xpath("//label[text()='Component type']");
 
-    public boolean isPageOpened(){
-        if(driver.findElements(openElementLoc).size()!=0) {
-            return true;
+    @Override
+    public void load(){
+        driver.get("https://dev.integrivideo.com/app/projects/5a75c2f1c9be4c063d6122bd/components/new");
+    }
+
+    @Override
+    public void isLoaded() throws Error{
+        try {
+            driver.findElement(openElementLoc);
+        } catch (NoSuchElementException e) {
+            fail("Cannot locate openElementLoc of ComponentPage");
         }
-        else return false;
     }
 
     public ComponentPage clickSelectComponentType(){
