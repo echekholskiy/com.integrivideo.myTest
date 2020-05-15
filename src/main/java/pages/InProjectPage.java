@@ -1,9 +1,13 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.LoadableComponent;
 
-public class InProjectPage {
+import static org.testng.FileAssert.fail;
+
+public class InProjectPage extends LoadableComponent<InProjectPage> {
     private WebDriver driver;
 
     public InProjectPage(WebDriver driver) {
@@ -25,11 +29,18 @@ public class InProjectPage {
         return driver.findElement(descriptionLoc).getText();
     }
 
-    public boolean isPageOpened(){
-        if(driver.findElements(openElementLoc).size()!=0) {
-            return true;
+    @Override
+    public void load(){
+        driver.get("//");
+    }
+
+    @Override
+    public void isLoaded() throws Error{
+        try {
+            driver.findElement(openElementLoc);
+        } catch (NoSuchElementException e) {
+            fail("Cannot locate openElementLoc of InProjectPage");
         }
-        else return false;
     }
 
     public CreateProjectPage clickEditButton(){
