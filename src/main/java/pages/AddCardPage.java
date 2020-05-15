@@ -34,7 +34,7 @@ public class AddCardPage extends LoadableComponent<AddCardPage> {
         try {
             driver.findElement(openElementLoc);
         } catch (NoSuchElementException e) {
-            fail("Cannot locate openElementLoc of AddCardPage");//TODO заменить все opened
+            fail("Cannot locate openElementLoc of AddCardPage");
         }
     }
 

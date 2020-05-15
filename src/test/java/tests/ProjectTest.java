@@ -18,7 +18,9 @@ public class ProjectTest extends BasicTest {
 
         projectPage
                 .clickAddProject()
-                .addProject(project_Name, description, domen);
+                .isLoaded();
+
+        createProjectPage.addProject(project_Name, description, domen);
 
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "numberOfProject"), beforeNumberOfProjects+1, projectPage.getSizeOfProjectList());
 
@@ -29,7 +31,9 @@ public class ProjectTest extends BasicTest {
 
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "letters"), projectPage.getLastProjectLetters(), firstLettersOfProject);
 
-        projectPage.clickLastOfProject();
+        projectPage
+                .clickLastOfProject()
+                .isLoaded();
 
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "project_Name"), project_Name, inProjectPage.getProjectName());
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "description"), description, inProjectPage.getDescription());
@@ -44,9 +48,16 @@ public class ProjectTest extends BasicTest {
 
         projectPage
                 .clickLastOfProject()
+                .isLoaded();
+
+        inProjectPage
                 .clickEditButton()
+                .isLoaded();
+
+        createProjectPage
                 .editProject(project_Name, description, domen)
-                .clickLastOfProject();
+                .clickLastOfProject()
+                .isLoaded();
 
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "project_Name"), project_Name, inProjectPage.getProjectName());
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "description"), description, inProjectPage.getDescription());
@@ -56,9 +67,13 @@ public class ProjectTest extends BasicTest {
     public void AddComponentTest(String Component, String ComponentName){
 
         projectPage
-                .clickLastOfProject()
+                .clickLastOfProject().isLoaded();
+
+        inProjectPage
                 .clickAddComponentButton()
-                .addComponent(Component, ComponentName)
+                .isLoaded();
+
+        componentPage.addComponent(Component, ComponentName)
                 .clickLastComponent();
 
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "ComponentType"), Component, componentPage.getTypeComponent());

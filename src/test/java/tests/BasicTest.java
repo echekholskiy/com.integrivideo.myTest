@@ -45,7 +45,9 @@ public class BasicTest {
                 .clickLogIn()
                 .isLoaded();
 
-        logInPage.LogIn(new Data().USER_EMAIL, new Data().USER_PASSWORD);
+        logInPage
+                .LogIn(new Data().USER_EMAIL, new Data().USER_PASSWORD)
+                .isLoaded();
     }
 
     @AfterMethod

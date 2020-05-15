@@ -1,14 +1,14 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.LoadableComponent;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static org.testng.FileAssert.fail;
 
-public class ProjectPage {
+
+public class ProjectPage extends LoadableComponent<ProjectPage> {
     private WebDriver driver;
 
     public ProjectPage(WebDriver driver) {
@@ -23,13 +23,18 @@ public class ProjectPage {
 
     private By openElementLoc = By.xpath("//div[@class='status' and text()='Add project']");
 
-    public boolean isPageOpened(){
+    @Override
+    public void load(){
+        driver.get("https://dev.integrivideo.com/app/projects");
+    }
 
-        if(driver.findElements(openElementLoc).size() != 0) {
-            return true;
+    @Override
+    public void isLoaded() throws Error{
+        try {
+            driver.findElement(openElementLoc);
+        } catch (NoSuchElementException e) {
+            fail("Cannot locate openElementLoc of ProjectPage");
         }
-
-        else return false;
     }
 
     public CreateProjectPage clickAddProject(){
