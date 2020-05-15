@@ -1,9 +1,13 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.LoadableComponent;
 
-public class CreateProjectPage {
+import static org.testng.FileAssert.fail;
+
+public class CreateProjectPage extends LoadableComponent<CreateProjectPage> {
     private WebDriver driver;
 
     public CreateProjectPage(WebDriver driver) {
@@ -17,11 +21,18 @@ public class CreateProjectPage {
 
     private By openElementLoc = By.xpath("//a[@class='nav-link' and (text()='Create')]");
 
-    public boolean isPageOpened(){
-        if(driver.findElements(openElementLoc).size()!=0) {
-            return true;
+    @Override
+    public void load(){
+        driver.get("https://dev.integrivideo.com/app/projects/new");
+    }
+
+    @Override
+    public void isLoaded() throws Error{
+        try {
+            driver.findElement(openElementLoc);
+        } catch (NoSuchElementException e) {
+            fail("Cannot locate openElementLoc of CreateProjectPage");
         }
-        else return false;
     }
 
     public CreateProjectPage typeProjectName(String ProjectName){
