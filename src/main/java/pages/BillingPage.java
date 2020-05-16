@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -20,9 +19,9 @@ public class BillingPage extends LoadableComponent<BillingPage> {
     private By addCardButtonLoc = By.xpath("//div[@class='col-md-6']/a[@class='btn']");
     private By lastCardNumberLoc = By.xpath("//div[@class='cards']/div[last()]/div[@class='col-md-7']");
     private By cardMassLoc = By.xpath("//div[@class='col-md-7']");
-    private By MakeDefaultButtonLoc=By.xpath("//div[@class='cards']/div[last()]//a[text()='Make default']");
-    private By removeButtonLoc=By.xpath("//div[@class='cards']/div[last()]//a[text()='Remove']");
-    private By DefaultCardLoc=By.xpath("//div[@class='cards']/div[last()]//div[contains(text(),'Default')]");//TODO переименовать переменные и методы дефолтласт
+    private By MakeDefaultLastCardButtonLoc=By.xpath("//div[@class='cards']/div[last()]//a[text()='Make default']");
+    private By removeLastCardButtonLoc=By.xpath("//div[@class='cards']/div[last()]//a[text()='Remove']");
+    private By DefaultLastCardLoc=By.xpath("//div[@class='cards']/div[last()]//div[contains(text(),'Default')]");//TODO переименовать переменные и методы дефолтласт
     private By messageAlertLoc=By.xpath("//span[@data-notify='message']");
     private By listOfCards=By.xpath("//div[@class='cards']/div");
 
@@ -39,7 +38,7 @@ public class BillingPage extends LoadableComponent<BillingPage> {
             (new WebDriverWait(driver, 5))
                     .until(ExpectedConditions.presenceOfElementLocated(openElementLoc));
         } catch (TimeoutException e) {
-            fail("Cannot locate openElementLoc of BillingPage");//TODO на этой пейдже часто не успевает прогрузиться страница. Если я добавлю эксплисит сам паттерн потеряет весь смысл.
+            fail("Cannot locate openElementLoc of BillingPage");
         }
     }
 
@@ -58,15 +57,15 @@ public class BillingPage extends LoadableComponent<BillingPage> {
     }
 
     public BillingPage clickMakeDefaultButton(){
-        driver.findElement(MakeDefaultButtonLoc).click();
+        driver.findElement(MakeDefaultLastCardButtonLoc).click();
 
         return this;
     }
 
-    public boolean checkDefaultCard() {
+    public boolean checkDefaultLastCard() {
 
         try {
-            driver.findElement(DefaultCardLoc);
+            driver.findElement(DefaultLastCardLoc);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -81,8 +80,8 @@ public class BillingPage extends LoadableComponent<BillingPage> {
         return driver.findElement(messageAlertLoc).getText();
     }
 
-    public BillingPage clickRemoveCard(){
-        driver.findElement(removeButtonLoc).click();
+    public BillingPage clickRemoveLastCard(){
+        driver.findElement(removeLastCardButtonLoc).click();
 
         return this;
     }
