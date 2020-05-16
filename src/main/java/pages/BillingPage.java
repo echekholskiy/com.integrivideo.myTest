@@ -21,7 +21,7 @@ public class BillingPage extends LoadableComponent<BillingPage> {
     private By cardMassLoc = By.xpath("//div[@class='col-md-7']");
     private By MakeDefaultLastCardButtonLoc=By.xpath("//div[@class='cards']/div[last()]//a[text()='Make default']");
     private By removeLastCardButtonLoc=By.xpath("//div[@class='cards']/div[last()]//a[text()='Remove']");
-    private By DefaultLastCardLoc=By.xpath("//div[@class='cards']/div[last()]//div[contains(text(),'Default')]");//TODO переименовать переменные и методы дефолтласт
+    private By DefaultLastCardLoc=By.xpath("//div[@class='cards']/div[last()]//div[contains(text(),'Default')]");
     private By messageAlertLoc=By.xpath("//span[@data-notify='message']");
     private By listOfCards=By.xpath("//div[@class='cards']/div");
 
