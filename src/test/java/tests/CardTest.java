@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.testng.annotations.Test;
 
 public class CardTest extends BasicTest {
+
     @Test
     public void addCardTest(){
 
@@ -18,7 +19,9 @@ public class CardTest extends BasicTest {
                 .clickAddCardButton()
                 .isLoaded();
 
-        addCardPage.addCard((new Data()).CARD_NUMBER, new Data().EXPIRATION_MONTH, (new Data()).EXPIRATION_YEAR, (new Data()).CARD_HOLDER_NAME);
+        addCardPage
+                .addCard((new Data()).CARD_NUMBER, new Data().EXPIRATION_MONTH, (new Data()).EXPIRATION_YEAR, (new Data()).CARD_HOLDER_NAME)
+                .isLoaded();
 
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "NUMBER_OF_CARDS"), sizeOfCardMass+1, billingPage.getSizeOfCardList());
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "CARD_NUMBER"), String.format("%.5s", new Data().CARD_NUMBER), billingPage.getNumberOfLastCard());//TODO переделать проверку (проверка первых и последних цифр возвращаем строку, НОМЕР КАРТЫ приводим в нужный вид)

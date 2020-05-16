@@ -2,8 +2,11 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.LoadableComponent;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.testng.FileAssert.fail;
 
@@ -37,8 +40,9 @@ public class InProjectPage extends LoadableComponent<InProjectPage> {
     @Override
     public void isLoaded() throws Error{
         try {
-            driver.findElement(openElementLoc);
-        } catch (NoSuchElementException e) {
+            (new WebDriverWait(driver, 5))
+                    .until(ExpectedConditions.presenceOfElementLocated(openElementLoc));
+        } catch (TimeoutException e) {
             fail("Cannot locate openElementLoc of InProjectPage");
         }
     }

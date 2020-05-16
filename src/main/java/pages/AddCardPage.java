@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.LoadableComponent;
@@ -32,8 +33,9 @@ public class AddCardPage extends LoadableComponent<AddCardPage> {
     @Override
     public void isLoaded() throws Error{
         try {
-            driver.findElement(openElementLoc);
-        } catch (NoSuchElementException e) {
+            (new WebDriverWait(driver, 5))
+                    .until(ExpectedConditions.presenceOfElementLocated(openElementLoc));
+        } catch (TimeoutException e) {
             fail("Cannot locate openElementLoc of AddCardPage");
         }
     }
@@ -59,7 +61,7 @@ public class AddCardPage extends LoadableComponent<AddCardPage> {
     }
 
     public BillingPage clickAddButton(){
-        (new WebDriverWait(driver, 10))
+        (new WebDriverWait(driver, 20))
                 .until(ExpectedConditions.elementToBeClickable(addButtonLoc));
         driver.findElement(addButtonLoc).click();
         return new BillingPage(driver);

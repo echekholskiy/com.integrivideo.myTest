@@ -31,8 +31,9 @@ public class ProjectPage extends LoadableComponent<ProjectPage> {
     @Override
     public void isLoaded() throws Error{
         try {
-            driver.findElement(openElementLoc);
-        } catch (NoSuchElementException e) {
+            (new WebDriverWait(driver, 5))
+                    .until(ExpectedConditions.presenceOfElementLocated(openElementLoc));
+        } catch (TimeoutException e) {
             fail("Cannot locate openElementLoc of ProjectPage");
         }
     }

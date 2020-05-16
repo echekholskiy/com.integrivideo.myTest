@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.LoadableComponent;
@@ -35,9 +36,10 @@ public class BillingPage extends LoadableComponent<BillingPage> {
     @Override
     public void isLoaded() throws Error{
         try {
-            driver.findElement(openElementLoc);
-        } catch (NoSuchElementException e) {
-            fail("Cannot locate openElementLoc of BillingPage");
+            (new WebDriverWait(driver, 5))
+                    .until(ExpectedConditions.presenceOfElementLocated(openElementLoc));
+        } catch (TimeoutException e) {
+            fail("Cannot locate openElementLoc of BillingPage");//TODO на этой пейдже часто не успевает прогрузиться страница. Если я добавлю эксплисит сам паттерн потеряет весь смысл.
         }
     }
 
