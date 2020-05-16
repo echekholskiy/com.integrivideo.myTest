@@ -12,7 +12,6 @@ public class ProjectTest extends BasicTest {
         String project_Name = new Data().PROJECT_NAME;
         String description = new Data().DESCRIPTION;
         String domen = new Data().DOMEN;
-        String firstLettersOfProject;
 
         int beforeNumberOfProjects=projectPage.getSizeOfProjectList();
 
@@ -23,13 +22,7 @@ public class ProjectTest extends BasicTest {
         createProjectPage.addProject(project_Name, description, domen);
 
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "numberOfProject"), beforeNumberOfProjects+1, projectPage.getSizeOfProjectList());
-
-        if(project_Name.indexOf(" ")!=-1) {
-            firstLettersOfProject = Character.toString(project_Name.charAt(0)) + Character.toString(project_Name.charAt(project_Name.indexOf(" ") + 1));//TODO перенести в page(при проверке пробела использовать contains)
-        }
-        else firstLettersOfProject = Character.toString(project_Name.charAt(0));
-
-        Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "letters"), projectPage.getLastProjectLetters(), firstLettersOfProject);
+        Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "letters"), projectPage.getLastProjectLetters(), projectPage.getExpectedProjectLetters(project_Name));
 
         projectPage
                 .clickLastOfProject()

@@ -73,4 +73,11 @@ public class ProjectPage extends LoadableComponent<ProjectPage> {
     public String getLastProjectLetters(){
         return driver.findElement(lastProjectLetters).getText();
     }
+
+    public String getExpectedProjectLetters(String ProjectName){
+        if(ProjectName.contains(" ")){
+            return Character.toString(ProjectName.charAt(0)) + Character.toString(ProjectName.charAt(ProjectName.indexOf(" ") + 1));
+        }
+        else return Character.toString(ProjectName.charAt(0));
+    }
 }
