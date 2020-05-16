@@ -75,21 +75,10 @@ public class ProjectTest extends BasicTest {
 
     @DataProvider(name="components")
     public Object[][] getComponentName(){
-        Object[][] componentsmass = new Object[4][2];
-
-        componentsmass[0][0] = new Data().VIDEO_CHAT_NAME;
-        componentsmass[0][1] = new Data().COMPONENT_NAME;
-
-        componentsmass[1][0] = new Data().MULTI_VIDEO_PLAYER_NAME;
-        componentsmass[1][1] = new Data().COMPONENT_NAME;
-
-        componentsmass[2][0] = new Data().MULTIPARTY_VIDEO_NAME;
-        componentsmass[2][1] = new Data().COMPONENT_NAME;
-
-        componentsmass[3][0] = new Data().SINGLE_VIDEO_NAME;
-        componentsmass[3][1] = new Data().COMPONENT_NAME;
-
-        return componentsmass;
-    }
-
+        return new Object[][]{
+            {new Data().VIDEO_CHAT_NAME, new Data().COMPONENT_NAME},
+            {new Data().MULTI_VIDEO_PLAYER_NAME, new Data().COMPONENT_NAME},
+            {new Data().MULTIPARTY_VIDEO_NAME, new Data().COMPONENT_NAME},
+            {new Data().SINGLE_VIDEO_NAME, new Data().COMPONENT_NAME}};
+  }
 }
