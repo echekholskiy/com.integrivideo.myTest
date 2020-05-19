@@ -23,4 +23,5 @@ public class Data {
     public String COMPONENT_NAME=faker.beer().name();
     public String DEFAULT_MESSAGE="Default payment method successfully changed";
     public String REMOVE_MESSAGE="Payment method successfully removed";
+    public String STARS_FOR_CARD_NUMBER="******";
 }

@@ -24,7 +24,7 @@ public class CardTest extends BasicTest {
                 .isLoaded();
 
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "NUMBER_OF_CARDS"), sizeOfCardMass+1, billingPage.getSizeOfCardList());
-        Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "CARD_NUMBER"), String.format("%.5s", new Data().CARD_NUMBER), billingPage.getNumberOfLastCard());//TODO переделать проверку (проверка первых и последних цифр возвращаем строку, НОМЕР КАРТЫ приводим в нужный вид)
+        Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "CARD_NUMBER"), billingPage.transformationNumber(new Data().CARD_NUMBER), billingPage.getNumberOfLastCard());//TODO переделать проверку (проверка первых и последних цифр возвращаем строку, НОМЕР КАРТЫ приводим в нужный вид)
     }
 
     @Test

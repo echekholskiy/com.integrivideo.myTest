@@ -1,5 +1,6 @@
 package pages;
 
+import data.Data;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -49,7 +50,7 @@ public class BillingPage extends LoadableComponent<BillingPage> {
     }
 
     public String getNumberOfLastCard(){
-        return String.format("%.5s", driver.findElement(lastCardNumberLoc).getText());
+        return driver.findElement(lastCardNumberLoc).getText().substring(0, 16);
     }
 
     public int getSizeOfCardList(){
@@ -89,4 +90,9 @@ public class BillingPage extends LoadableComponent<BillingPage> {
     public int getNumberOfCard(){
         return driver.findElements(listOfCards).size();
     }
+
+    public String transformationNumber(String Number){
+        return Number.substring(0, 6)+new Data().STARS_FOR_CARD_NUMBER+Number.substring(12, 16);
+    }
+
 }
