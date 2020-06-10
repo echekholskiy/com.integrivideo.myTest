@@ -27,7 +27,7 @@ public class BasicTest {
 
     @BeforeMethod
     public void setUP(){
-        driverManager = DriverManagerFactory.getDriverManager(DriverType.CHROME);
+        driverManager = DriverManagerFactory.getDriverManager(DriverType.FIREFOX);
         driver = driverManager.getWebDriver();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         driver.manage().window().maximize();

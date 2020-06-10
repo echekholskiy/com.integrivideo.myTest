@@ -1,12 +1,13 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.LoadableComponent;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.logging.Logger;
 
 import static org.testng.FileAssert.fail;
 
@@ -24,6 +25,7 @@ public class AddCardPage extends LoadableComponent<AddCardPage> {
     private By addButtonLoc = By.xpath("//button[text()='Add']");
 
     private By openElementLoc=By.xpath("//div[@class='credit-card']");
+    private static final Logger log = Logger.getLogger(AddCardPage.class.getName());
 
     @Override
     public void load(){
@@ -42,21 +44,29 @@ public class AddCardPage extends LoadableComponent<AddCardPage> {
 
     public AddCardPage typeCardNumber(String CardNumber){
         driver.findElement(cardNumberLoc).sendKeys(CardNumber);
+        log.info("type CardNumber: "+CardNumber);
+
         return this;
     }
 
     public AddCardPage typeExpirationMonth(String ExpirationMonth){
         driver.findElement(expirationMonthLoc).sendKeys(ExpirationMonth);
+        log.info("type ExpirationMonth: "+ExpirationMonth);
+
         return this;
     }
 
     public AddCardPage typeExpirationYear(String ExpirationYear){
         driver.findElement(expirationYearLoc).sendKeys(ExpirationYear);
+        log.info("type ExpirationYear: "+ExpirationYear);
+
         return this;
     }
 
     public AddCardPage typeCardHolderName(String CardHolderName){
         driver.findElement(cardHolderNameLoc).sendKeys(CardHolderName);
+        log.info("type CardHolderName: "+CardHolderName);
+
         return this;
     }
 

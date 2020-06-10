@@ -51,6 +51,7 @@ public class BillingPage extends LoadableComponent<BillingPage> {
 
     public String getNumberOfLastCard(){
         return driver.findElement(lastCardNumberLoc).getText().substring(0, 16);
+
     }
 
     public int getSizeOfCardList(){
