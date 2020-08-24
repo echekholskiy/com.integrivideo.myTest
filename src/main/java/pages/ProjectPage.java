@@ -20,6 +20,7 @@ public class ProjectPage extends LoadableComponent<ProjectPage> {
     private By billingButtonLoc = By.xpath("//a[text()='Billing']");
     private By projectList = By.xpath("//div[@class='col-xl-4 col-sm-6']");
     private By lastProjectLetters = By.xpath("//div[@class='col-xl-4 col-sm-6'][last()-1]/div//div[@class='circle']");
+    private By logoLoc = By.xpath("//a[@class='navbar-brand logo']");
 
     private By openElementLoc = By.xpath("//div[@class='status' and text()='Add project']");
 
@@ -31,11 +32,16 @@ public class ProjectPage extends LoadableComponent<ProjectPage> {
     @Override
     public void isLoaded() throws Error{
         try {
-            (new WebDriverWait(driver, 10))
+            (new WebDriverWait(driver, 20))
                     .until(ExpectedConditions.presenceOfElementLocated(openElementLoc));
         } catch (TimeoutException e) {
             fail("Cannot locate openElementLoc of ProjectPage");
         }
+    }
+
+    public void clickLogo(){
+        new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(logoLoc));
+        driver.findElement(logoLoc).click();
     }
 
     public CreateProjectPage clickAddProject(){

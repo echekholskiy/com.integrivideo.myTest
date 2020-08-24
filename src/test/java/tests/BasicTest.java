@@ -29,7 +29,7 @@ public class BasicTest {
     public void setUP(){
         driverManager = DriverManagerFactory.getDriverManager(DriverType.FIREFOX);
         driver = driverManager.getWebDriver();
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get(PropertyReader.getInstance().get("url"));
 
