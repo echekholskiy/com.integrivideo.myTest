@@ -24,4 +24,7 @@ public class Data {
     public String DEFAULT_MESSAGE="Default payment method successfully changed";
     public String REMOVE_MESSAGE="Payment method successfully removed";
     public String STARS_FOR_CARD_NUMBER="******";
+    public String CHAT_NAME = faker.animal().name();
+    public String CHAT_EMAIL = faker.internet().emailAddress();
+    public String CHAT_PICTURE = faker.internet().image();
 }

@@ -39,9 +39,10 @@ public class ProjectPage extends LoadableComponent<ProjectPage> {
         }
     }
 
-    public void clickLogo(){
-        new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(logoLoc));
+    public MainPage clickLogo(){
+        new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(logoLoc));
         driver.findElement(logoLoc).click();
+        return new MainPage(driver);
     }
 
     public CreateProjectPage clickAddProject(){

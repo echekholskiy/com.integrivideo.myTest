@@ -24,6 +24,8 @@ public class BasicTest {
     protected ComponentPage componentPage;
     protected BillingPage billingPage;
     protected AddCardPage addCardPage;
+    protected MainPage mainPage;
+    protected ChatPage chatPage;
 
     @BeforeMethod
     public void setUP(){
@@ -40,6 +42,8 @@ public class BasicTest {
         this.componentPage = new ComponentPage(driver);
         this.billingPage = new BillingPage(driver);
         this.addCardPage = new AddCardPage(driver);
+        this.mainPage = new MainPage(driver);
+        this.chatPage = new ChatPage(driver);
 
         logInPage
                 .clickLogIn()
