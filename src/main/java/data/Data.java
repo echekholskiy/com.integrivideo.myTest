@@ -28,4 +28,5 @@ public class Data {
     public String CHAT_EMAIL = faker.internet().emailAddress();
     public String CHAT_PICTURE = faker.internet().image();
     public String CHAT_ANONYMOUS_NAME = "Anonymous";
+    public String MESSAGE_TEXT = faker.gameOfThrones().quote();
 }

@@ -22,6 +22,9 @@ public class ChatPage {
     private By pictureAdressLoc = By.xpath("//input[@name='userPic']");
     private By saveButtonLoc = By.xpath("//button[@class='integri-user-settings-save integri-button-blue']");
     private By establishedNameLoc = By.xpath("//div[@class='integri-session-user-name']");
+    private By sendMessageButton = By.xpath("//button[@class='integri-chat-send-message integri-chat-action-button']");
+    private By textAreaLoc = By.xpath("//textarea[@placeholder='Start typing here']");
+    private By messageLoc = By.xpath("//div[@class='integri-chat-message-text']");
 
     public void isLoaded() throws Error{
         try {
@@ -90,6 +93,26 @@ public class ChatPage {
     public ChatPage clearUserName(){
         driver.findElement(userNameLoc).clear();
         return new ChatPage(driver);
+    }
+
+    public ChatPage clickSendMessage(){
+        driver.findElement(sendMessageButton).click();
+        return new ChatPage(driver);
+    }
+
+    public ChatPage typeMessage(String message){
+        driver.findElement(textAreaLoc).sendKeys(message);
+        return new ChatPage(driver);
+    }
+
+    public ChatPage sendMessage(String message){
+        typeMessage(message)
+                .clickSendMessage();
+        return new ChatPage(driver);
+    }
+
+    public String getTextMessage(){
+        return driver.findElement(messageLoc).getText();
     }
 
 }

@@ -9,6 +9,7 @@ public class ChatTest extends BasicTest {
     String chatName = new Data().CHAT_NAME;
     String chatEmail = new Data().CHAT_EMAIL;
     String chatPicture = new Data().CHAT_PICTURE;
+    String messageText = new Data().MESSAGE_TEXT;
 
 
     @Test
@@ -48,7 +49,23 @@ public class ChatTest extends BasicTest {
                 .clickSaveButton();
 
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "chatName"), chatPage.getEstablishedName(), new Data().CHAT_ANONYMOUS_NAME);
+    }
 
+    @Test
+    public void sendMessageTest(){
+
+        projectPage
+                .clickLogo()
+                .isLoaded();
+
+        mainPage
+                .clickChatTryItOutLoc()
+                .isLoaded();
+
+        chatPage
+                .sendMessage(messageText);
+
+        Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "chatName"), chatPage.getTextMessage(), messageText);
     }
 
 }
