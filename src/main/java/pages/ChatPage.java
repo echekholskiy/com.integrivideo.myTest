@@ -25,6 +25,8 @@ public class ChatPage {
     private By sendMessageButton = By.xpath("//button[@class='integri-chat-send-message integri-chat-action-button']");
     private By textAreaLoc = By.xpath("//textarea[@placeholder='Start typing here']");
     private By messageLoc = By.xpath("//div[@class='integri-chat-message-text']");
+    private By deleteMessageButton = By.xpath("//span[@class='iv-icon iv-icon-trash2 integri-chat-remove-message']");
+    private By deleteMessageDiv = By.xpath("//div[text()='removed...']");
 
     public void isLoaded() throws Error{
         try {
@@ -113,6 +115,14 @@ public class ChatPage {
 
     public String getTextMessage(){
         return driver.findElement(messageLoc).getText();
+    }
+
+    public ChatPage deleteMessage(){
+        driver.findElement(deleteMessageButton).click();
+        driver.switchTo().alert().accept();
+        (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(deleteMessageDiv)); //ну тут какой-то хуйни нагородил
+        return new ChatPage(driver);
     }
 
 }

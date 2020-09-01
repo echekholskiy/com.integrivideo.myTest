@@ -68,4 +68,22 @@ public class ChatTest extends BasicTest {
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "chatName"), chatPage.getTextMessage(), messageText);
     }
 
+    @Test
+    public void deleteMessageTest(){
+
+        projectPage
+                .clickLogo()
+                .isLoaded();
+
+        mainPage
+                .clickChatTryItOutLoc()
+                .isLoaded();
+
+        chatPage
+                .sendMessage(messageText)
+                .deleteMessage();
+
+        Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "chatName"), chatPage.getTextMessage(), new Data().DELETE_MESSAGE_TEXT);
+    }
+
 }
