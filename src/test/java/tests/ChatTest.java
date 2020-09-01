@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.testng.annotations.Test;
 
 public class ChatTest extends BasicTest {
+
     String chatName = new Data().CHAT_NAME;
     String chatEmail = new Data().CHAT_EMAIL;
     String chatPicture = new Data().CHAT_PICTURE;
@@ -29,4 +30,25 @@ public class ChatTest extends BasicTest {
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "chatEmail"), chatEmail, chatPage.getUserEmail());
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "chatPicture"), chatPicture, chatPage.getPictureAdress());
     }
+
+    @Test
+    public void anonymousNameTest(){
+
+        projectPage
+                .clickLogo()
+                .isLoaded();
+
+        mainPage
+                .clickChatTryItOutLoc()
+                .isLoaded();
+
+        chatPage
+                .settingsClick()
+                .clearUserName()
+                .clickSaveButton();
+
+        Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "chatName"), chatPage.getEstablishedName(), new Data().CHAT_ANONYMOUS_NAME);
+
+    }
+
 }

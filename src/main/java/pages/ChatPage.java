@@ -21,6 +21,7 @@ public class ChatPage {
     private By userEmailLoc = By.xpath("//input[@name='userEmail']");
     private By pictureAdressLoc = By.xpath("//input[@name='userPic']");
     private By saveButtonLoc = By.xpath("//button[@class='integri-user-settings-save integri-button-blue']");
+    private By establishedNameLoc = By.xpath("//div[@class='integri-session-user-name']");
 
     public void isLoaded() throws Error{
         try {
@@ -78,6 +79,17 @@ public class ChatPage {
 
     public String getPictureAdress(){
         return driver.findElement(pictureAdressLoc).getAttribute("value");
+    }
+
+    public String getEstablishedName(){
+        String s=driver.findElement(establishedNameLoc).getText();
+        System.out.println(s);
+        return s;
+    }
+
+    public ChatPage clearUserName(){
+        driver.findElement(userNameLoc).clear();
+        return new ChatPage(driver);
     }
 
 }
