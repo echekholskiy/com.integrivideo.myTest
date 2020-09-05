@@ -10,6 +10,7 @@ public class ChatTest extends BasicTest {
     String chatEmail = new Data().CHAT_EMAIL;
     String chatPicture = new Data().CHAT_PICTURE;
     String messageText = new Data().MESSAGE_TEXT;
+    String editedText = new Data().EDIT_MESSAGE_TEXT;
 
 
     @Test
@@ -84,6 +85,25 @@ public class ChatTest extends BasicTest {
                 .deleteMessage();
 
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "chatName"), chatPage.getTextMessage(), new Data().DELETE_MESSAGE_TEXT);
+    }
+
+    @Test
+    public void editMessageText(){
+
+        projectPage
+                .clickLogo()
+                .isLoaded();
+
+        mainPage
+                .clickChatTryItOutLoc()
+                .isLoaded();
+
+        chatPage
+                .sendMessage(messageText)
+                .editMessage(editedText);
+
+        Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "editedLabel"), chatPage.getEditedLabelText(), new Data().EDITED_LABEL);
+        Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "editedText"), chatPage.getTextMessage(), editedText);
     }
 
 }

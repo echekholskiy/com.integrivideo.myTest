@@ -1,7 +1,6 @@
 package data;
 
 import com.github.javafaker.Faker;
-import org.testng.annotations.DataProvider;
 
 public class Data {
     Faker faker = new Faker();
@@ -30,4 +29,6 @@ public class Data {
     public String CHAT_ANONYMOUS_NAME = "Anonymous";
     public String MESSAGE_TEXT = faker.gameOfThrones().quote();
     public String DELETE_MESSAGE_TEXT = "removed...";
+    public String EDIT_MESSAGE_TEXT = faker.yoda().quote();
+    public String EDITED_LABEL = "\"(edited)\"";
 }

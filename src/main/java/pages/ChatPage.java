@@ -1,10 +1,10 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+
 
 import static org.testng.FileAssert.fail;
 
@@ -25,8 +25,11 @@ public class ChatPage {
     private By sendMessageButton = By.xpath("//button[@class='integri-chat-send-message integri-chat-action-button']");
     private By textAreaLoc = By.xpath("//textarea[@placeholder='Start typing here']");
     private By messageLoc = By.xpath("//div[@class='integri-chat-message-text']");
-    private By deleteMessageButton = By.xpath("//span[@class='iv-icon iv-icon-trash2 integri-chat-remove-message']");
-    private By deleteMessageDiv = By.xpath("//div[text()='removed...']");
+    private By deleteMessageButtonLoc = By.xpath("//span[@class='iv-icon iv-icon-trash2 integri-chat-remove-message']");
+    private By deleteMessageDivLoc = By.xpath("//div[text()='removed...']");
+    private By editMessageButtonLoc = By.xpath("//span[@class='iv-icon iv-icon-pencil integri-chat-edit-message']");
+    private By editTextAreaLoc = By.xpath("//div[@class='integri-chat-message ']/textarea");
+    private By editedLabelLoc = By.xpath("//div[@class='integri-chat-message-container integri-chat-message-own integri-chat-message-edited']");
 
     public void isLoaded() throws Error{
         try {
@@ -118,11 +121,30 @@ public class ChatPage {
     }
 
     public ChatPage deleteMessage(){
-        driver.findElement(deleteMessageButton).click();
+        driver.findElement(deleteMessageButtonLoc).click();
         driver.switchTo().alert().accept();
         (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(deleteMessageDiv)); //ну тут какой-то хуйни нагородил
+                .until(ExpectedConditions.presenceOfElementLocated(deleteMessageDivLoc)); //ну тут какой-то хуйни нагородил
         return new ChatPage(driver);
     }
+
+    public ChatPage editMessage(String editText){
+        driver.findElement(editMessageButtonLoc).click();
+        driver.findElement(editTextAreaLoc).clear();
+        driver.findElement(editTextAreaLoc).sendKeys(editText);
+        driver.findElement(editTextAreaLoc).sendKeys(Keys.ENTER);
+        return new ChatPage(driver);
+    }
+
+    public String getEditedLabelText(){
+        (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(editedLabelLoc));
+        String script = "return window.getComputedStyle(document.querySelector('div.integri-chat-message-text'), ':after').content";
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        String content = (String) js.executeScript(script);
+        return content;
+    }
+
+
 
 }
