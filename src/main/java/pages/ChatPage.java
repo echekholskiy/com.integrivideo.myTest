@@ -30,6 +30,7 @@ public class ChatPage {
     private By editMessageButtonLoc = By.xpath("//span[@class='iv-icon iv-icon-pencil integri-chat-edit-message']");
     private By editTextAreaLoc = By.xpath("//div[@class='integri-chat-message ']/textarea");
     private By editedLabelLoc = By.xpath("//div[@class='integri-chat-message-container integri-chat-message-own integri-chat-message-edited']");
+    private By demoVersionWindowLoc = By.xpath("//div[@class='integri-demo-version']");
 
     public void isLoaded() throws Error{
         try {
@@ -143,6 +144,26 @@ public class ChatPage {
         JavascriptExecutor js = (JavascriptExecutor)driver;
         String content = (String) js.executeScript(script);
         return content;
+    }
+
+    public ChatPage sendElevenMessages(String textMessages){
+        for(int i=0; i<11; i++){
+            sendMessage(textMessages);
+            if(i<10) {
+                (new WebDriverWait(driver, 10))
+                        .until(ExpectedConditions.numberOfElementsToBeMoreThan(messageLoc, i));
+            }
+        }
+        return new ChatPage(driver);
+    }
+
+    public boolean checkDemoVersionWindow(){
+        try{
+        driver.findElement(demoVersionWindowLoc);  //Тут можно было сделать через isDisplayed(), но тогла метод будет
+        return true;                               //возвращать только true, а в случае бага будет выдавать не
+        }catch (NoSuchElementException e){         //assert-несоответсвие, а ошибку на уровне пэйджы
+            return false;
+        }
     }
 
 

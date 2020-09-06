@@ -106,4 +106,20 @@ public class ChatTest extends BasicTest {
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "editedText"), chatPage.getTextMessage(), editedText);
     }
 
+    @Test
+    public void trialVersionTest(){
+        projectPage
+                .clickLogo()
+                .isLoaded();
+
+        mainPage
+                .clickChatTryItOutLoc()
+                .isLoaded();
+
+        chatPage
+                .sendElevenMessages(messageText);
+
+        Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "TrialVersionWindow"), chatPage.checkDemoVersionWindow(), true);
+    }
+
 }
