@@ -29,8 +29,10 @@ public class ChatTest extends BasicTest {
                 .settingsClick();
 
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "chatName"), chatName, chatPage.getUserName());
+        Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "sessionChatName"), chatName, chatPage.getSessionUserName());
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "chatEmail"), chatEmail, chatPage.getUserEmail());
         Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "chatPicture"), chatPicture, chatPage.getPictureAdress());
+        Assert.assertEquals(String.format(new Data().ASSERT_TEXT, "sessionChatPicture"), chatPicture, chatPage.getSessionPictureAdress());
     }
 
     @Test

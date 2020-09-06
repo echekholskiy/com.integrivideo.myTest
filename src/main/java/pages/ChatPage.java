@@ -18,8 +18,10 @@ public class ChatPage {
     private By settingsLoc = By.xpath("//span[text()=' Settings']");
     private By openElementLoc = By.xpath("//button[@id='invite-users-to-chat']");
     private By userNameLoc = By.xpath("//input[@name='userName']");
+    private By sessionUserNameLoc = By.xpath("//div[@class='integri-session-user-name']");
     private By userEmailLoc = By.xpath("//input[@name='userEmail']");
     private By pictureAdressLoc = By.xpath("//input[@name='userPic']");
+    private By sessionPictureAdressLoc = By.xpath("//div[@class='integri-user-pic integri-session-is-online integri-current-session']");
     private By saveButtonLoc = By.xpath("//button[@class='integri-user-settings-save integri-button-blue']");
     private By establishedNameLoc = By.xpath("//div[@class='integri-session-user-name']");
     private By sendMessageButton = By.xpath("//button[@class='integri-chat-send-message integri-chat-action-button']");
@@ -82,12 +84,21 @@ public class ChatPage {
         return driver.findElement(userNameLoc).getAttribute("value");
     }
 
+    public String getSessionUserName(){
+        return driver.findElement(sessionUserNameLoc).getText();
+    }
+
     public String getUserEmail(){
         return driver.findElement(userEmailLoc).getAttribute("value");
     }
 
     public String getPictureAdress(){
         return driver.findElement(pictureAdressLoc).getAttribute("value");
+    }
+
+    public String getSessionPictureAdress(){
+        String style = driver.findElement(sessionPictureAdressLoc).getAttribute("style");
+        return style.substring(23, style.length()-3);
     }
 
     public String getEstablishedName(){
