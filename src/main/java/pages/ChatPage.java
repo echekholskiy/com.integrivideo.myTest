@@ -4,8 +4,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
-
 import static org.testng.FileAssert.fail;
 
 public class ChatPage {
@@ -47,28 +45,28 @@ public class ChatPage {
         (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.elementToBeClickable(settingsLoc));
         driver.findElement(settingsLoc).click();
-        return new ChatPage(driver);
+        return this;
     }
 
     public ChatPage typeUserName(String username){
         driver.findElement(userNameLoc).clear();
         driver.findElement(userNameLoc).sendKeys(username);
-        return new ChatPage(driver);
+        return this;
     }
 
     public ChatPage typeUserEmail(String useremail){
         driver.findElement(userEmailLoc).sendKeys(useremail);
-        return new ChatPage(driver);
+        return this;
     }
 
     public ChatPage typePictureAdress(String pictureadress){
         driver.findElement(pictureAdressLoc).sendKeys(pictureadress);
-        return new ChatPage(driver);
+        return this;
     }
 
     public ChatPage clickSaveButton(){
         driver.findElement(saveButtonLoc).click();
-        return new ChatPage(driver);
+        return this;
     }
 
     public ChatPage typeAllSettings(String username, String useremail, String pictureadress){
@@ -77,7 +75,7 @@ public class ChatPage {
                 .typeUserEmail(useremail)
                 .typePictureAdress(pictureadress)
                 .clickSaveButton();
-        return new ChatPage(driver);
+        return this;
     }
 
     public String getUserName(){
@@ -109,23 +107,23 @@ public class ChatPage {
 
     public ChatPage clearUserName(){
         driver.findElement(userNameLoc).clear();
-        return new ChatPage(driver);
+        return this;
     }
 
     public ChatPage clickSendMessage(){
         driver.findElement(sendMessageButton).click();
-        return new ChatPage(driver);
+        return this;
     }
 
     public ChatPage typeMessage(String message){
         driver.findElement(textAreaLoc).sendKeys(message);
-        return new ChatPage(driver);
+        return this;
     }
 
     public ChatPage sendMessage(String message){
         typeMessage(message)
                 .clickSendMessage();
-        return new ChatPage(driver);
+        return this;
     }
 
     public String getTextMessage(){
@@ -137,7 +135,7 @@ public class ChatPage {
         driver.switchTo().alert().accept();
         (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(deleteMessageDivLoc)); //ну тут какой-то хуйни нагородил
-        return new ChatPage(driver);
+        return this;
     }
 
     public ChatPage editMessage(String editText){
@@ -145,7 +143,7 @@ public class ChatPage {
         driver.findElement(editTextAreaLoc).clear();
         driver.findElement(editTextAreaLoc).sendKeys(editText);
         driver.findElement(editTextAreaLoc).sendKeys(Keys.ENTER);
-        return new ChatPage(driver);
+        return this;
     }
 
     public String getEditedLabelText(){
@@ -165,7 +163,7 @@ public class ChatPage {
                         .until(ExpectedConditions.numberOfElementsToBeMoreThan(messageLoc, i));
             }
         }
-        return new ChatPage(driver);
+        return this;
     }
 
     public boolean checkDemoVersionWindow(){
@@ -176,7 +174,4 @@ public class ChatPage {
             return false;
         }
     }
-
-
-
 }

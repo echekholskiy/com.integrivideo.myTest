@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -22,7 +21,6 @@ public class ComponentPage extends LoadableComponent<ComponentPage> {
     private By componentNameLoc = By.xpath("//input[@name='name']");
     private By createButtonLoc = By.xpath("//button[text()='Create']");
     private By updateButtonLoc = By.xpath("//button[text()='Update']");
-
     private By openElementLoc = By.xpath("//label[text()='Component type']");
 
     @Override

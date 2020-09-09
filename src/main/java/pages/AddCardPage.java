@@ -23,7 +23,6 @@ public class AddCardPage extends LoadableComponent<AddCardPage> {
     private By expirationYearLoc = By.xpath("//div[@class='credit-card']/input[@name='expirationYear']");
     private By cardHolderNameLoc = By.xpath("//div[@class='credit-card']/input[@name='cardholderName']");
     private By addButtonLoc = By.xpath("//button[text()='Add']");
-
     private By openElementLoc=By.xpath("//div[@class='credit-card']");
     private static final Logger log = Logger.getLogger(AddCardPage.class.getName());
 
@@ -45,28 +44,24 @@ public class AddCardPage extends LoadableComponent<AddCardPage> {
     public AddCardPage typeCardNumber(String CardNumber){
         driver.findElement(cardNumberLoc).sendKeys(CardNumber);
         log.info("type CardNumber: "+CardNumber);
-
         return this;
     }
 
     public AddCardPage typeExpirationMonth(String ExpirationMonth){
         driver.findElement(expirationMonthLoc).sendKeys(ExpirationMonth);
         log.info("type ExpirationMonth: "+ExpirationMonth);
-
         return this;
     }
 
     public AddCardPage typeExpirationYear(String ExpirationYear){
         driver.findElement(expirationYearLoc).sendKeys(ExpirationYear);
         log.info("type ExpirationYear: "+ExpirationYear);
-
         return this;
     }
 
     public AddCardPage typeCardHolderName(String CardHolderName){
         driver.findElement(cardHolderNameLoc).sendKeys(CardHolderName);
         log.info("type CardHolderName: "+CardHolderName);
-
         return this;
     }
 

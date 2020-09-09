@@ -17,6 +17,7 @@ public class BillingPage extends LoadableComponent<BillingPage> {
     public BillingPage(WebDriver driver) {
         this.driver = driver;
     }
+
     private By addCardButtonLoc = By.xpath("//div[@class='col-md-6']/a[@class='btn']");
     private By lastCardNumberLoc = By.xpath("//div[@class='cards']/div[last()]/div[@class='col-md-7']");
     private By cardMassLoc = By.xpath("//div[@class='col-md-7']");
@@ -25,7 +26,6 @@ public class BillingPage extends LoadableComponent<BillingPage> {
     private By DefaultLastCardLoc=By.xpath("//div[@class='cards']/div[last()]//div[contains(text(),'Default')]");
     private By messageAlertLoc=By.xpath("//span[@data-notify='message']");
     private By listOfCards=By.xpath("//div[@class='cards']/div");
-
     private By openElementLoc = By.xpath("//h3[text()='Payment methods']");
 
     @Override
@@ -36,7 +36,7 @@ public class BillingPage extends LoadableComponent<BillingPage> {
     @Override
     public void isLoaded() throws Error{
         try {
-            (new WebDriverWait(driver, 5))
+            (new WebDriverWait(driver, 10))
                     .until(ExpectedConditions.presenceOfElementLocated(openElementLoc));
         } catch (TimeoutException e) {
             fail("Cannot locate openElementLoc of BillingPage");
@@ -44,14 +44,14 @@ public class BillingPage extends LoadableComponent<BillingPage> {
     }
 
     public AddCardPage clickAddCardButton(){
+        (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.elementToBeClickable(addCardButtonLoc));
         driver.findElement(addCardButtonLoc).click();
-
         return new AddCardPage(driver);
     }
 
     public String getNumberOfLastCard(){
         return driver.findElement(lastCardNumberLoc).getText().substring(0, 16);
-
     }
 
     public int getSizeOfCardList(){
@@ -60,12 +60,10 @@ public class BillingPage extends LoadableComponent<BillingPage> {
 
     public BillingPage clickMakeDefaultButton(){
         driver.findElement(MakeDefaultLastCardButtonLoc).click();
-
         return this;
     }
 
     public boolean checkDefaultLastCard() {
-
         try {
             driver.findElement(DefaultLastCardLoc);
             return true;
@@ -78,13 +76,11 @@ public class BillingPage extends LoadableComponent<BillingPage> {
     public String getMessageAlertText(){
         (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(messageAlertLoc));
-
         return driver.findElement(messageAlertLoc).getText();
     }
 
     public BillingPage clickRemoveLastCard(){
         driver.findElement(removeLastCardButtonLoc).click();
-
         return this;
     }
 
@@ -95,5 +91,4 @@ public class BillingPage extends LoadableComponent<BillingPage> {
     public String transformationNumber(String Number){
         return Number.substring(0, 6)+new Data().STARS_FOR_CARD_NUMBER+Number.substring(12, 16);
     }
-
 }
