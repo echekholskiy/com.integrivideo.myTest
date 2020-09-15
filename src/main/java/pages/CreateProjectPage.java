@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.testng.FileAssert.fail;
 
-public class CreateProjectPage extends LoadableComponent<CreateProjectPage> {
+public class CreateProjectPage extends BasicPage{
     private WebDriver driver;
 
     public CreateProjectPage(WebDriver driver) {
@@ -24,16 +24,13 @@ public class CreateProjectPage extends LoadableComponent<CreateProjectPage> {
 
     private By openElementLoc = By.xpath("//label[@class='required' and text()='Project name']");
 
-    @Override
     public void load(){
         driver.get("https://dev.integrivideo.com/app/projects/new");
     }
 
-    @Override
     public void isLoaded() throws Error{
         try {
-            (new WebDriverWait(driver, 5))
-                    .until(ExpectedConditions.presenceOfElementLocated(openElementLoc));
+            presenceOfElementLocated(driver, openElementLoc, 5);
         } catch (TimeoutException e) {
             fail("Cannot locate openElementLoc of CreateProjectPage");
         }

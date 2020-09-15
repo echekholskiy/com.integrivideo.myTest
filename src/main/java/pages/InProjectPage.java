@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.testng.FileAssert.fail;
 
-public class InProjectPage extends LoadableComponent<InProjectPage> {
+public class InProjectPage extends BasicPage{
     private WebDriver driver;
 
     public InProjectPage(WebDriver driver) {
@@ -32,16 +32,13 @@ public class InProjectPage extends LoadableComponent<InProjectPage> {
         return driver.findElement(descriptionLoc).getText();
     }
 
-    @Override
     public void load(){
         driver.get("//");
     }
 
-    @Override
     public void isLoaded() throws Error{
         try {
-            (new WebDriverWait(driver, 5))
-                    .until(ExpectedConditions.presenceOfElementLocated(openElementLoc));
+            presenceOfElementLocated(driver, openElementLoc, 5);
         } catch (TimeoutException e) {
             fail("Cannot locate openElementLoc of InProjectPage");
         }

@@ -1,14 +1,13 @@
 package pages;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.LoadableComponent;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 import static org.testng.FileAssert.fail;
 
 
-public class ProjectPage extends LoadableComponent<ProjectPage> {
+public class ProjectPage extends BasicPage {
     private WebDriver driver;
 
     public ProjectPage(WebDriver driver) {
@@ -21,33 +20,29 @@ public class ProjectPage extends LoadableComponent<ProjectPage> {
     private By projectList = By.xpath("//div[@class='col-xl-4 col-sm-6']");
     private By lastProjectLetters = By.xpath("//div[@class='col-xl-4 col-sm-6'][last()-1]/div//div[@class='circle']");
     private By logoLoc = By.xpath("//a[@class='navbar-brand logo']");
-
     private By openElementLoc = By.xpath("//div[@class='status' and text()='Add project']");
 
-    @Override
     public void load(){
         driver.get("https://dev.integrivideo.com/app/projects");
     }
 
-    @Override
     public void isLoaded() throws Error{
         try {
-            (new WebDriverWait(driver, 20))
-                    .until(ExpectedConditions.presenceOfElementLocated(openElementLoc));
+            presenceOfElementLocated(driver, openElementLoc, 20);
         } catch (TimeoutException e) {
             fail("Cannot locate openElementLoc of ProjectPage");
         }
     }
 
     public MainPage clickLogo(){
-        new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(logoLoc));
+        elementToBeClickable(driver, logoLoc, 20);
+
         driver.findElement(logoLoc).click();
         return new MainPage(driver);
     }
 
     public CreateProjectPage clickAddProject(){
-        (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(addButtonLoc));
+        presenceOfElementLocated(driver, addButtonLoc, 20);
 
         WebElement addProjectButton = driver.findElement(addButtonLoc);
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -57,8 +52,7 @@ public class ProjectPage extends LoadableComponent<ProjectPage> {
     }
 
     public InProjectPage clickLastOfProject(){
-        (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(addButtonLoc));
+        presenceOfElementLocated(driver, addButtonLoc, 20);
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(lastProjectLoc));
@@ -72,8 +66,8 @@ public class ProjectPage extends LoadableComponent<ProjectPage> {
     }
 
     public int getSizeOfProjectList(){
-        (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(projectList));
+        presenceOfElementLocated(driver, projectList, 20);
+
         return driver.findElements(projectList).size();
     }
 

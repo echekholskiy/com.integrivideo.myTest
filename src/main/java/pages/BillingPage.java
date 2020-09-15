@@ -4,13 +4,10 @@ import data.Data;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.LoadableComponent;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.testng.FileAssert.fail;
 
-public class BillingPage extends LoadableComponent<BillingPage> {
+public class BillingPage extends BasicPage {
 
     private WebDriver driver;
 
@@ -28,24 +25,20 @@ public class BillingPage extends LoadableComponent<BillingPage> {
     private By listOfCards=By.xpath("//div[@class='cards']/div");
     private By openElementLoc = By.xpath("//h3[text()='Payment methods']");
 
-    @Override
     public void load(){
         driver.get("https://dev.integrivideo.com/app/billing");
     }
 
-    @Override
     public void isLoaded() throws Error{
         try {
-            (new WebDriverWait(driver, 10))
-                    .until(ExpectedConditions.presenceOfElementLocated(openElementLoc));
+            presenceOfElementLocated(driver, openElementLoc, 5);
         } catch (TimeoutException e) {
             fail("Cannot locate openElementLoc of BillingPage");
         }
     }
 
     public AddCardPage clickAddCardButton(){
-        (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.elementToBeClickable(addCardButtonLoc));
+        elementToBeClickable(driver, addCardButtonLoc, 20);
         driver.findElement(addCardButtonLoc).click();
         return new AddCardPage(driver);
     }
@@ -74,8 +67,7 @@ public class BillingPage extends LoadableComponent<BillingPage> {
     }
 
     public String getMessageAlertText(){
-        (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(messageAlertLoc));
+        presenceOfElementLocated(driver, messageAlertLoc, 10);
         return driver.findElement(messageAlertLoc).getText();
     }
 

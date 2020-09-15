@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.testng.FileAssert.fail;
 
-public class ChatPage {
+public class ChatPage extends BasicPage{
     private WebDriver driver;
 
     public ChatPage(WebDriver driver) {
@@ -34,16 +34,14 @@ public class ChatPage {
 
     public void isLoaded() throws Error{
         try {
-            (new WebDriverWait(driver, 5))
-                    .until(ExpectedConditions.presenceOfElementLocated(openElementLoc));
+            presenceOfElementLocated(driver, openElementLoc, 5);
         } catch (TimeoutException e) {
             fail("Cannot locate openElementLoc of ComponentPage");
         }
     }
 
     public ChatPage settingsClick(){
-        (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.elementToBeClickable(settingsLoc));
+        elementToBeClickable(driver, settingsLoc, 10);
         driver.findElement(settingsLoc).click();
         return this;
     }
@@ -133,8 +131,7 @@ public class ChatPage {
     public ChatPage deleteMessage(){
         driver.findElement(deleteMessageButtonLoc).click();
         driver.switchTo().alert().accept();
-        (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(deleteMessageDivLoc)); //ну тут какой-то хуйни нагородил
+        presenceOfElementLocated(driver, deleteMessageDivLoc, 10); //ну тут какой-то хуйни нагородил
         return this;
     }
 
@@ -147,8 +144,7 @@ public class ChatPage {
     }
 
     public String getEditedLabelText(){
-        (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(editedLabelLoc));
+        presenceOfElementLocated(driver, editedLabelLoc, 10);
         String script = "return window.getComputedStyle(document.querySelector('div.integri-chat-message-text'), ':after').content";
         JavascriptExecutor js = (JavascriptExecutor)driver;
         String content = (String) js.executeScript(script);
@@ -159,8 +155,7 @@ public class ChatPage {
         for(int i=0; i<11; i++){
             sendMessage(textMessages);
             if(i<10) {
-                (new WebDriverWait(driver, 10))
-                        .until(ExpectedConditions.numberOfElementsToBeMoreThan(messageLoc, i));
+                numberOfElementsToBeMoreThan(driver, messageLoc, 10, i);
             }
         }
         return this;

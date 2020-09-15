@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.testng.FileAssert.fail;
 
-public class MainPage {
+public class MainPage extends BasicPage{
     private WebDriver driver;
 
     public MainPage(WebDriver driver) {
@@ -20,8 +20,7 @@ public class MainPage {
 
     public void isLoaded() throws Error{
         try {
-            (new WebDriverWait(driver, 20))
-                    .until(ExpectedConditions.presenceOfElementLocated(openElementLoc));
+            presenceOfElementLocated(driver, openElementLoc, 5);
         } catch (TimeoutException e) {
             fail("Cannot locate openElementLoc of MainPage");
         }

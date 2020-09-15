@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.testng.FileAssert.fail;
 
-public class LogInPage extends LoadableComponent<LogInPage> {
+public class LogInPage extends BasicPage{
     private WebDriver driver;
 
     public LogInPage(WebDriver driver) {
@@ -24,16 +24,13 @@ public class LogInPage extends LoadableComponent<LogInPage> {
 
     private By openElementLoc=By.xpath("//div[text()='Please Log in to continue']");
 
-    @Override
     public void load(){
         driver.get("https://dev.integrivideo.com/login");
     }
 
-    @Override
     public void isLoaded() throws Error{
         try {
-            (new WebDriverWait(driver, 5))
-                    .until(ExpectedConditions.presenceOfElementLocated(openElementLoc));
+            presenceOfElementLocated(driver, openElementLoc, 5);
         } catch (TimeoutException e) {
             fail("Cannot locate openElementLoc of LogInPage");
         }

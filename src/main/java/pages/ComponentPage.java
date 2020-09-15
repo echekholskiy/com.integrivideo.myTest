@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.testng.FileAssert.fail;
 
-public class ComponentPage extends LoadableComponent<ComponentPage> {
+public class ComponentPage extends BasicPage {
     private WebDriver driver;
 
     public ComponentPage(WebDriver driver) {
@@ -23,16 +23,13 @@ public class ComponentPage extends LoadableComponent<ComponentPage> {
     private By updateButtonLoc = By.xpath("//button[text()='Update']");
     private By openElementLoc = By.xpath("//label[text()='Component type']");
 
-    @Override
     public void load(){
         driver.get("https://dev.integrivideo.com/app/projects/5a75c2f1c9be4c063d6122bd/components/new");
     }
 
-    @Override
     public void isLoaded() throws Error{
         try {
-            (new WebDriverWait(driver, 5))
-                    .until(ExpectedConditions.presenceOfElementLocated(openElementLoc));
+            presenceOfElementLocated(driver, openElementLoc, 5);
         } catch (TimeoutException e) {
             fail("Cannot locate openElementLoc of ComponentPage");
         }

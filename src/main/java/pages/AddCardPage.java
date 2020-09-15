@@ -3,15 +3,12 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.LoadableComponent;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.logging.Logger;
 
 import static org.testng.FileAssert.fail;
 
-public class AddCardPage extends LoadableComponent<AddCardPage> {
+public class AddCardPage extends BasicPage {
     private WebDriver driver;
 
     public AddCardPage(WebDriver driver) {
@@ -26,16 +23,13 @@ public class AddCardPage extends LoadableComponent<AddCardPage> {
     private By openElementLoc=By.xpath("//div[@class='credit-card']");
     private static final Logger log = Logger.getLogger(AddCardPage.class.getName());
 
-    @Override
     public void load(){
         driver.get("https://dev.integrivideo.com/app/billing/payment-methods/new");
     }
 
-    @Override
     public void isLoaded() throws Error{
         try {
-            (new WebDriverWait(driver, 5))
-                    .until(ExpectedConditions.presenceOfElementLocated(openElementLoc));
+            presenceOfElementLocated(driver, openElementLoc, 5);
         } catch (TimeoutException e) {
             fail("Cannot locate openElementLoc of AddCardPage");
         }
@@ -66,8 +60,7 @@ public class AddCardPage extends LoadableComponent<AddCardPage> {
     }
 
     public BillingPage clickAddButton(){
-        (new WebDriverWait(driver, 20))
-                .until(ExpectedConditions.elementToBeClickable(addButtonLoc));
+        elementToBeClickable(driver, addButtonLoc, 20);
         driver.findElement(addButtonLoc).click();
         return new BillingPage(driver);
     }
