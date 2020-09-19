@@ -1,20 +1,19 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.LoadableComponent;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.Waiter;
 
 import static org.testng.FileAssert.fail;
 
 public class LogInPage extends BasicPage{
     private WebDriver driver;
+    private Waiter wait;
 
     public LogInPage(WebDriver driver) {
         this.driver = driver;
+        wait = new Waiter(driver);
     }
 
     private By loginLoc = By.xpath("//a[@class='btn']");
@@ -30,7 +29,7 @@ public class LogInPage extends BasicPage{
 
     public void isLoaded() throws Error{
         try {
-            presenceOfElementLocated(driver, openElementLoc, 5);
+            wait.presenceOfElementLocated(openElementLoc);
         } catch (TimeoutException e) {
             fail("Cannot locate openElementLoc of LogInPage");
         }

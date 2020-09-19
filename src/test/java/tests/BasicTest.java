@@ -9,6 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.*;
 import utils.PropertyReader;
+import utils.Waiter;
 
 import java.util.concurrent.TimeUnit;
 
@@ -26,6 +27,8 @@ public class BasicTest {
     protected AddCardPage addCardPage;
     protected MainPage mainPage;
     protected ChatPage chatPage;
+    protected BasicPage basicPage;
+    private Waiter wait;
 
     @BeforeMethod
     public void setUP(){
@@ -35,6 +38,8 @@ public class BasicTest {
         driver.manage().window().maximize();
         driver.get(PropertyReader.getInstance().get("url"));
 
+        this.wait = new Waiter(driver);
+        this.basicPage = new BasicPage(driver);
         this.logInPage = new LogInPage(driver);
         this.projectPage = new ProjectPage(driver);
         this.inProjectPage = new InProjectPage(driver);

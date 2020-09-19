@@ -1,7 +1,7 @@
 package pages;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.LoadableComponent;
+import utils.Waiter;
 
 
 import static org.testng.FileAssert.fail;
@@ -9,9 +9,11 @@ import static org.testng.FileAssert.fail;
 
 public class ProjectPage extends BasicPage {
     private WebDriver driver;
+    private Waiter wait;
 
     public ProjectPage(WebDriver driver) {
         this.driver = driver;
+        wait = new Waiter(driver);
     }
 
     private By addButtonLoc = By.xpath("//div[@class='project new']");
@@ -28,21 +30,21 @@ public class ProjectPage extends BasicPage {
 
     public void isLoaded() throws Error{
         try {
-            presenceOfElementLocated(driver, openElementLoc, 20);
+            wait.presenceOfElementLocated(openElementLoc);
         } catch (TimeoutException e) {
             fail("Cannot locate openElementLoc of ProjectPage");
         }
     }
 
     public MainPage clickLogo(){
-        elementToBeClickable(driver, logoLoc, 20);
+        wait.elementToBeClickable(logoLoc);
 
         driver.findElement(logoLoc).click();
         return new MainPage(driver);
     }
 
     public CreateProjectPage clickAddProject(){
-        presenceOfElementLocated(driver, addButtonLoc, 20);
+        wait.presenceOfElementLocated(addButtonLoc);
 
         WebElement addProjectButton = driver.findElement(addButtonLoc);
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -52,7 +54,7 @@ public class ProjectPage extends BasicPage {
     }
 
     public InProjectPage clickLastOfProject(){
-        presenceOfElementLocated(driver, addButtonLoc, 20);
+        wait.presenceOfElementLocated(addButtonLoc);
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(lastProjectLoc));
@@ -66,7 +68,7 @@ public class ProjectPage extends BasicPage {
     }
 
     public int getSizeOfProjectList(){
-        presenceOfElementLocated(driver, projectList, 20);
+        wait.presenceOfElementLocated(projectList);
 
         return driver.findElements(projectList).size();
     }

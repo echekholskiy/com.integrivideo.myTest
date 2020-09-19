@@ -3,17 +3,17 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.LoadableComponent;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.Waiter;
 
 import static org.testng.FileAssert.fail;
 
 public class ComponentPage extends BasicPage {
     private WebDriver driver;
+    private Waiter wait;
 
     public ComponentPage(WebDriver driver) {
         this.driver = driver;
+        wait = new Waiter(driver);
     }
 
     private By componentTypeSpanLoc = By.xpath("//span[@class='select2-selection__arrow']");
@@ -29,7 +29,7 @@ public class ComponentPage extends BasicPage {
 
     public void isLoaded() throws Error{
         try {
-            presenceOfElementLocated(driver, openElementLoc, 5);
+            wait.presenceOfElementLocated(openElementLoc);
         } catch (TimeoutException e) {
             fail("Cannot locate openElementLoc of ComponentPage");
         }

@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import utils.Waiter;
 
 import java.util.logging.Logger;
 
@@ -10,9 +11,11 @@ import static org.testng.FileAssert.fail;
 
 public class AddCardPage extends BasicPage {
     private WebDriver driver;
+    private Waiter wait;
 
     public AddCardPage(WebDriver driver) {
         this.driver = driver;
+        wait = new Waiter(driver);
     }
 
     private By cardNumberLoc = By.xpath("//div[@class='credit-card']/input[@name='number']");
@@ -29,7 +32,7 @@ public class AddCardPage extends BasicPage {
 
     public void isLoaded() throws Error{
         try {
-            presenceOfElementLocated(driver, openElementLoc, 5);
+            wait.presenceOfElementLocated(openElementLoc);
         } catch (TimeoutException e) {
             fail("Cannot locate openElementLoc of AddCardPage");
         }
@@ -60,7 +63,7 @@ public class AddCardPage extends BasicPage {
     }
 
     public BillingPage clickAddButton(){
-        elementToBeClickable(driver, addButtonLoc, 20);
+        wait.elementToBeClickable(addButtonLoc);
         driver.findElement(addButtonLoc).click();
         return new BillingPage(driver);
     }

@@ -1,16 +1,17 @@
 package pages;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.Waiter;
 
 import static org.testng.FileAssert.fail;
 
 public class ChatPage extends BasicPage{
     private WebDriver driver;
+    private Waiter wait;
 
     public ChatPage(WebDriver driver) {
         this.driver = driver;
+        wait = new Waiter(driver);
     }
 
     private By settingsLoc = By.xpath("//span[text()=' Settings']");
@@ -34,14 +35,14 @@ public class ChatPage extends BasicPage{
 
     public void isLoaded() throws Error{
         try {
-            presenceOfElementLocated(driver, openElementLoc, 5);
+            wait.presenceOfElementLocated(openElementLoc);
         } catch (TimeoutException e) {
             fail("Cannot locate openElementLoc of ComponentPage");
         }
     }
 
     public ChatPage settingsClick(){
-        elementToBeClickable(driver, settingsLoc, 10);
+        wait.elementToBeClickable(settingsLoc);
         driver.findElement(settingsLoc).click();
         return this;
     }
@@ -131,7 +132,7 @@ public class ChatPage extends BasicPage{
     public ChatPage deleteMessage(){
         driver.findElement(deleteMessageButtonLoc).click();
         driver.switchTo().alert().accept();
-        presenceOfElementLocated(driver, deleteMessageDivLoc, 10); //ну тут какой-то хуйни нагородил
+        wait.presenceOfElementLocated(deleteMessageDivLoc); //ну тут какой-то хуйни нагородил
         return this;
     }
 
@@ -144,7 +145,7 @@ public class ChatPage extends BasicPage{
     }
 
     public String getEditedLabelText(){
-        presenceOfElementLocated(driver, editedLabelLoc, 10);
+        wait.presenceOfElementLocated(editedLabelLoc);
         String script = "return window.getComputedStyle(document.querySelector('div.integri-chat-message-text'), ':after').content";
         JavascriptExecutor js = (JavascriptExecutor)driver;
         String content = (String) js.executeScript(script);
@@ -155,7 +156,7 @@ public class ChatPage extends BasicPage{
         for(int i=0; i<11; i++){
             sendMessage(textMessages);
             if(i<10) {
-                numberOfElementsToBeMoreThan(driver, messageLoc, 10, i);
+                wait.numberOfElementsToBeMoreThan(messageLoc, i);
             }
         }
         return this;
